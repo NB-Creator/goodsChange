@@ -10,6 +10,7 @@ public class Item {
 	private String except;
 	private String classfication;
 	private int price;
+	private int uid;
 
 	public int getId() {
 		return id;
@@ -73,6 +74,14 @@ public class Item {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 }

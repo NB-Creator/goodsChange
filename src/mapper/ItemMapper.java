@@ -18,7 +18,7 @@ public interface ItemMapper {
 	@SelectProvider(method="select",type=ItemPro.class)
 	public List<Item> select(Map<String, String> param);
 	
-	@Insert("insert into tb_item values(#{id},#{time},#{name},#{detail},#{img},#{expect},#{classification},#{price})")
+	@Insert("insert into tb_item values(#{id},#{time},#{name},#{detail},#{img},#{expect},#{classification},#{price},#{uid})")
 	public int add(Item i);
 	
 	@Delete("delete from tb_item where id=#{id}")
