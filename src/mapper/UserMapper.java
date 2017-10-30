@@ -18,7 +18,7 @@ public interface UserMapper {
 	@SelectProvider(method="select",type=UserPro.class)
 	public User selcet(Map<String , String> param);
 	
-	@Insert("inser into values(#{username},#{nickname},#{password},#{mail},#{name},#{adress})")
+	@Insert("insert into tb_user values(#{username},#{nickname},#{password},#{mail},#{name},#{address})")
 	public int add(User u);
 	
 	/**

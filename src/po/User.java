@@ -7,19 +7,19 @@ public class User {
 	private String password;
 	private String mail;
 	private String name;
-	private String adress;
+	private String address;
 
 	
 	
 	public User(String username, String nickname, String password, String mail,
-			String name, String adress) {
+			String name, String address) {
 		super();
 		this.username = username;
 		this.nickname = nickname;
 		this.password = password;
 		this.mail = mail;
 		this.name = name;
-		this.adress = adress;
+		this.address = address;
 	}
 
 	public String getUsername() {
@@ -62,12 +62,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getaddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setaddress(String address) {
+		this.address = address;
 	}
 
 }
