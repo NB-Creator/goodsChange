@@ -9,6 +9,19 @@ public class User {
 	private String name;
 	private String adress;
 
+	
+	
+	public User(String username, String nickname, String password, String mail,
+			String name, String adress) {
+		super();
+		this.username = username;
+		this.nickname = nickname;
+		this.password = password;
+		this.mail = mail;
+		this.name = name;
+		this.adress = adress;
+	}
+
 	public String getUsername() {
 		return username;
 	}

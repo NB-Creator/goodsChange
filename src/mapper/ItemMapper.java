@@ -32,5 +32,5 @@ public interface ItemMapper {
 	 * 可用于修改商品名字(name),详细信息(detail),图片(img),期望(except),分类(classfication),价格(price)
 	 */
 	@SelectProvider(method="update",type=ItemPro.class)
-	public int Update(Map<String, Object> param);
+	public Integer Update(Map<String, Object> param);
 }

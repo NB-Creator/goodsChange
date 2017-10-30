@@ -7,10 +7,28 @@ public class Item {
 	private String name;
 	private String detail;
 	private byte[] img;
-	private String except;
-	private String classfication;
+	private String expect;
+	private String classification;
 	private int price;
 	private int uid;
+
+	public Item(int id, String time, String name, String detail, byte[] img,
+			String expect, String classification, int price, int uid) {
+		super();
+		this.id = id;
+		this.time = time;
+		this.name = name;
+		this.detail = detail;
+		this.img = img;
+		this.expect = expect;
+		this.classification = classification;
+		this.price = price;
+		this.uid = uid;
+	}
+
+	public Item() {
+		
+	}
 
 	public int getId() {
 		return id;
@@ -52,20 +70,20 @@ public class Item {
 		this.img = img;
 	}
 
-	public String getExcept() {
-		return except;
+	public String getexpect() {
+		return expect;
 	}
 
-	public void setExcept(String except) {
-		this.except = except;
+	public void setexpect(String expect) {
+		this.expect = expect;
 	}
 
-	public String getClassfication() {
-		return classfication;
+	public String getclassification() {
+		return classification;
 	}
 
-	public void setClassfication(String classfication) {
-		this.classfication = classfication;
+	public void setclassification(String classification) {
+		this.classification = classification;
 	}
 
 	public int getPrice() {
