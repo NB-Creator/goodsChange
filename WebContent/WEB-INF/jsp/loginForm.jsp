@@ -122,7 +122,7 @@ img {
 				<button type="button" class="btn btn-info">找回密码</button>
 			</div>
 			<div class="login_box">
-				<h1>HUANLEBE</h1>
+				<h1>HUAN</h1>
 				<p>welcome to huanlebe</p>
 				<form name="form1">
 					<div class="login_box_tab"></div>

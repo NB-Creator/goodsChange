@@ -52,7 +52,7 @@ body {
 </head>
 <body>
 
-	<div class="top">KUIMI</div>
+	<div class="top">HUAN</div>
 	<div class="dataInput">
 		<h1>REGISTER</h1>
 		<table

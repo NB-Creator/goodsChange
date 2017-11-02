@@ -90,9 +90,9 @@ a:active {
 <body
 	onload="javascript:window.resizeTo(screen.availWidth,screen.availHeight)">
 
-	<div class="top">KUIMI</div>
+	<div class="top">HUAN</div>
 	<div class="middle">
-		<h1>恭喜您已成功注册KUIMI账号</h1>
+		<h1>恭喜您已成功注册HUAN账号</h1>
 		<p>您的帐号为:${requestScope.user.userId}</p>
 		<br>
 		<button type="button" class="btn btn-info" onclick="intToMain()"><a href="/PrySecret/mainForm.do"> 进入KUIMI</a></button>
