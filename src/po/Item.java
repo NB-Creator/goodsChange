@@ -2,18 +2,18 @@ package po;
 
 public class Item {
 
-	private int id;
+	private Integer id;
 	private String time;
 	private String name;
 	private String detail;
 	private byte[] img;
 	private String expect;
 	private String classification;
-	private int price;
-	private int uid;
+	private Integer price;
+	private Integer uid;
 
-	public Item(int id, String time, String name, String detail, byte[] img,
-			String expect, String classification, int price, int uid) {
+	public Item(Integer id, String time, String name, String detail, byte[] img,
+			String expect, String classification, Integer price, Integer uid) {
 		super();
 		this.id = id;
 		this.time = time;
@@ -30,11 +30,11 @@ public class Item {
 		
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -86,19 +86,19 @@ public class Item {
 		this.classification = classification;
 	}
 
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 
-	public int getUid() {
+	public Integer getUid() {
 		return uid;
 	}
 
-	public void setUid(int uid) {
+	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
 
