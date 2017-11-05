@@ -73,7 +73,7 @@ public class test {
 		  * 用户信息修改测试
 		  */
 		 
-		Map <String,String> m1=new HashMap<String,String>();
+		Map <String,Object> m1=new HashMap<>();
 		m1.put("nickname", "成都大");
 		m1.put("username", "123");
 		userDaoImpl.changeInfo(m1);

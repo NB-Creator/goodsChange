@@ -9,10 +9,13 @@ public class User {
 	private String name;
 	private String address;
 
-	
-	
-	public User(String username, String nickname, String password, String mail,
-			String name, String address) {
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
+	public User(String username, String nickname, String password, String mail, String name, String address) {
 		super();
 		this.username = username;
 		this.nickname = nickname;

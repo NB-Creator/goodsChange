@@ -1,14 +1,13 @@
 package service;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Map;
 
-import mapper.ItemMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import mapper.ItemMapper;
 import po.Item;
 
 @Service
@@ -51,9 +50,15 @@ public class ItemDaoImpl implements ItemDao {
 	 */
 	@Override
 	public boolean down(Item i) {
-		
+		Map<String,String> p=new HashMap<>();
+		if(i.getUid()==null)
+			return false;
+		p.put("id", String.valueOf(i.getId()));
+		if(itemMapper.select(p).isEmpty())
+			return false;
+		itemMapper.delete(i);
 
-		return false;
+		return true;
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public interface UserDao {
 	/**
 	 *  @param param key为要修改的属性的名字,value为用于查询的值
 	 */
-	public void changeInfo(Map<String, String> p);
+	public void changeInfo(Map<String, Object> p);
 	
-	public User getUser(Map<String,String>p);
+	public User getUser(Map<String,String> p);
 }

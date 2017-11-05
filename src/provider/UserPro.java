@@ -25,7 +25,7 @@ public class UserPro {
 		}.toString();
 	}
 	
-	public String update(Map<String, String> p){
+	public String update(Map<String, Object> p){
 		return new SQL(){
 			{
 				UPDATE("tb_user");

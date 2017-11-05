@@ -27,5 +27,5 @@ public interface UserMapper {
 	 *  除了不能修改username(主键)之外,其他属性都可修改
 	 */
 	@UpdateProvider(method="update",type=UserPro.class)
-	public int change(Map<String , String> param);
+	public int change(Map<String , Object> param);
 }

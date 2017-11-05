@@ -23,20 +23,14 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public String login(User u) {
 		// TODO 自动生成的方法存根、
-		User uT;
 		Map<String, String> m = new HashMap<String, String>();
 		m.put("username", u.getUsername());
-		uT = userMapper.selcet(m);
-		if (uT == null) {
-			return "USER NOT EXIST";
-		}
-		else{
-			if(uT.getPassword().equals(u.getPassword())){
-				return "SUCCESS";
-			}else{
-				return "PWD ERR";
-			}
-		}
+		m.put("password", u.getPassword());
+		u = userMapper.selcet(m);
+		if (u == null) 
+			return "FALSE";
+		else
+			return "SUCCESS";
 	}
 
 	/*
@@ -59,6 +53,10 @@ public class UserDaoImpl implements UserDao {
 		if (uT != null) {
 			return "MAIL EXIST";
 		}
+		m.put("username", u.getUsername());
+		uT=userMapper.selcet(m);
+		if(uT!=null)
+			return "USERNA EXIST";
 		userMapper.add(u);
 		return "SUCCESS";
 	}
@@ -67,7 +65,7 @@ public class UserDaoImpl implements UserDao {
 	 * @see service.UserDao#changeInfo(java.util.Map)
 	 */
 	@Override
-	public void changeInfo(Map<String, String> p) {
+	public void changeInfo(Map<String, Object> p) {
 		// TODO 自动生成的方法存根
 		userMapper.change(p);
 	}
