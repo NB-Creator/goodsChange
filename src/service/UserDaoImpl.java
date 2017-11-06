@@ -18,6 +18,7 @@ public class UserDaoImpl implements UserDao {
 
 	/*
 	 * 用户登录，检测用户是否存在，密码是否正确，并返回相应的信息（非 Javadoc）
+	 * 
 	 * @see service.UserDao#login(po.User)
 	 */
 	@Override
@@ -27,7 +28,7 @@ public class UserDaoImpl implements UserDao {
 		m.put("username", u.getUsername());
 		m.put("password", u.getPassword());
 		u = userMapper.selcet(m);
-		if (u == null) 
+		if (u == null)
 			return "FALSE";
 		else
 			return "SUCCESS";
@@ -42,6 +43,12 @@ public class UserDaoImpl implements UserDao {
 	public String register(User u) {
 		User uT;
 		Map<String, String> m = new HashMap<String, String>();
+		m.put("username", u.getUsername());
+		uT = userMapper.selcet(m);
+		if (uT != null)
+			return "USERNA EXIST";
+		userMapper.add(u);
+
 		m.put("nickname", u.getNickname());
 		uT = userMapper.selcet(m);
 		if (uT != null) {
@@ -53,15 +60,13 @@ public class UserDaoImpl implements UserDao {
 		if (uT != null) {
 			return "MAIL EXIST";
 		}
-		m.put("username", u.getUsername());
-		uT=userMapper.selcet(m);
-		if(uT!=null)
-			return "USERNA EXIST";
-		userMapper.add(u);
 		return "SUCCESS";
+
 	}
+
 	/*
 	 * 修改用户资料
+	 * 
 	 * @see service.UserDao#changeInfo(java.util.Map)
 	 */
 	@Override

@@ -43,7 +43,6 @@ public class ItemDaoImpl implements ItemDao {
 		}
 	    return flag;
 	}
-
 	/*
 	 * 商品下架
 	 * @see service.ItemDao#down(po.Item)
@@ -60,7 +59,9 @@ public class ItemDaoImpl implements ItemDao {
 
 		return true;
 	}
-
+	/**
+	 * 修改商品信息
+	 */
 	@Override
 	public void change(Map<String, Object> p) {
 		itemMapper.Update(p);

@@ -21,3 +21,19 @@ create table tb_item(
 	uid VARCHAR(20),
 	CONSTRAINT FOREIGN KEY(uid) REFERENCES tb_user(username)
 );
+
+
+create table tb_exchange(
+id varchar(20) PRIMARY KEY,
+uid_a varchar(20),
+uid_b varchar(20),
+gid_a int,
+gid_b int,
+date date,
+info varchar(200),
+statu varchar(5),
+CONSTRAINT FOREIGN KEY(uid_a) REFERENCES tb_user(username),
+CONSTRAINT FOREIGN KEY(uid_b) REFERENCES tb_user(username),
+CONSTRAINT FOREIGN KEY(gid_a) REFERENCES tb_item(id),
+CONSTRAINT FOREIGN KEY(gid_b) REFERENCES tb_item(id)
+);
