@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户登录</title>
-<link
+<title>用户登录</title><link
 	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet">
 <link
@@ -25,7 +24,11 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 }
 
 body {
-	background-image: url("images/uLog.jpg");
+	font-family: -apple-system, " Helvetica Neue", Arial, " PingFang SC ",
+		" Hiragino Sans GB ", STHeiti, " Microsoft YaHei "," 
+		 Microsoft JhengHei "," Source Han Sans SC "," Noto Sans CJK SC ","
+		Source Han Sans CN "," Noto Sans SC "," Source Han Sans TC "," Noto
+		Sans CJK TC "," WenQuanYi Micro Hei ", SimSun, sans-serif;
 }
 
 .div_1 {
@@ -38,7 +41,7 @@ body {
 	width: 45%;
 	height: 100%;
 	line-height: 100px;
-	background-color: rgba(155, 0, 0, 0.1);
+	background-color: gold;
 	color: darkorange;
 	border-bottom: solid 1px darkblue;
 	width: 45%;
@@ -47,19 +50,17 @@ body {
 img {
 	width: 100%;
 	height: 100%;
-	
 	float: left;
 }
 
 .right {
 	width: 55%;
-	height: 100%;
+	height: 50%;
 	float: right;
-	background-color: rgba(240, 240, 240, 0.5);
 }
 
 .right_top {
-	height: 20%;
+	height: 40%;
 	width: 100%;
 	float: right;
 	width: 100%;
@@ -107,51 +108,21 @@ img {
 	border-radius: 5px;
 	margin-top: 20px;
 }
-
-a {
-	color: white;
-	padding: 5px;
-	text-decoration:none;
-}
-
-a:link {
-	text-decoration: none;
-	color:white;
-}
-
-a:visited {
-	border: 1px solid white;
-	color:black;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-a:hover {
-	border: 1px solid white;
-	color:black:;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-a:active {
-	text-decoration: none;
-	color:black;
-}
 </style>
 </head>
 <body>
 	<div class="div_1" id="div_1">
-		<div class="left"></div>
+		<div class="left">
+			<img src="images/login.jpg">
+		</div>
 		<div class="right">
 			<div class="right_top">
 
-				<button type="button" class="btn btn-info" ></button><a href="./registerPage">注册帐号</a>
-				<button type="button" class="btn btn-info"></button><a href="#">找回密码</a>
+				<button type="button" class="btn btn-info" onclick="register()">注册帐号</button>
+				<button type="button" class="btn btn-info">找回密码</button>
 			</div>
 			<div class="login_box">
-				<h1>HLB</h1>
+				<h1>HUAN</h1>
 				<p>welcome to huanlebe</p>
 				<form name="form1">
 					<div class="login_box_tab"></div>
@@ -162,7 +133,7 @@ a:active {
 						name="userPwd" placeholder="password" />
 					<div id="loginstate2"></div>
 					<A></A>
-					<div class="btn" onclick="login()" >登录</div>
+					<div class="btn" onclick="login()">登录</div>
 				</form>
 			</div>
 		</div>
@@ -185,18 +156,16 @@ a:active {
 		}
 
 		$.ajax({
-			url : "./login",
+			url : "/PrySecret/login.do",
 			type : 'post',
 			dataType : 'text',
 			data : {
-				'username' : login,
+				'login' : login,
 				'password' : password
 			},
-			success : function(msg) {
-				if(msg=="FALSE")
-					alert(msg);
-				else if(msg=="SUCCESS")
-					self.location="./loginSuccess";
+			success : function(data) {
+				alert(data);
+				self.location="/PrySecret/mainForm.do"
 			},
 			erro : function() {
 
@@ -205,11 +174,12 @@ a:active {
 		});
 
 	}
-
-	function register() {
-
-		self.location = "";
-
+	
+	function register(){
+		
+		self.location = "/PrySecret/register.do";
+		
+		
 	}
 </script>
 </html>

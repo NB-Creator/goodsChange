@@ -47,8 +47,6 @@ public class UserDaoImpl implements UserDao {
 		uT = userMapper.selcet(m);
 		if (uT != null)
 			return "USERNA EXIST";
-		userMapper.add(u);
-
 		m.put("nickname", u.getNickname());
 		uT = userMapper.selcet(m);
 		if (uT != null) {
@@ -60,6 +58,8 @@ public class UserDaoImpl implements UserDao {
 		if (uT != null) {
 			return "MAIL EXIST";
 		}
+		
+		userMapper.add(u);
 		return "SUCCESS";
 
 	}

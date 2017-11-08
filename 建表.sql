@@ -14,7 +14,7 @@ create table tb_item(
 	time varchar(20),
 	name varchar(20),
 	detail text,
-	img LONGBLOB,
+	img varchar(50),
 	expect LONGBLOB,
 	classification VARCHAR(10),
 	price int,

@@ -6,13 +6,13 @@ public class Item {
 	private String time;
 	private String name;
 	private String detail;
-	private byte[] img;
+	private String img;
 	private String expect;
 	private String classification;
 	private Integer price;
 	private Integer uid;
 
-	public Item(Integer id, String time, String name, String detail, byte[] img,
+	public Item(Integer id, String time, String name, String detail, String img,
 			String expect, String classification, Integer price, Integer uid) {
 		super();
 		this.id = id;
@@ -62,11 +62,11 @@ public class Item {
 		this.detail = detail;
 	}
 
-	public byte[] getImg() {
+	public String getImg() {
 		return img;
 	}
 
-	public void setImg(byte[] img) {
+	public void setImg(String img) {
 		this.img = img;
 	}
 
