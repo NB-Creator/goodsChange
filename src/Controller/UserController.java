@@ -13,12 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.portlet.ModelAndView;
 
 import po.User;
 import service.UserDao;
 
 @Controller("/user")
+@SessionAttributes("user")
 public class UserController {
 
 	@Autowired
@@ -26,6 +28,7 @@ public class UserController {
 
 	@RequestMapping(value = "/loginPage")
 	public String loginPage(Model model) {
+		System.out.println("123");
 		return "userPage/loginPage";
 	}
 

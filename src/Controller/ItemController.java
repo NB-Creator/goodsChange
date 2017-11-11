@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.ModelAndView;
 
 import po.Item;
@@ -14,6 +15,7 @@ public class ItemController {
 	@Autowired
 	private ItemDao i;
 	
+	@RequestMapping("/uploadItem")
 	public ModelAndView upload(ModelAndView mv,Item item){
 		boolean flag = i.upload(item);
 		if(flag==false)
