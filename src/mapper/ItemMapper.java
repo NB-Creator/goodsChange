@@ -15,7 +15,8 @@ public interface ItemMapper {
 	/**
 	 * @param param key是数据库的列,value是用于查询的值
 	 * 				查询价格时输入一个区间,priceLeft为低价,priceRight为高价
-	 * 可通过商品编号(id),创建时间(time),名字(name),期望(except),分类(classfication),价格(price),uid查询商品
+	 * 可通过商品编号(id),创建时间(time),名字(name),期望(except),分类(classfication),
+	 * 价格区间(priceLeft<=用户输入价格<=priceRight),uid查询商品
 	 */
 	@SelectProvider(method="select",type=ItemPro.class)
 	public List<Item> select(Map<String, String> param);

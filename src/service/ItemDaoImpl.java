@@ -2,6 +2,7 @@ package service;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,12 @@ public class ItemDaoImpl implements ItemDao {
 	@Override
 	public void change(Map<String, Object> p) {
 		itemMapper.Update(p);
+	}
+	
+	@Override
+	public List<Item> find(Map<String, String> p) {
+		
+		return itemMapper.select(p);
 	}
 
 }

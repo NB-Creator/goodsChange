@@ -14,7 +14,7 @@ import org.springframework.web.portlet.ModelAndView;
 import po.User;
 import service.UserDao;
 
-@Controller("/user")
+@Controller
 @SessionAttributes("user")
 public class UserController {
 
