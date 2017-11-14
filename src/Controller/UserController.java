@@ -1,12 +1,7 @@
 package Controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspWriter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +34,9 @@ public class UserController {
 		String msg = u.login(user);
 		if ("SUCCESS".equals(msg)) {
 			// 将查询到的user信息保存并传给主页面
+			Map<String,String> m=new HashMap<String,String>();
+			m.put("username", username);
+			user=u.getUser(m);
 			model.addAttribute("user", user);
 			// 设置登录成功路径
 			

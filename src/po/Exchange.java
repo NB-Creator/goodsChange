@@ -4,8 +4,8 @@ public class Exchange {
 	private String id;
 	private String uid_a;// 提交用户
 	private String uid_b;// 被请求用户
-	private Integer gid_a;// 可提供商品
-	private Integer gid_b;// 期待交换商品
+	private String gid_a;// 可提供商品
+	private String gid_b;// 期待交换商品
 	private String date;// 申请时间
 	private String info;// 备注信息
 	private String statu;// 订单状态
@@ -14,8 +14,8 @@ public class Exchange {
 		
 	}
 	
-	public Exchange(String id, String uid_a, String uid_b, Integer gid_a,
-			Integer gid_b, String date, String info, String statu) {
+	public Exchange(String id, String uid_a, String uid_b, String gid_a,
+			String gid_b, String date, String info, String statu) {
 		super();
 		this.id = id;
 		this.uid_a = uid_a;
@@ -44,16 +44,16 @@ public class Exchange {
 	public void setUid_b(String uid_b) {
 		this.uid_b = uid_b;
 	}
-	public Integer getGid_a() {
+	public String getGid_a() {
 		return gid_a;
 	}
-	public void setGid_a(Integer gid_a) {
+	public void setGid_a(String gid_a) {
 		this.gid_a = gid_a;
 	}
-	public Integer getGid_b() {
+	public String getGid_b() {
 		return gid_b;
 	}
-	public void setGid_b(Integer gid_b) {
+	public void setGid_b(String gid_b) {
 		this.gid_b = gid_b;
 	}
 	public String getDate() {

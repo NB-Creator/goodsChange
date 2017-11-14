@@ -2,7 +2,7 @@ package po;
 
 public class Item {
 
-	private Integer id;
+	private String id;
 	private String time;
 	private String name;
 	private String detail;
@@ -10,10 +10,10 @@ public class Item {
 	private String expect;
 	private String classification;
 	private Integer price;
-	private Integer uid;
+	private String uid;
 
-	public Item(Integer id, String time, String name, String detail, String img,
-			String expect, String classification, Integer price, Integer uid) {
+	public Item(String id, String time, String name, String detail, String img,
+			String expect, String classification, Integer price, String uid) {
 		super();
 		this.id = id;
 		this.time = time;
@@ -30,11 +30,11 @@ public class Item {
 		
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -94,11 +94,11 @@ public class Item {
 		this.price = price;
 	}
 
-	public Integer getUid() {
+	public String getUid() {
 		return uid;
 	}
 
-	public void setUid(Integer uid) {
+	public void setUid(String uid) {
 		this.uid = uid;
 	}
 

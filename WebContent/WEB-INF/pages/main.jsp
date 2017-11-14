@@ -27,7 +27,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 }
 
 body {
-	background-image: url("../images/mian.jpg");
+	background-image: url("images/mian.jpg");
 }
 
 .top {
@@ -64,12 +64,13 @@ ul li {
 
 .dock {
 	width: 100%;
-	height: 100px;
-	padding: 1px 0 0 10%;
+	height: 500px;
+	margin-top: 60px; padding : 1px 0 0 10%;
 	line-height: 100px;
 	float: left;
 	color: white;
 	background-color: rgba(237, 244, 237, 0.5);
+	padding: 1px 0 0 10%;
 }
 
 .dock a {
@@ -87,7 +88,7 @@ ul li {
 
 .dock a:visited {
 	border: 1px solid white;
-	color: white;
+	color: red;
 	border-radius: 5px;
 	margin: 5px;
 	text-decoration: none;
@@ -104,6 +105,32 @@ ul li {
 .dock a:active {
 	text-decoration: none;
 	color: black;
+}
+.iclass{
+   width: 200px;
+	float: left;
+	height: 536px;
+	color: #fff;
+	background-color: rgba(105,105,105,0.5);
+	position: absolute;
+	z-index: 100;
+	margin-top: -36px;
+	line-height: 36px;
+	font-size: 20px;
+	
+}
+.itemclass {
+	width: 200px;
+	float: left;
+	height: 36px;
+	color: #fff;
+	line-height: 36px;
+	font-size: 15px;
+	padding-left: 3px;
+}
+
+.itemclass span {
+	margin-right: 5px;
 }
 
 .middle {
@@ -173,40 +200,44 @@ ul li {
 	</div>
 	<!-- /.top -->
 	<div class="dock">
-		<a href="#"><span class=" icon-home"></span>首页</a> <a href="#"><span
-			class=" icon-fire"></span> 热门</a> <a href="#"><span
-			class=" icon-spinner"></span> 最新</a> <a href="#"><span
-			class=" icon-bookmark"></span> 关注</a>
+		<div class="iclass">
+		
+		<div class="itemclass" style="background-color: #FF0036; font-size:20px;">
+			<span class="icon-list icon-1x"></span>商品分类
+		</div>
+		<div class="itemclass">
+			<span class="icon-list icon-1x"></span>商品分fdasf
+		</div>
+		<div class="itemclass">
+			<span class="icon-list icon-1x"></span>商品分类
+		</div>
+		</div>
+
 	</div>
 	<!-- /.dock -->
 
 
 
-	<div class="middle">
-	  
-
-	</div>
+	<div class="middle"></div>
 	<!-- /.middle -->
 
 	<div class="right">
 		<div class="myinfo">
 			<h3>我的</h3>
 			<br>
-			<jsp:include page="addItem.jsp"></jsp:include>
+			<button class="btn btn-primary btn-lg" data-toggle="modal"
+		data-target="#myModal"><a href="./addItemPage">发布商品..</a></button>
 			<br> <br>
 
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: white;">我关注过的</button>
-			<br>
-			<br>
+			<br> <br>
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: #C8E5BC;">与我相关的</button>
-			<br>
-			<br>
+			<br> <br>
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: #9ACFEA">查找个用户</button>
-			<br>
-			<br>
+			<br> <br>
 		</div>
 
 		<div class="public">
@@ -224,59 +255,125 @@ ul li {
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-	var classification;
-	var imgpath;
+	var classification = "";
+	var imgpath = "";
+	var images = new Array();
+	function addImg(file, type) {
+		var fileReader = new FileReader();
+		var path = ""
+		fileReader.readAsDataURL(file.files[0])
+		fileReader.onload = function(evt) {
+			path = evt.target.result
+			if (images.length > 7) {
+				alert("最多只能上传八张图片哦~");
+				return;
+			}
+			for (var i = 0; i < images.length; i++) {
+				var img = images[i]
+				if (img.path == path) {
+					alert("图片已经存在")
+					return;
+				}
+			}
+			var img = '<div class="btn_upload" onclick="deleteImg(this)">'
+					+ '<img  src="'+path+'" />' + '</div>';
+			$("#imgs").prepend(img)
+			var image = {
+				"span" : $("#imgs").children("div:first-child")
+						.children("span"),
+				"file" : file.files[0],
+				"path" : path
+			}
+			images.push(image)
+			file.value = ""
+		}
 
-	$('#type li').click(function() {
-		essay_type = ($(this).text());
+	}
+	function uploadImgs() {
+		for (var i = 0; i < images.length; i++) {
+			var img = images[i];
+			var form = new FormData();
+			form.append("img", img.file);
+			$.ajax({
+				type : "post",
+				url : "./uploadImg",
+				data : form,
+				async : false,
+				cache : false,
+				contentType : false,
+				processData : false,
+				success : function(data, status) {
+					if (imgpath == "") {
+						imgpath = data;
+					} else {
+						imgpath = imgpath + "*" + data;
+					}
+				},
+				error : function() {
+					alert("服务器异常");
+				},
+				complete : function() {
+
+				}
+			});
+		}
+	}
+	/* function uploadPath() {
+		alert(imgpath);
+		$.ajax({
+			type : "post",
+			url : "./getImgpath",
+			data : {
+				"path" : imgpath
+			},
+			traditional : true,
+			success : function(data) {
+				alert(data);
+				
+				imgpath="";
+			},
+			error : function() {
+				alert("服务器异常");
+			},
+			complete : function() {
+
+			}
+		});
+	} */
+
+	$('#classification li').click(function() {
+		classification = ($(this).text());
 		$("#s_type").empty();
-		$("#s_type").append(essay_type);
+		$("#s_type").append(classification);
 	})
-
-	$('#label li').click(function() {
-		essay_label = ($(this).text());
-		$("#s_label").empty();
-		$("#s_label").append(essay_label);
-	})
-
 	function show(id) {
-
 		var m = document.getElementById(id);
 		m.style.display = "block";
 	}
-
 	function remove(id) {
 		var m = document.getElementById(id);
 		m.style.display = "none";
 	}
-
 	function uControl() {
 		var m = document.getElementById("uName");
 		m.style.display = "block";
 		var a = document.getElementById('uName').innerText;
 		if (a == "") {
-			self.location = "/PrySecret/loginForm.do";
+			self.location = "./loginPage";
 		} else {
-			self.location = "/PrySecret/userMainForm.do";
+			self.location = "./userMainPage";
 
 		}
 	}
 	function out() {
-		self.location = "/PrySecret/outServ.do";
+		self.location = "./outServ.do";
 	}
 
-	function uploadImg(file) {
-		var fileReader = new FileReader();
-		var path = "";
-		uploadImages(file.files[0])
+	/* function uploadImages(file) {
 
-	}
-
-	function uploadImages(file) {
-		
 		var form = new FormData();
 		form.append("img", file);
-		alert("123123");
+
 		$.ajax({
 			type : "post",
 			url : "/_MSP_ItemByItem/uploadImg",
@@ -286,7 +383,8 @@ ul li {
 			contentType : false,
 			processData : false,
 			success : function(data, status) {
-				$("#logo")[0].src = "http://localhost:8080/_MSP_ItemByItem/"
+				alert(data);
+				$("#img")[0].src = "http://localhost:8080/_MSP_ItemByItem/"
 						+ data;
 			},
 			error : function() {
@@ -296,15 +394,14 @@ ul li {
 
 			}
 		});
-	}
-	
+	} */
+
 	function addItem() {
-		
 		var name = document.getElementById("name").value;
 		var detail = document.getElementById("detail").value;
 		var price = document.getElementById("price").value;
-		var expect= document.getElementById("expect").value;
-		
+		var expect = document.getElementById("expect").value;
+
 		if (name == "") {
 			alert("请填写一个名称");
 			return;
@@ -313,7 +410,7 @@ ul li {
 			alert("你没有填写任何内容");
 			return;
 		}
-		if (itemtype == "") {
+		if (classification == "") {
 			alert("请选择一个分类");
 			return;
 		}
@@ -322,12 +419,14 @@ ul li {
 			return;
 
 		}
-		if(expect==""){
+		if (expect == "") {
 			alert("请填写一个期望商品");
 			return;
 		}
+		uploadImgs();
+
 		$.ajax({
-			url : '/uploadItem',
+			url : './uploadItem',
 			type : 'post',
 			dataType : 'text',
 			data : {
@@ -335,11 +434,11 @@ ul li {
 				'detail' : detail,
 				'img' : imgpath,
 				'expect' : expect,
-				'classification':classification,
-				'price':price
+				'classification' : classification,
+				'price' : price
 			},
 			success : function(data) {
-
+				location.reload();
 			},
 			error : function() {
 				alert("服务器异常");
@@ -348,6 +447,7 @@ ul li {
 		});
 		classification = "";
 		imgpath = "";
+		images = new Array();
 	}
 </script>
 </html>
