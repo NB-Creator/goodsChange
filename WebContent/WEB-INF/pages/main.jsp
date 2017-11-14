@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,11 +23,9 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 	list-style: none outside none;
 	text-decoration: none;
 }
-
 body {
-	background-image: url("images/mian.jpg");
+	background-image: url("../images/mian.jpg");
 }
-
 .top {
 	width: 100%;
 	height: 70px;
@@ -41,18 +37,15 @@ body {
 	-moz-opacity: 0.8;
 	opacity: 0.8;
 }
-
 .top h1 {
 	float: left;
 	color: #669;
 	float: left;
 }
-
 .top ul {
 	float: right;
 	font-weight: 1000;
 }
-
 ul li {
 	float: left;
 	font-family: "微软雅黑";
@@ -61,18 +54,15 @@ ul li {
 	font-size: 1.3em;
 	margin-right: 30px;
 }
-
 .dock {
 	width: 100%;
-	height: 500px;
-	margin-top: 60px; padding : 1px 0 0 10%;
+	height: 100px;
+	padding: 1px 0 0 10%;
 	line-height: 100px;
 	float: left;
 	color: white;
 	background-color: rgba(237, 244, 237, 0.5);
-	padding: 1px 0 0 10%;
 }
-
 .dock a {
 	font-size: 25px;
 	color: black;
@@ -80,20 +70,17 @@ ul li {
 	margin-left: 10px;
 	text-decoration: none;
 }
-
 .dock a:link {
 	text-decoration: none;
 	color: black;
 }
-
 .dock a:visited {
 	border: 1px solid white;
-	color: red;
+	color: grey;
 	border-radius: 5px;
 	margin: 5px;
 	text-decoration: none;
 }
-
 .dock a:hover {
 	border: 1px solid white;
 	color: black:;
@@ -101,38 +88,10 @@ ul li {
 	margin: 5px;
 	text-decoration: none;
 }
-
 .dock a:active {
 	text-decoration: none;
 	color: black;
 }
-.iclass{
-   width: 200px;
-	float: left;
-	height: 536px;
-	color: #fff;
-	background-color: rgba(105,105,105,0.5);
-	position: absolute;
-	z-index: 100;
-	margin-top: -36px;
-	line-height: 36px;
-	font-size: 20px;
-	
-}
-.itemclass {
-	width: 200px;
-	float: left;
-	height: 36px;
-	color: #fff;
-	line-height: 36px;
-	font-size: 15px;
-	padding-left: 3px;
-}
-
-.itemclass span {
-	margin-right: 5px;
-}
-
 .middle {
 	width: 50%;
 	margin: 10px 3px 0 10%;
@@ -142,7 +101,6 @@ ul li {
 	border: 1px solid rgb(212, 212, 212);
 	padding: 5px;
 }
-
 .right {
 	width: 25%;
 	height: 900px;
@@ -153,23 +111,25 @@ ul li {
 	padding: 5px 0 0 20px;
 	background-color: rgba(237, 244, 237, 0.8);
 }
-
 #uName, #eData {
 	float: right;
 	color: #669;
 	margin-left: 10px;
 }
-
 .myinfo button {
 	marigin: 10px;
 }
+#rightitem{
+	/*width: 200px;
+	height: 210px;*/
+	margin-right: 7%;
+}
+
 </style>
 </head>
 <body>
 	<div class="top">
 		<h1>HLB</h1>
-
-
 		<div class="">
 			<div class="col-lg-3">
 				<div class="input-group">
@@ -184,8 +144,8 @@ ul li {
 			<!-- /.col-lg-6 -->
 		</div>
 		<!-- /.row -->
+		
 		<ul>
-
 			<li onmouseover="show('uName')" onmouseout="remove('uName')"
 				onclick="uControl()"><span class="icon-user"></span>
 				<div id="uName" style="display: none">${sessionScope.user.nickname}</div>
@@ -200,151 +160,213 @@ ul li {
 	</div>
 	<!-- /.top -->
 	<div class="dock">
-		<div class="iclass">
-		
-		<div class="itemclass" style="background-color: #FF0036; font-size:20px;">
-			<span class="icon-list icon-1x"></span>商品分类
+		<a href="main.jsp"><span class=" icon-home" ></span>首页</a>
+		<div class="btn-group">
+  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   			价格选择 <span class="caret"></span>
+  			</button>
+  			<ul class="dropdown-menu">
+    			<li><a href="#">0~10元</a></li>
+    			<li><a href="#">10~20元</a></li>
+			    <li><a href="#">20~30元</a></li>
+			    <li><a href="#">30元以上</a></li>
+  			</ul>
 		</div>
-		<div class="itemclass">
-			<span class="icon-list icon-1x"></span>商品分fdasf
+		<div class="btn-group">
+  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			衣物 <span class="caret"></span>
+  			</button>
 		</div>
-		<div class="itemclass">
-			<span class="icon-list icon-1x"></span>商品分类
+		<div class="btn-group">
+  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			学习用品 <span class="caret"></span>
+  			</button>
 		</div>
+		<div class="btn-group">
+  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			生活用品 <span class="caret"></span>
+  			</button>
 		</div>
-
+		<div class="btn-group">
+  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			运动用品 <span class="caret"></span>
+  			</button>
+		</div>
+		<div class="btn-group">
+  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    			其他 <span class="caret"></span>
+  			</button>
+		</div>
 	</div>
 	<!-- /.dock -->
 
 
 
-	<div class="middle"></div>
+	<div class="middle">
+	  	<div class="row1">
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		</div>
+		<div class="row2">
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		</div>
+		<div class="row3">
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+		 	<div class="col-sm-4 col-md-4">
+		    	<div class="thumbnail">
+		      	<img src="img/ad3.jpg" alt="...">
+		      		<div class="caption">
+		        		<h4>商品描述</h4>
+		        		<p style="font-size: 20px;">价格预估</p>
+		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
+		      		</div>
+		    	</div>
+			</div>
+			<nav aria-label="...">
+			  <ul class="pager" style="margin-left:35%;">
+			    <li><a href="#">上一页</a></li>
+			    <li><a href="#">下一页</a></li>
+			  </ul>
+			</nav>
+			
+		</div>
+
+		
+	</div>
+	
 	<!-- /.middle -->
 
 	<div class="right">
 		<div class="myinfo">
 			<h3>我的</h3>
-			<br>
-			<button class="btn btn-primary btn-lg" data-toggle="modal"
-		data-target="#myModal"><a href="./addItemPage">发布商品..</a></button>
-			<br> <br>
+			<!-- <jsp:include page="addItem.jsp"></jsp:include> -->
 
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: white;">我关注过的</button>
-			<br> <br>
+			<br>
+			<br>
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: #C8E5BC;">与我相关的</button>
-			<br> <br>
+			<br>
+			<br>
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: #9ACFEA">查找个用户</button>
-			<br> <br>
+			<br>
+			<br>
 		</div>
 
-		<div class="public">
-			<h3>热门分类</h3>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">标签1</button>
-
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">标签2</button>
-
+		<div class="public" >
+			<h4>宝贝推荐</h4>
+		    	<div class="thumbnail" id="rightitem">
+		      	<img src="img/ad3.jpg" class="img-responsive">
+		      		<div class="caption">
+		        		<h5>商品描述</h5>
+		        		<p style="font-size: 10px;">价格预估</p>
+		        	</div>
+		    	</div>
+				<div class="thumbnail" id="rightitem">
+			      	<img src="img/ad3.jpg" alt="...">
+			      	<div class="caption">
+			        	<h5>商品描述</h5>
+			        	<p style="font-size: 10px;">价格预估</p>
+			        </div>
+		    	</div>
+		    
 
 		</div>
 	</div>
 	<!-- /.right -->
+	
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-	var classification = "";
-	var imgpath = "";
-	var images = new Array();
-	function addImg(file, type) {
-		var fileReader = new FileReader();
-		var path = ""
-		fileReader.readAsDataURL(file.files[0])
-		fileReader.onload = function(evt) {
-			path = evt.target.result
-			if (images.length > 7) {
-				alert("最多只能上传八张图片哦~");
-				return;
-			}
-			for (var i = 0; i < images.length; i++) {
-				var img = images[i]
-				if (img.path == path) {
-					alert("图片已经存在")
-					return;
-				}
-			}
-			var img = '<div class="btn_upload" onclick="deleteImg(this)">'
-					+ '<img  src="'+path+'" />' + '</div>';
-			$("#imgs").prepend(img)
-			var image = {
-				"span" : $("#imgs").children("div:first-child")
-						.children("span"),
-				"file" : file.files[0],
-				"path" : path
-			}
-			images.push(image)
-			file.value = ""
-		}
-
-	}
-	function uploadImgs() {
-		for (var i = 0; i < images.length; i++) {
-			var img = images[i];
-			var form = new FormData();
-			form.append("img", img.file);
-			$.ajax({
-				type : "post",
-				url : "./uploadImg",
-				data : form,
-				async : false,
-				cache : false,
-				contentType : false,
-				processData : false,
-				success : function(data, status) {
-					if (imgpath == "") {
-						imgpath = data;
-					} else {
-						imgpath = imgpath + "*" + data;
-					}
-				},
-				error : function() {
-					alert("服务器异常");
-				},
-				complete : function() {
-
-				}
-			});
-		}
-	}
-	/* function uploadPath() {
-		alert(imgpath);
-		$.ajax({
-			type : "post",
-			url : "./getImgpath",
-			data : {
-				"path" : imgpath
-			},
-			traditional : true,
-			success : function(data) {
-				alert(data);
-				
-				imgpath="";
-			},
-			error : function() {
-				alert("服务器异常");
-			},
-			complete : function() {
-
-			}
-		});
-	} */
-
-	$('#classification li').click(function() {
-		classification = ($(this).text());
+	var classification;
+	var imgpath;
+	$('#type li').click(function() {
+		essay_type = ($(this).text());
 		$("#s_type").empty();
-		$("#s_type").append(classification);
+		$("#s_type").append(essay_type);
+	})
+	$('#label li').click(function() {
+		essay_label = ($(this).text());
+		$("#s_label").empty();
+		$("#s_label").append(essay_label);
 	})
 	function show(id) {
 		var m = document.getElementById(id);
@@ -359,21 +381,24 @@ ul li {
 		m.style.display = "block";
 		var a = document.getElementById('uName').innerText;
 		if (a == "") {
-			self.location = "./loginPage";
+			self.location = "/PrySecret/loginForm.do";
 		} else {
-			self.location = "./userMainPage";
-
+			self.location = "/PrySecret/userMainForm.do";
 		}
 	}
 	function out() {
-		self.location = "./outServ.do";
+		self.location = "/PrySecret/outServ.do";
 	}
-
-	/* function uploadImages(file) {
-
+	function uploadImg(file) {
+		var fileReader = new FileReader();
+		var path = "";
+		uploadImages(file.files[0])
+	}
+	function uploadImages(file) {
+		
 		var form = new FormData();
 		form.append("img", file);
-
+		alert("123123");
 		$.ajax({
 			type : "post",
 			url : "/_MSP_ItemByItem/uploadImg",
@@ -383,25 +408,24 @@ ul li {
 			contentType : false,
 			processData : false,
 			success : function(data, status) {
-				alert(data);
-				$("#img")[0].src = "http://localhost:8080/_MSP_ItemByItem/"
+				$("#logo")[0].src = "http://localhost:8080/_MSP_ItemByItem/"
 						+ data;
 			},
 			error : function() {
 				alert("服务器异常");
 			},
 			complete : function() {
-
 			}
 		});
-	} */
-
+	}
+	
 	function addItem() {
+		
 		var name = document.getElementById("name").value;
 		var detail = document.getElementById("detail").value;
 		var price = document.getElementById("price").value;
-		var expect = document.getElementById("expect").value;
-
+		var expect= document.getElementById("expect").value;
+		
 		if (name == "") {
 			alert("请填写一个名称");
 			return;
@@ -410,23 +434,20 @@ ul li {
 			alert("你没有填写任何内容");
 			return;
 		}
-		if (classification == "") {
+		if (itemtype == "") {
 			alert("请选择一个分类");
 			return;
 		}
 		if (price == "") {
 			alert("请填写一个预估价格");
 			return;
-
 		}
-		if (expect == "") {
+		if(expect==""){
 			alert("请填写一个期望商品");
 			return;
 		}
-		uploadImgs();
-
 		$.ajax({
-			url : './uploadItem',
+			url : '/uploadItem',
 			type : 'post',
 			dataType : 'text',
 			data : {
@@ -434,20 +455,17 @@ ul li {
 				'detail' : detail,
 				'img' : imgpath,
 				'expect' : expect,
-				'classification' : classification,
-				'price' : price
+				'classification':classification,
+				'price':price
 			},
 			success : function(data) {
-				location.reload();
 			},
 			error : function() {
 				alert("服务器异常");
 			}
-
 		});
 		classification = "";
 		imgpath = "";
-		images = new Array();
 	}
 </script>
 </html>
