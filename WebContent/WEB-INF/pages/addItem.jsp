@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
@@ -16,7 +13,7 @@
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 
 
-
+<title>Insert title here</title>
 <style type="text/css">
 body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 	margin: 0px;
@@ -62,106 +59,79 @@ ul li {
 	margin-right: 30px;
 }
 
-.dock {
+.title {
+	float: left;
 	width: 100%;
-	height: 500px;
-	margin-top: 60px; padding : 1px 0 0 10%;
-	line-height: 100px;
-	float: left;
+	height: 30px;
+	line-height: 30px;
 	color: white;
-	background-color: rgba(237, 244, 237, 0.5);
-	padding: 1px 0 0 10%;
-}
-
-.dock a {
-	font-size: 25px;
-	color: black;
-	padding: 10px;
-	margin-left: 10px;
-	text-decoration: none;
-}
-
-.dock a:link {
-	text-decoration: none;
-	color: black;
-}
-
-.dock a:visited {
-	border: 1px solid white;
-	color: red;
+	background-color: rgba(118, 118, 118, 0.6);
+	padding-left: 20%;
 	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.dock a:hover {
-	border: 1px solid white;
-	color: black:;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.dock a:active {
-	text-decoration: none;
-	color: black;
-}
-.iclass{
-   width: 200px;
-	float: left;
-	height: 536px;
-	color: #fff;
-	background-color: rgba(105,105,105,0.5);
-	position: absolute;
-	z-index: 100;
-	margin-top: -36px;
-	line-height: 36px;
-	font-size: 20px;
-	
-}
-.itemclass {
-	width: 200px;
-	float: left;
-	height: 36px;
-	color: #fff;
-	line-height: 36px;
-	font-size: 15px;
-	padding-left: 3px;
-}
-
-.itemclass span {
-	margin-right: 5px;
 }
 
 .middle {
-	width: 50%;
-	margin: 10px 3px 0 10%;
-	/* background-color: white; */
-	background-color: rgba(237, 244, 237, 0.8);
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
+	background-color: rgba(242, 242, 242, 1);
+	border: 1px solid darkgrey;
+	padding: 20px 20px 60px 20px;
+	border-top: 0;
+	
+}
+
+.bt {
+	width: 100%;
+	margin: 30px 0 0 0;
+	padding: 10px 20% 5px 20%;
 	float: left;
-	border: 1px solid rgb(212, 212, 212);
-	padding: 5px;
 }
 
-.right {
-	width: 25%;
-	height: 900px;
-	margin: 10px 3px 0 0;
-	/* background-color: white; */
+.parame {
+	width: 100%;
+	padding: 10px 0 5px 0;
 	float: left;
-	border: 1px solid rgb(212, 212, 212);
-	padding: 5px 0 0 20px;
-	background-color: rgba(237, 244, 237, 0.8);
 }
 
-#uName, #eData {
-	float: right;
-	color: #669;
-	margin-left: 10px;
+.imgs {
+	width: 100%;;
+	float: left;
 }
 
-.myinfo button {
-	marigin: 10px;
+.imgs img {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+}
+
+.photo {
+	width: 100px;
+	height: 100px;
+	border: 1px solid;
+	text-align: center;
+	line-height: 100px;
+	float: left;
+}
+
+.photo img {
+	width: 100px;
+	height: 100px;
+}
+
+.file {
+	float: left;
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+	font-size: 300px;
+	position: absolute;
+	top: 470px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	cursor: pointer;
+	opacity: 0;
 }
 </style>
 </head>
@@ -199,59 +169,67 @@ ul li {
 
 	</div>
 	<!-- /.top -->
-	<div class="dock">
-		<div class="iclass">
-		
-		<div class="itemclass" style="background-color: #FF0036; font-size:20px;">
-			<span class="icon-list icon-1x"></span>商品分类
+	<!-- 按钮触发模态框 -->
+	<div class="title">
+		<span class="icon-edit"></span>填写商品基本信息
+	</div>
+	<div class="middle" style="overflow: auto;">
+		<div class="parame">
+			<span>商品名：</span><input type="text" id="name">
 		</div>
-		<div class="itemclass">
-			<span class="icon-list icon-1x"></span>商品分fdasf
+
+		<div class="parame">
+			<ul class="nav nav-tabs">
+				<li class="dropdown" id="classification"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#"
+					style="padding: 0; color: black;"> 选择商品分类 <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">数码</a></li>
+						<li><a href="#">服装</a></li>
+						<li><a href="#">书籍</a></li>
+						<li><a href="#">工具</a></li>
+						<li><a href="#">运动</a></li>
+						<li><a href="#">其它</a></li>
+					</ul>
+					<div id="s_type" style="margin-left: 50px;"></div></li>
+
+			</ul>
 		</div>
-		<div class="itemclass">
-			<span class="icon-list icon-1x"></span>商品分类
+
+		<div class="parame">
+			<span>商品描述：</span>
+			<textarea id="detail" style="width: 100%; height: 200px;"
+				placeholder="添加对商品的描述"></textarea>
 		</div>
+		<div class="parame">
+			<span>添加商品图片（点击图片可删除）：</span> <br />
+			<div class="photo" onclick="upImg()">
+				点击上传图片 <img alt="" width=15%  src=""> <input
+					class="file" type="file" onchange="addImg(this)" ></input>
+			</div>
+			
+		</div>
+		<div class="imgs" id="imgs"></div>
+
+		<div class="parame">
+			<span>输入一个保底价格：</span><input type="text" id="price">
+		</div>
+		<div class="parame">
+			<span>输入一个期望商品：</span><input type="text" id="expect">
+		</div>
+		<div class="bt">
+			<button type="button" class="btn btn-primary" onclick="addItem()"
+				style="width: 100%; margin: 0;">发布</button>
 		</div>
 
 	</div>
-	<!-- /.dock -->
+	<div></div>
 
+	<!-- /.modal-content -->
 
+	<!-- /.modal -->
 
-	<div class="middle"></div>
-	<!-- /.middle -->
-
-	<div class="right">
-		<div class="myinfo">
-			<h3>我的</h3>
-			<br>
-			<button class="btn btn-primary btn-lg" data-toggle="modal"
-		data-target="#myModal"><a href="./addItemPage">发布商品..</a></button>
-			<br> <br>
-
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">我关注过的</button>
-			<br> <br>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: #C8E5BC;">与我相关的</button>
-			<br> <br>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: #9ACFEA">查找个用户</button>
-			<br> <br>
-		</div>
-
-		<div class="public">
-			<h3>热门分类</h3>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">标签1</button>
-
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">标签2</button>
-
-
-		</div>
-	</div>
-	<!-- /.right -->
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
@@ -276,7 +254,7 @@ ul li {
 				}
 			}
 			var img = '<div class="btn_upload" onclick="deleteImg(this)">'
-					+ '<img  src="'+path+'" />' + '</div>';
+				+ '<img  src="'+path+'" /> ' + '</div>';
 			$("#imgs").prepend(img)
 			var image = {
 				"span" : $("#imgs").children("div:first-child")
@@ -286,6 +264,19 @@ ul li {
 			}
 			images.push(image)
 			file.value = ""
+		}
+
+	}
+	
+	function deleteImg(img) {
+		
+		var src = $(img).children("img")[0].src;
+		$(img).remove();
+		for (var i = 0; i < images.length; i++) {
+			var img = images[i]
+			if (src == img.path) {
+				images.splice(i, 1)
+			}
 		}
 
 	}
@@ -346,29 +337,6 @@ ul li {
 		$("#s_type").empty();
 		$("#s_type").append(classification);
 	})
-	function show(id) {
-		var m = document.getElementById(id);
-		m.style.display = "block";
-	}
-	function remove(id) {
-		var m = document.getElementById(id);
-		m.style.display = "none";
-	}
-	function uControl() {
-		var m = document.getElementById("uName");
-		m.style.display = "block";
-		var a = document.getElementById('uName').innerText;
-		if (a == "") {
-			self.location = "./loginPage";
-		} else {
-			self.location = "./userMainPage";
-
-		}
-	}
-	function out() {
-		self.location = "./outServ.do";
-	}
-
 	/* function uploadImages(file) {
 
 		var form = new FormData();
@@ -443,11 +411,11 @@ ul li {
 			error : function() {
 				alert("服务器异常");
 			}
-
 		});
 		classification = "";
 		imgpath = "";
 		images = new Array();
 	}
 </script>
+
 </html>
