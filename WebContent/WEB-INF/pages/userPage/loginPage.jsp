@@ -109,14 +109,14 @@ img {
 }
 
 a {
-	color: white;
+	color: black;
 	padding: 5px;
 	text-decoration:none;
 }
 
 a:link {
 	text-decoration: none;
-	color:white;
+	color:black;
 }
 
 a:visited {
@@ -146,7 +146,7 @@ a:active {
 		<div class="left"></div>
 		<div class="right">
 			<div class="right_top">
-
+				<button type="button" class="btn btn-info" ></button><a href="./mainPage">进入首页</a>
 				<button type="button" class="btn btn-info" ></button><a href="./registerPage">注册帐号</a>
 				<button type="button" class="btn btn-info"></button><a href="#">找回密码</a>
 			</div>
