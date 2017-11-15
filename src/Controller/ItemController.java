@@ -3,7 +3,6 @@ package Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -96,7 +95,8 @@ public class ItemController {
 		return mv;
 	}
 	
-	public @ResponseBody List<Item> find(HashMap<String, String> p){
-		return i.find(p);
+	@RequestMapping("/selectItem")
+	public void find(HashMap<String, String> p,Model model){
+		model.asMap().put("ItemList",i.find(p));
 	}
 }
