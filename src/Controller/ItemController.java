@@ -1,10 +1,8 @@
 package Controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -36,7 +34,7 @@ public class ItemController {
 	
 	
 	@RequestMapping("/uploadItem")
-	public@ResponseBody String upload(Model model,Item item){
+	public @ResponseBody String upload(Model model,Item item){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date d = new Date();
 		item.setId(sdf.format(d)+new Random().nextInt(1000));
@@ -92,5 +90,9 @@ public class ItemController {
 		i.change(p);
 		mv.setViewName("changeSuccess.jsp");
 		return mv;
+	}
+	
+	public @ResponseBody List<Item> find(HashMap<String, String> p){
+		return i.find(p);
 	}
 }

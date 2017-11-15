@@ -24,10 +24,10 @@ public class ItemPro {
 					WHERE("price between #{priceLeft} and #{priceRight}");
 				else 
 					if(p.get("priceLeft")!=null)
-						WHERE("price > #{priceLeft}");
+						WHERE("price >= #{priceLeft}");
 					else
 						if(p.get("priceRight")!=null)
-							WHERE("price < #{priceRight}");
+							WHERE("price <= #{priceRight}");
 				
 				if(p.get("uid")!=null)
 					WHERE("uid=#{uid}");
