@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,8 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+
+
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 <!-- Bootstrap 核心 JavaScript 文件 -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -25,38 +28,6 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 
 body {
 	background-image: url("images/mian.jpg");
-}
-
-.top {
-	width: 100%;
-	height: 70px;
-	background-color: white;
-	float: left;
-	padding-left: 10%;
-	padding-top: 20px;
-	filter: alpha(Opacity = 80);
-	-moz-opacity: 0.8;
-	opacity: 0.8;
-}
-
-.top h1 {
-	float: left;
-	color: #669;
-	float: left;
-}
-
-.top ul {
-	float: right;
-	font-weight: 1000;
-}
-
-ul li {
-	float: left;
-	font-family: "微软雅黑";
-	font-style: inherit;
-	font-weight: 10000;
-	font-size: 1.3em;
-	margin-right: 30px;
 }
 
 .title {
@@ -78,7 +49,6 @@ ul li {
 	border: 1px solid darkgrey;
 	padding: 20px 20px 60px 20px;
 	border-top: 0;
-	
 }
 
 .bt {
@@ -127,7 +97,7 @@ ul li {
 	overflow: hidden;
 	font-size: 300px;
 	position: absolute;
-	top: 470px;
+	top: 550px;
 	opacity: 0;
 	filter: alpha(opacity = 0);
 	cursor: pointer;
@@ -136,39 +106,7 @@ ul li {
 </style>
 </head>
 <body>
-	<div class="top">
-		<h1>HLB</h1>
-
-
-		<div class="">
-			<div class="col-lg-3">
-				<div class="input-group">
-					<input type="text" class="form-control" id="inputNumber"
-						placeholder="输入关键字搜索"> <span class="input-group-btn">
-						<button class="btn btn-default" type="button"
-							onclick="submitNumber()">Go!</button>
-					</span>
-				</div>
-				<!-- /input-group -->
-			</div>
-			<!-- /.col-lg-6 -->
-		</div>
-		<!-- /.row -->
-		<ul>
-
-			<li onmouseover="show('uName')" onmouseout="remove('uName')"
-				onclick="uControl()"><span class="icon-user"></span>
-				<div id="uName" style="display: none">${sessionScope.user.nickname}</div>
-			</li>
-			<li onmouseover="show('eData')" onmouseout="remove('eData')"><span
-				class="icon-envelope"></span>
-				<div id="eData" style="display: none">未读：${requestScope.nRead}</div>
-			</li>
-			<li><span class=" icon-off" onclick="out()"></span></li>
-		</ul>
-
-	</div>
-	<!-- /.top -->
+	<jsp:include page="head.jsp"></jsp:include>
 	<!-- 按钮触发模态框 -->
 	<div class="title">
 		<span class="icon-edit"></span>填写商品基本信息
@@ -205,10 +143,10 @@ ul li {
 		<div class="parame">
 			<span>添加商品图片（点击图片可删除）：</span> <br />
 			<div class="photo" onclick="upImg()">
-				点击上传图片 <img alt="" width=15%  src=""> <input
-					class="file" type="file" onchange="addImg(this)" ></input>
+				点击上传图片 <img alt="" width=15% src=""> <input class="file"
+					type="file" onchange="addImg(this)"></input>
 			</div>
-			
+
 		</div>
 		<div class="imgs" id="imgs"></div>
 
@@ -254,7 +192,7 @@ ul li {
 				}
 			}
 			var img = '<div class="btn_upload" onclick="deleteImg(this)">'
-				+ '<img  src="'+path+'" /> ' + '</div>';
+					+ '<img  src="'+path+'" /> ' + '</div>';
 			$("#imgs").prepend(img)
 			var image = {
 				"span" : $("#imgs").children("div:first-child")
@@ -267,9 +205,9 @@ ul li {
 		}
 
 	}
-	
+
 	function deleteImg(img) {
-		
+
 		var src = $(img).children("img")[0].src;
 		$(img).remove();
 		for (var i = 0; i < images.length; i++) {
@@ -406,7 +344,7 @@ ul li {
 				'price' : price
 			},
 			success : function(data) {
-				location.reload();
+				self.location="./addSuccessPage";
 			},
 			error : function() {
 				alert("服务器异常");
