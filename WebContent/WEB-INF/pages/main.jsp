@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,29 +24,54 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 	list-style: none outside none;
 	text-decoration: none;
 }
+
 body {
-	background-image: url("../images/mian.jpg");
+	background: rgb(245, 245, 245);
 }
+
+.head {
+	
+}
+
 .top {
 	width: 100%;
-	height: 70px;
+	height: 160px;
 	background-color: white;
 	float: left;
-	padding-left: 10%;
+	padding-left: 5%;
 	padding-top: 20px;
 	filter: alpha(Opacity = 80);
 	-moz-opacity: 0.8;
 	opacity: 0.8;
 }
-.top h1 {
-	float: left;
-	color: #669;
+
+.logo {
+	width: 25%;
+	color: rgb(255, 0, 45);
 	float: left;
 }
+
+.top h1 {
+	padding: 0;
+	width: 100%;
+	float: left;
+	font-size: 60px;
+	width: 100%;
+}
+
+.top h4 {
+	padding: 0;
+	width: 100%;
+	float: left;
+	font-size: 25px;
+	width: 100%;
+}
+
 .top ul {
 	float: right;
 	font-weight: 1000;
 }
+
 ul li {
 	float: left;
 	font-family: "微软雅黑";
@@ -54,15 +80,62 @@ ul li {
 	font-size: 1.3em;
 	margin-right: 30px;
 }
+
 .dock {
-	width: 100%;
+	/* 	width: 100%;
 	height: 100px;
 	padding: 1px 0 0 10%;
 	line-height: 100px;
 	float: left;
 	color: white;
+	background-color: rgba(237, 244, 237, 0.5); */
+	background-image: url("images/dock.jpg");
+	width: 100%;
+	height: 450px;
+	padding: 1px 0 0 10%;
+	line-height: 100px;
+	float: left;
+	color: white;
 	background-color: rgba(237, 244, 237, 0.5);
+	padding: 1px 0 0 10%;
+	padding: 1px 0 0 10%
 }
+
+.dock button {
+	opacity: 0.8;
+	border: 1px solid;
+}
+
+.top a {
+	text-decoration: none;
+}
+
+.top a:link {
+	text-decoration: none;
+	color: black;
+}
+
+.top a:visited {
+	border: 1px solid white;
+	color: grey;
+	border-radius: 5px;
+	margin: 5px;
+	text-decoration: none;
+}
+
+.top a:hover {
+	border: 1px solid white;
+	color: black:;
+	border-radius: 5px;
+	margin: 5px;
+	text-decoration: none;
+}
+
+.top a:active {
+	text-decoration: none;
+	color: black;
+}
+
 .dock a {
 	font-size: 25px;
 	color: black;
@@ -70,10 +143,12 @@ ul li {
 	margin-left: 10px;
 	text-decoration: none;
 }
+
 .dock a:link {
 	text-decoration: none;
 	color: black;
 }
+
 .dock a:visited {
 	border: 1px solid white;
 	color: grey;
@@ -81,6 +156,7 @@ ul li {
 	margin: 5px;
 	text-decoration: none;
 }
+
 .dock a:hover {
 	border: 1px solid white;
 	color: black:;
@@ -88,12 +164,14 @@ ul li {
 	margin: 5px;
 	text-decoration: none;
 }
+
 .dock a:active {
 	text-decoration: none;
 	color: black;
 }
+
 .middle {
-	width: 50%;
+	width: 80%;
 	margin: 10px 3px 0 10%;
 	/* background-color: white; */
 	background-color: rgba(237, 244, 237, 0.8);
@@ -101,6 +179,7 @@ ul li {
 	border: 1px solid rgb(212, 212, 212);
 	padding: 5px;
 }
+
 .right {
 	width: 25%;
 	height: 900px;
@@ -111,91 +190,69 @@ ul li {
 	padding: 5px 0 0 20px;
 	background-color: rgba(237, 244, 237, 0.8);
 }
+
 #uName, #eData {
 	float: right;
 	color: #669;
 	margin-left: 10px;
 }
+
 .myinfo button {
 	marigin: 10px;
 }
-#rightitem{
+
+#rightitem {
 	/*width: 200px;
 	height: 210px;*/
 	margin-right: 7%;
 }
-
 </style>
 </head>
 <body>
-	<div class="top">
-		<h1>HLB</h1>
-		<div class="">
-			<div class="col-lg-3">
-				<div class="input-group">
-					<input type="text" class="form-control" id="inputNumber"
-						placeholder="输入关键字搜索"> <span class="input-group-btn">
-						<button class="btn btn-default" type="button"
-							onclick="submitNumber()">Go!</button>
-					</span>
-				</div>
-				<!-- /input-group -->
-			</div>
-			<!-- /.col-lg-6 -->
-		</div>
-		<!-- /.row -->
-		
-		<ul>
-			<li onmouseover="show('uName')" onmouseout="remove('uName')"
-				onclick="uControl()"><span class="icon-user"></span>
-				<div id="uName" style="display: none">${sessionScope.user.nickname}</div>
-			</li>
-			<li onmouseover="show('eData')" onmouseout="remove('eData')"><span
-				class="icon-envelope"></span>
-				<div id="eData" style="display: none">未读：${requestScope.nRead}</div>
-			</li>
-			<li><span class=" icon-off" onclick="out()"></span></li>
-		</ul>
-
-	</div>
-	<!-- /.top -->
+	<jsp:include page="head.jsp"></jsp:include>
 	<div class="dock">
-		<a href="main.jsp"><span class=" icon-home" ></span>首页</a>
-		<div class="btn-group">
-  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   			价格选择 <span class="caret"></span>
-  			</button>
-  			<ul class="dropdown-menu">
-    			<li><a href="#">0~10元</a></li>
-    			<li><a href="#">10~20元</a></li>
-			    <li><a href="#">20~30元</a></li>
-			    <li><a href="#">30元以上</a></li>
-  			</ul>
+		<div class="btn-group btn-group-lg">
+			<button type="button" class="btn btn-default dropdown-toggle "
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+				style="opacity: 0.8;">
+				价格选择 <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" style="opacity: 0.5;">
+				<li><a href="#">0~10元</a></li>
+				<li><a href="#">10~20元</a></li>
+				<li><a href="#">20~30元</a></li>
+				<li><a href="#">30元以上</a></li>
+			</ul>
 		</div>
-		<div class="btn-group">
-  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			衣物 <span class="caret"></span>
-  			</button>
+		<div class="btn-group btn-group-lg ">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				衣物 <span class="caret"></span>
+			</button>
 		</div>
-		<div class="btn-group">
-  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			学习用品 <span class="caret"></span>
-  			</button>
+		<div class="btn-group btn-group-lg">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				学习用品 <span class="caret"></span>
+			</button>
 		</div>
-		<div class="btn-group">
-  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			生活用品 <span class="caret"></span>
-  			</button>
+		<div class="btn-group btn-group-lg">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				生活用品 <span class="caret"></span>
+			</button>
 		</div>
-		<div class="btn-group">
-  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			运动用品 <span class="caret"></span>
-  			</button>
+		<div class="btn-group btn-group-lg">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				运动用品 <span class="caret"></span>
+			</button>
 		</div>
-		<div class="btn-group">
-  			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    			其他 <span class="caret"></span>
-  			</button>
+		<div class="btn-group btn-group-lg">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				其他 <span class="caret"></span>
+			</button>
 		</div>
 	</div>
 	<!-- /.dock -->
@@ -203,119 +260,164 @@ ul li {
 
 
 	<div class="middle">
-	  	<div class="row1">
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+		<div class="row1">
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row2">
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row3">
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
-		 	<div class="col-sm-4 col-md-4">
-		    	<div class="thumbnail">
-		      	<img src="img/ad3.jpg" alt="...">
-		      		<div class="caption">
-		        		<h4>商品描述</h4>
-		        		<p style="font-size: 20px;">价格预估</p>
-		        		<p><a href="#" class="btn btn-primary" role="button" style="font-size: x-small;">联系卖家</a> <a href="#" class="btn btn-default" role="button" style="font-size: x-small;">确认交换</a></p>
-		      		</div>
-		    	</div>
+			<div class="col-sm-4 col-md-4">
+				<div class="thumbnail">
+					<img src="img/ad3.jpg" alt="...">
+					<div class="caption">
+						<h4>商品描述</h4>
+						<p style="font-size: 20px;">价格预估</p>
+						<p>
+							<a href="#" class="btn btn-primary" role="button"
+								style="font-size: x-small;">联系卖家</a> <a href="#"
+								class="btn btn-default" role="button"
+								style="font-size: x-small;">确认交换</a>
+						</p>
+					</div>
+				</div>
 			</div>
 			<nav aria-label="...">
-			  <ul class="pager" style="margin-left:35%;">
-			    <li><a href="#">上一页</a></li>
-			    <li><a href="#">下一页</a></li>
-			  </ul>
+			<ul class="pager" style="margin-left: 35%;">
+				<li><a href="#">上一页</a></li>
+				<li><a href="#">下一页</a></li>
+			</ul>
 			</nav>
-			
+
 		</div>
 
-		
+
 	</div>
-	
+
 	<!-- /.middle -->
 
-	<div class="right">
+	<!-- <div class="right">
 		<div class="myinfo">
 			<h3>我的</h3>
-			<!-- <jsp:include page="addItem.jsp"></jsp:include> -->
+			
 
 			<button class="btn btn-defaul " data-toggle="modal"
 				style="background-color: white;">我关注过的</button>
@@ -350,9 +452,9 @@ ul li {
 		    
 
 		</div>
-	</div>
+	</div> -->
 	<!-- /.right -->
-	
+
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
@@ -381,13 +483,13 @@ ul li {
 		m.style.display = "block";
 		var a = document.getElementById('uName').innerText;
 		if (a == "") {
-			self.location = "/PrySecret/loginForm.do";
+			self.location = "loginPage";
 		} else {
-			self.location = "/PrySecret/userMainForm.do";
+			self.location = "userMainPage";
 		}
 	}
 	function out() {
-		self.location = "/PrySecret/outServ.do";
+		self.location = "./userQuit";
 	}
 	function uploadImg(file) {
 		var fileReader = new FileReader();
@@ -395,7 +497,7 @@ ul li {
 		uploadImages(file.files[0])
 	}
 	function uploadImages(file) {
-		
+
 		var form = new FormData();
 		form.append("img", file);
 		alert("123123");
@@ -418,14 +520,14 @@ ul li {
 			}
 		});
 	}
-	
+
 	function addItem() {
-		
+
 		var name = document.getElementById("name").value;
 		var detail = document.getElementById("detail").value;
 		var price = document.getElementById("price").value;
-		var expect= document.getElementById("expect").value;
-		
+		var expect = document.getElementById("expect").value;
+
 		if (name == "") {
 			alert("请填写一个名称");
 			return;
@@ -442,7 +544,7 @@ ul li {
 			alert("请填写一个预估价格");
 			return;
 		}
-		if(expect==""){
+		if (expect == "") {
 			alert("请填写一个期望商品");
 			return;
 		}
@@ -455,8 +557,8 @@ ul li {
 				'detail' : detail,
 				'img' : imgpath,
 				'expect' : expect,
-				'classification':classification,
-				'price':price
+				'classification' : classification,
+				'price' : price
 			},
 			success : function(data) {
 			},

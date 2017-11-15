@@ -44,10 +44,8 @@ public class UserController {
 		} else{
 			return msg;
 		}
-		
 	}
-
-	@RequestMapping("/loginSuccess")
+	@RequestMapping("/mainPage")
 	public  String loginSuccess(){
 		
 		return "main";
@@ -83,6 +81,17 @@ public class UserController {
 
 	public void setU(UserDao u) {
 		this.u = u;
+	}
+	
+	@RequestMapping("/userQuit")
+	public String userQuit(Model model){
+		model.addAttribute("user", new User());
+		return "userPage/loginPage";
+	}
+	
+	@RequestMapping("userMainPage")
+	public String userMainPage(){
+		return "userPage/userMainPage";
 	}
 
 }

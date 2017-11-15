@@ -31,7 +31,11 @@ public class ItemController {
 	public String addItemPage(){
 		return "addItem";
 	}
-	
+	@RequestMapping("/addSuccessPage")
+	public String addSuccess(){
+		
+		return "addSuccessPage";
+	}
 	
 	@RequestMapping("/uploadItem")
 	public @ResponseBody String upload(Model model,Item item){

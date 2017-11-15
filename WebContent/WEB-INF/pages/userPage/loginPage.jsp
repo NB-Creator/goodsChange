@@ -196,7 +196,7 @@ a:active {
 				if(msg=="FALSE")
 					alert(msg);
 				else if(msg=="SUCCESS")
-					self.location="./loginSuccess";
+					self.location="./mainPage";
 			},
 			erro : function() {
 
