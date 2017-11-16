@@ -256,17 +256,17 @@ ul li {
 		</div>
 	</div>
 	<!-- /.dock -->
-
-
-
 	<div class="middle">
 		<div class="row1">
+			<c:forEach items="${itemlist}" var="item" end="8">
 			<div class="col-sm-4 col-md-4">
 				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
+					<c:forEach items="${item.imgpath}" var="imgpath" end="0">
+					<img src="${imgpath}" alt="...">
+					</c:forEach>
 					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
+						<h4>商品描述:</h4>${item.detail}
+						<p style="font-size: 20px;">价格预估:${item.price}</p>
 						<p>
 							<a href="#" class="btn btn-primary" role="button"
 								style="font-size: x-small;">联系卖家</a> <a href="#"
@@ -276,130 +276,8 @@ ul li {
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
-		<div class="row2">
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row3">
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
 			<nav aria-label="...">
 			<ul class="pager" style="margin-left: 35%;">
 				<li><a href="#">上一页</a></li>
