@@ -262,7 +262,7 @@ ul li {
 			<div class="col-sm-4 col-md-4">
 				<div class="thumbnail">
 					<c:forEach items="${item.imgpath}" var="imgpath" end="0">
-					<img src="${imgpath}" alt="...">
+					<a href="itemPage/itemid=${item.id}"><img src="${imgpath}" alt="..."></a>
 					</c:forEach>
 					<div class="caption">
 						<h4>商品描述:</h4>${item.detail}
@@ -278,7 +278,7 @@ ul li {
 			</div>
 			</c:forEach>
 		</div>
-			<nav aria-label="...">
+			<nav aria-label="..." style="width: 100%;float:left;">
 			<ul class="pager" style="margin-left: 35%;">
 				<li><a href="#">上一页</a></li>
 				<li><a href="#">下一页</a></li>
@@ -286,52 +286,6 @@ ul li {
 			</nav>
 
 		</div>
-
-
-	</div>
-
-	<!-- /.middle -->
-
-	<!-- <div class="right">
-		<div class="myinfo">
-			<h3>我的</h3>
-			
-
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">我关注过的</button>
-			<br>
-			<br>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: #C8E5BC;">与我相关的</button>
-			<br>
-			<br>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: #9ACFEA">查找个用户</button>
-			<br>
-			<br>
-		</div>
-
-		<div class="public" >
-			<h4>宝贝推荐</h4>
-		    	<div class="thumbnail" id="rightitem">
-		      	<img src="img/ad3.jpg" class="img-responsive">
-		      		<div class="caption">
-		        		<h5>商品描述</h5>
-		        		<p style="font-size: 10px;">价格预估</p>
-		        	</div>
-		    	</div>
-				<div class="thumbnail" id="rightitem">
-			      	<img src="img/ad3.jpg" alt="...">
-			      	<div class="caption">
-			        	<h5>商品描述</h5>
-			        	<p style="font-size: 10px;">价格预估</p>
-			        </div>
-		    	</div>
-		    
-
-		</div>
-	</div> -->
-	<!-- /.right -->
 
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>

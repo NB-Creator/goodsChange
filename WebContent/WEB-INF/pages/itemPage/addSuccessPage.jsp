@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	<jsp:include page="head.jsp"></jsp:include>
+	<jsp:include page="../head.jsp"></jsp:include>
 	<div class="data">
 		<div class="title">发布成功:${additem.id}</div>
 
@@ -43,7 +43,7 @@
 		<!-- item -->
 
 		<div class="bottom">
-			<a href="./addItemPage">继续添加</a>/<a href="./mainPage">返回主页</a>
+			<a href="../addItemPage">继续添加</a>/<a href="../mainPage">返回主页</a>
 		</div>
 		<!-- botton -->
 	</div>

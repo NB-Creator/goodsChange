@@ -106,7 +106,7 @@ body {
 </style>
 </head>
 <body>
-	<jsp:include page="head.jsp"></jsp:include>
+	<jsp:include page="../head.jsp"></jsp:include>
 	<!-- 按钮触发模态框 -->
 	<div class="title">
 		<span class="icon-edit"></span>填写商品基本信息
@@ -225,7 +225,7 @@ body {
 			form.append("img", img.file);
 			$.ajax({
 				type : "post",
-				url : "./uploadImg",
+				url : "../uploadImg",
 				data : form,
 				async : false,
 				cache : false,
@@ -332,7 +332,7 @@ body {
 		uploadImgs();
 
 		$.ajax({
-			url : './uploadItem',
+			url : '../uploadItem',
 			type : 'post',
 			dataType : 'text',
 			traditional: true,
@@ -346,7 +346,7 @@ body {
 			},
 			success : function(data) {
 				if(data=="success")
-				self.location="./addSuccessPage";
+				self.location="../addSuccessPage";
 				else 
 					alert("tianjiashibia");
 			},

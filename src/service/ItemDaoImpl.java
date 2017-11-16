@@ -1,16 +1,16 @@
 package service;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import mapper.ItemMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mapper.ItemMapper;
 import po.Item;
 
 @Service
@@ -71,12 +71,10 @@ public class ItemDaoImpl implements ItemDao {
 
 	public List<Item> find(Map<String, String> p) {
 		List<Item> IL = itemMapper.select(p);
-		System.out.println("length"+IL.size());
 		Iterator<Item> i = IL.iterator();
 		while (i.hasNext()) {
 			Item item = i.next();
 			String img = item.getImg();
-			System.out.println("img:"+img);
 			String imgs[] = img.split("\\*");
 			List<String> ls = new ArrayList<String>();
 			int l = imgs.length;
