@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 
 import po.Item;
 import provider.ItemPro;
@@ -32,6 +33,6 @@ public interface ItemMapper {
 	 * 				必须传入item的主键,即必须传入id
 	 * 可用于修改商品名字(name),详细信息(detail),图片(img),期望(except),分类(classfication),价格(price)
 	 */
-	@SelectProvider(method="update",type=ItemPro.class)
+	@UpdateProvider(method="update",type=ItemPro.class)
 	public Integer Update(Map<String, Object> param);
 }

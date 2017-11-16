@@ -335,6 +335,7 @@ body {
 			url : './uploadItem',
 			type : 'post',
 			dataType : 'text',
+			traditional: true,
 			data : {
 				'name' : name,
 				'detail' : detail,
@@ -344,7 +345,10 @@ body {
 				'price' : price
 			},
 			success : function(data) {
+				if(data=="success")
 				self.location="./addSuccessPage";
+				else 
+					alert("tianjiashibia");
 			},
 			error : function() {
 				alert("服务器异常");

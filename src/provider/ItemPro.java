@@ -15,11 +15,10 @@ public class ItemPro {
 					WHERE("id=#{id}");
 				if(p.get("time")!=null)
 					WHERE("time=#{time}");
-				if(p.get("name")!=null);
+				if(p.get("name")!=null)
 					WHERE("name=#{name}");
 				if(p.get("classfication")!=null)
 					WHERE("classfication=#{classfication}");
-				
 				if((p.get("priceLeft")!=null)&&(p.get("prcieRight")!=null))
 					WHERE("price between #{priceLeft} and #{priceRight}");
 				else 
@@ -28,10 +27,9 @@ public class ItemPro {
 					else
 						if(p.get("priceRight")!=null)
 							WHERE("price <= #{priceRight}");
-				
 				if(p.get("uid")!=null)
 					WHERE("uid=#{uid}");
-				if(p.get("expect")!=null);
+				if(p.get("expect")!=null)
 					WHERE("expect like #{expect}");
 			}
 		}.toString();

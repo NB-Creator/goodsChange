@@ -10,6 +10,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +22,8 @@ import po.User;
 import service.ItemDao;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes(value={"user","additem"})
+
 public class ItemController {
 
 	@Autowired
@@ -32,8 +34,10 @@ public class ItemController {
 		return "addItem";
 	}
 	@RequestMapping("/addSuccessPage")
-	public String addSuccess(){
+	public String addSuccess(@ModelAttribute("additem")Item item,Model model){
 		
+		System.out.println("item:"+item.getId());
+		model.addAttribute("additem", item);
 		return "addSuccessPage";
 	}
 	
@@ -45,11 +49,19 @@ public class ItemController {
 		sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		item.setTime(sdf.format(d));
 		item.setUid(((User)model.asMap().get("user")).getUsername());
+		System.out.println("afds");
 		boolean flag = i.upload(item);
 		if(flag==false)
-			return "false";
+			return "FALSE";
 		else
+		{
+			Map<String,String> p=new HashMap<String,String>();
+			p.put("id", item.getId());
+			item=i.find(p).get(0);
+			System.out.println("itemid:"+item.getId());
+			model.addAttribute("additem", item);
 			return "success";
+		}
 	}
 	
 	@RequestMapping("/getImgpath")
@@ -80,12 +92,12 @@ public class ItemController {
 		
 		if(item.getName()!=null);
 			p.put("name", item.getName());
-		if(item.getclassification()!=null)
-			p.put("classification", item.getclassification());
+		if(item.getClassification()!=null)
+			p.put("classification", item.getClassification());
 		if(item.getPrice()!=null)
 			p.put("price", item.getPrice());
-		if(item.getexpect()!=null);
-		p.put("execpt", item.getexpect());
+		if(item.getExpect()!=null);
+		p.put("execpt", item.getExpect());
 		if(item.getDetail()!=null)
 			p.put("detail", item.getDetail());
 		if(item.getImg()!=null)
@@ -96,7 +108,7 @@ public class ItemController {
 		return mv;
 	}
 	
-	public @ResponseBody List<Item> find(HashMap<String, String> p){
+	/*public @ResponseBody List<Item> find(HashMap<String, String> p){
 		return i.find(p);
-	}
+	}*/
 }

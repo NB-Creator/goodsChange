@@ -1,5 +1,7 @@
 package po;
 
+import java.util.List;
+
 public class Item {
 
 	private String id;
@@ -7,8 +9,10 @@ public class Item {
 	private String name;
 	private String detail;
 	private String img;
+	private List<String> imgpath;
 	private String expect;
 	private String classification;
+
 	private Integer price;
 	private String uid;
 
@@ -27,7 +31,7 @@ public class Item {
 	}
 
 	public Item() {
-		
+
 	}
 
 	public String getId() {
@@ -70,19 +74,27 @@ public class Item {
 		this.img = img;
 	}
 
-	public String getexpect() {
+	public List<String> getImgpath() {
+		return imgpath;
+	}
+
+	public void setImgpath(List<String> imgpath) {
+		this.imgpath = imgpath;
+	}
+
+	public String getExpect() {
 		return expect;
 	}
 
-	public void setexpect(String expect) {
+	public void setExpect(String expect) {
 		this.expect = expect;
 	}
 
-	public String getclassification() {
+	public String getClassification() {
 		return classification;
 	}
 
-	public void setclassification(String classification) {
+	public void setClassification(String classification) {
 		this.classification = classification;
 	}
 
@@ -102,4 +114,5 @@ public class Item {
 		this.uid = uid;
 	}
 
+	
 }
