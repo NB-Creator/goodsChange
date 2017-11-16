@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-<!-- <link type="text/css" rel="stylesheet" href="css/addSuccessPage.css"> -->
+<link type="text/css" rel="stylesheet" href="css/addSuccessPage.css">
 
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 <!-- Bootstrap 核心 JavaScript 文件 -->

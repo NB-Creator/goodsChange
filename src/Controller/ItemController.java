@@ -105,7 +105,7 @@ public class ItemController {
 	 */
 	@RequestMapping("/itemPage/itemid={id}")
 	public @ResponseBody String geturlparam(@PathVariable("id") String id) {
-
+		
 		return "itemPage/itemPage";
 	}
 
