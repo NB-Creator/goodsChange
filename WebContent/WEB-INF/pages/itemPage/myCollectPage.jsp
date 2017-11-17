@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>商品详情</title>
+<title>我的收藏</title>
 </head>
 <body>
 

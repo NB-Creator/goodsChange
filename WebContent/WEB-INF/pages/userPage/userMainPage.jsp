@@ -9,10 +9,11 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-<link type="text/css" rel="stylesheet" href="css/userMainPage.css">
+<link type="text/css" rel="stylesheet" href="css/userMainPagev1.css">
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 <style type="text/css">
+
 </style>
 </head>
 <body>

@@ -70,7 +70,7 @@
 	border-radius: 5px;
 	margin: 5px;
 	text-decoration: none;
-	background-color: white;
+	background-color: rgb(245,245,245);
 }
 
 .head a:active {

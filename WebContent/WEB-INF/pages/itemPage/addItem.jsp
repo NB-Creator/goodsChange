@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-
+<link type="text/css" rel="stylesheet" href="css/addItem.css">
 
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 <!-- Bootstrap 核心 JavaScript 文件 -->
@@ -16,93 +16,8 @@
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 
 
-<title>Insert title here</title>
+<title>发布商品</title>
 <style type="text/css">
-body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
-	margin: 0px;
-	padding: 0px;
-	border: 0px none;
-	list-style: none outside none;
-	text-decoration: none;
-}
-
-body {
-	background-image: url("images/mian.jpg");
-}
-
-.title {
-	float: left;
-	width: 100%;
-	height: 30px;
-	line-height: 30px;
-	color: white;
-	background-color: rgba(118, 118, 118, 0.6);
-	padding-left: 20%;
-	border-radius: 5px;
-}
-
-.middle {
-	width: 60%;
-	margin-left: 20%;
-	margin-right: 20%;
-	background-color: rgba(242, 242, 242, 1);
-	border: 1px solid darkgrey;
-	padding: 20px 20px 60px 20px;
-	border-top: 0;
-}
-
-.bt {
-	width: 100%;
-	margin: 30px 0 0 0;
-	padding: 10px 20% 5px 20%;
-	float: left;
-}
-
-.parame {
-	width: 100%;
-	padding: 10px 0 5px 0;
-	float: left;
-}
-
-.imgs {
-	width: 100%;;
-	float: left;
-}
-
-.imgs img {
-	float: left;
-	width: 100px;
-	height: 100px;
-	margin-right: 10px;
-}
-
-.photo {
-	width: 100px;
-	height: 100px;
-	border: 1px solid;
-	text-align: center;
-	line-height: 100px;
-	float: left;
-}
-
-.photo img {
-	width: 100px;
-	height: 100px;
-}
-
-.file {
-	float: left;
-	height: 100px;
-	width: 100px;
-	overflow: hidden;
-	font-size: 300px;
-	position: absolute;
-	top: 550px;
-	opacity: 0;
-	filter: alpha(opacity = 0);
-	cursor: pointer;
-	opacity: 0;
-}
 </style>
 </head>
 <body>
@@ -225,7 +140,7 @@ body {
 			form.append("img", img.file);
 			$.ajax({
 				type : "post",
-				url : "../uploadImg",
+				url : "./uploadImg",
 				data : form,
 				async : false,
 				cache : false,
@@ -332,7 +247,7 @@ body {
 		uploadImgs();
 
 		$.ajax({
-			url : '../uploadItem',
+			url : './uploadItem',
 			type : 'post',
 			dataType : 'text',
 			traditional: true,
@@ -346,12 +261,12 @@ body {
 			},
 			success : function(data) {
 				if(data=="success")
-				self.location="../addSuccessPage";
+				self.location="addSuccessPage";
 				else 
-					alert("tianjiashibia");
+					alert("添加失败");
 			},
 			error : function() {
-				alert("服务器异常");
+				alert("服务器异常-");
 			}
 		});
 		classification = "";
