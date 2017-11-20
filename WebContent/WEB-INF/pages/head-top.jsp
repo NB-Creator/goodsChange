@@ -9,7 +9,7 @@
 <style type="text/css">
 .head-top {
 	width: 100%;
-	float: left;
+	
 	height:25px;
 	line-height:25px;
 	background-color: rgb(242, 242, 242);
@@ -69,20 +69,20 @@
 </head>
 <body>
 	<div class="head-top">
-		<span class="icon-home" style="color:red;"></span><a href="./mainPage">返回首页</a>
+		<span class="icon-home" style="color:red;"></span><a href="/_MSP_ItemByItem/mainPage">返回首页</a>
 		<ul>
 			<li><span class="icon-user"></span>
 				<div id="uName">
 					<c:if test="${empty sessionScope.user.nickname}" var="userExits">
-						<a href="./loginPage">请登录</a>
+						<a href="/_MSP_ItemByItem/loginPage">请登录</a>
 					</c:if>
-					<a href="./userMainPage">${sessionScope.user.nickname}</a>
+					<a href="/_MSP_ItemByItem/userMainPage">${sessionScope.user.nickname}</a>
 				</div></li>
 			<li><span class="icon-envelope"></span>
 				<div id="eData">消息：${requestScope.nRead}</div></li>
-			<li><span class=" icon-off"> </span> <c:if
+			<li> <c:if
 					test="${!empty sessionScope.user.nickname}">
-					<a href="./userQuit">退出</a>
+					<span class=" icon-off"> </span><a href="/_MSP_ItemByItem/userQuit">退出</a>
 				</c:if></li>
 		</ul>
 

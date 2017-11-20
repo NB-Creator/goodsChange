@@ -114,7 +114,7 @@ public class ItemController {
 	 * @return 商品详情页面
 	 */
 	@RequestMapping("/itemPage/itemid={id}")
-	public @ResponseBody String geturlparam(@PathVariable("id") String id,Model model) {
+	public String geturlparam(@PathVariable("id") String id,Model model) {
 		Map<String,String> p = new HashMap<>();
 		p.put("id", id);
 		Item item = i.find(p).get(0);
