@@ -13,9 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.portlet.ModelAndView;
+
+import com.alibaba.fastjson.JSON;
 
 import po.Item;
 import po.User;
@@ -98,8 +101,9 @@ public class ItemController {
 		model.addAttribute("ItemList", i.find(p));
 	}
 	
-	public @ResponseBody List<Item> find(HashMap<String, String> p) {
-		return i.find(p);
+	@RequestMapping(value="/getItemList",method= RequestMethod.GET, produces = "text/html;charset=UTF-8")
+	public @ResponseBody String find(HashMap<String, String> p) {
+		return JSON.toJSONString(i.find(p));
 	}
 
 	/**
