@@ -127,6 +127,6 @@ public class ItemController {
 
 	public void setU(UserDao u) {
 		this.u = u;
-	}
 
+	}
 }
