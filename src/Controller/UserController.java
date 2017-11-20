@@ -23,7 +23,6 @@ public class UserController {
 
 	@Autowired
 	private UserDao u;
-	
 	@Autowired
 	private ItemDao itemDao;
 
@@ -34,31 +33,49 @@ public class UserController {
 	}
 
 	@RequestMapping("/login")
-	public @ResponseBody String login(String username, String password,Model model) {
-		
+	public @ResponseBody String login(String username, String password,
+			Model model) {
+
 		User user = new User(username, password);
 		String msg = u.login(user);
 		if ("SUCCESS".equals(msg)) {
 			// 将查询到的user信息保存并传给主页面
-			Map<String,String> m=new HashMap<String,String>();
+			Map<String, String> m = new HashMap<String, String>();
 			m.put("username", username);
-			user=u.getUser(m);
+			user = u.getUser(m);
 			model.addAttribute("user", user);
 			// 设置登录成功路径
-			
+
 			return msg;
-		} else{
+		} else {
 			return msg;
 		}
 	}
+
 	@RequestMapping("/mainPage")
-	public  String loginSuccess(Model model){
-		Map<String,String> p=new HashMap<String,String>();
-		List<Item> itemlist=itemDao.find(p);
-		model.addAttribute("itemlist",itemlist);
+	public String loginSuccess(Model model) {
+		Map<String, String> p = new HashMap<String, String>();
+		List<Item> itemlist = itemDao.find(p);
+		model.addAttribute("newlist", itemlist);
+		p.put("classification", "手机");
+		itemlist = itemDao.find(p);
+		model.addAttribute("phonelist", itemlist);
+		p.put("classification", "电脑");
+		itemlist = itemDao.find(p);
+		model.addAttribute("computerlist", itemlist);
+		p.put("classification", "书籍");
+		model.addAttribute("booklist", itemlist);
+		p.put("classification", "衣物");
+		model.addAttribute("clothinglist", itemlist);
+		p.put("classification", "运动");
+		model.addAttribute("sportlist", itemlist);
+		p.put("classification", "游戏");
+		model.addAttribute("gamelist", itemlist);
+		p.put("classification", "原创");
+		model.addAttribute("originalitylist", itemlist);
 		return "main";
 	}
-	
+
 	@RequestMapping(value = "/registerPage")
 	public String registerPage(Model model) {
 		return "userPage/registerPage";
@@ -90,15 +107,15 @@ public class UserController {
 	public void setU(UserDao u) {
 		this.u = u;
 	}
-	
+
 	@RequestMapping("/userQuit")
-	public String userQuit(Model model){
+	public String userQuit(Model model) {
 		model.addAttribute("user", new User());
 		return "userPage/loginPage";
 	}
-	
+
 	@RequestMapping("userMainPage")
-	public String userMainPage(){
+	public String userMainPage() {
 		return "userPage/userMainPage";
 	}
 

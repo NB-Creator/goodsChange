@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="css/main.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
@@ -14,7 +15,23 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 <style type="text/css">
+.dock {
+	background-image: url("images/dock-a.jpg");
+	width: 100%;
+	height: 550px;
+	padding: 1px 0 0 10%;
+	line-height: 100px;
+	float: left;
+	color: white;
+	background-color: rgba(237, 244, 237, 0.5);
+	padding: 1px 0 0 10%;
+}
 
+.bottom {
+	float: left;
+	width: 100%;
+	margin: 0 auto;
+}
 </style>
 </head>
 <body>
@@ -65,36 +82,154 @@
 		</div>
 	</div>
 	<!-- /.dock -->
-	<div class="middle">
-		<div class="row1">
-			<c:forEach items="${itemlist}" var="item" end="9">
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<c:forEach items="${item.imgpath}" var="imgpath" end="0">
-					<a href="itemPage/itemid=${item.id}"><img src="${imgpath}" alt="...">${item.name}</a>
-					</c:forEach>
-					<div class="caption">
-						<h4>商品描述:</h4>${item.detail}
-						<p style="font-size: 20px;">价格预估:${item.price}</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			</c:forEach>
-		</div>
-			<nav aria-label="..." style="width: 100%;float:left;">
-			<ul class="pager" style="margin-left: 0;">
-				<li><a href="#">上一页</a></li>
-				<li><a href="#">下一页</a></li>
-			</ul>
-			</nav>
+	<div class="bottom">
+		<div class="class-box">
 
+			<span>今日热门</span>
+			<div class="item-box">
+				<c:forEach items="${newlist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
+		<div class="class-box">
+			<span>最新上架</span>
+			<div class="item-box">
+				<c:forEach items="${newlist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>手机控</span>
+			<div class="item-box">
+				<c:forEach items="${phonelist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>电脑也能换</span>
+			<div class="item-box">
+				<c:forEach items="${computerlist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>书达人</span>
+			<div class="item-box">
+				<c:forEach items="${booklist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>美人装</span>
+			<div class="item-box">
+				<c:forEach items="${clothinglist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>爱运动</span>
+			<div class="item-box">
+				<c:forEach items="${sportlist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>游戏宅</span>
+			<div class="item-box">
+				<c:forEach items="${gamelist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="class-box">
+			<span>创意达人</span>
+			<div class="item-box">
+				<c:forEach items="${originalitylist}" var="items" end="7">
+					<div class="item">
+						<a href="itemPage/itemid=${items.id}">
+						<div class="item-img">
+							<img alt="" src="${items.imgpath[0]}">
+						</div>
+						</a>
+						<div class="span">${items.name}</div>
+						<div class="span" style="text-align: right; color: red;">￥${items.price}</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+
+	</div>
 
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>

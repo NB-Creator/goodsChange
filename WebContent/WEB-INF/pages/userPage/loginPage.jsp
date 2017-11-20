@@ -18,6 +18,9 @@
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 
 <style type="text/css">
+body {
+	background-image: url("images/logimg.jpg");
+}
 </style>
 </head>
 <body>

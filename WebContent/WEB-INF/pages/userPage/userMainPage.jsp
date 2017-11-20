@@ -17,9 +17,9 @@
 </style>
 </head>
 <body>
-<jsp:include page="../head.jsp"></jsp:include>
+<jsp:include page="../head-top.jsp"></jsp:include>
 	<div class="top">
-		<div class="tl">
+		<div >
 			<h1 style="color: white;">${sessionScope.user.nickname}的主页</h1>
 		</div>
 		
