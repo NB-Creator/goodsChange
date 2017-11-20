@@ -14,7 +14,9 @@ public interface ItemDao {
 	/**
 	 *  @param param key为要修改的属性的名字,value为用于查询的值
 	 */
-	public void change(Map<String, Object> p);
+	public void change(Map<String, String> p);
 	
 	public List<Item> find(Map<String,String> p);
+	
+	public boolean deleteImg(String imgPath,int ItemId);
 }

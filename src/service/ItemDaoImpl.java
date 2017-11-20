@@ -65,7 +65,7 @@ public class ItemDaoImpl implements ItemDao {
 	 * 修改商品信息
 	 */
 	@Override
-	public void change(Map<String, Object> p) {
+	public void change(Map<String, String> p) {
 		itemMapper.Update(p);
 	}
 
@@ -84,6 +84,30 @@ public class ItemDaoImpl implements ItemDao {
 			item.setImgpath(ls);
 		}
 		return IL;
+	}
+
+	@Override
+	public boolean deleteImg(String imgPath,int ItemId) {
+		Map<String,String> param = new HashMap<>();
+		param.put("id",String.valueOf(ItemId));
+		Item item = find(param).get(0);
+		List<String> imgs=item.getImgpath();
+		StringBuilder img=new StringBuilder();
+		
+		Iterator<String> i=imgs.iterator();
+		while(i.hasNext()){
+			if(i.next()!=imgPath)
+				img.append(imgPath+"*");
+		}
+		img.deleteCharAt(img.length()-1);
+		
+		param.clear();
+		param.put("id", String.valueOf(ItemId));
+		param.put("img", img.toString());
+		
+		if(itemMapper.Update(param)==0)
+			return false;
+		return true;
 	}
 
 }

@@ -38,20 +38,18 @@ public class ItemPro {
 		}.toString();
 	}
 
-	public String update(Map<String, Object> p) {
+	public String update(Map<String, String> p) {
 		return new SQL() {
 			{
 				UPDATE("tb_item");
 				if (p.get("name") != null)
-					;
-				SET("name=#{name}");
+					SET("name=#{name}");
 				if (p.get("classification") != null)
 					SET("classification=#{classification}");
 				if (p.get("price") != null)
 					SET("price=#{price}");
 				if (p.get("expect") != null)
-					;
-				SET("expect=#{expect}");
+					SET("expect=#{expect}");
 				if (p.get("detail") != null)
 					SET("detail=#{detail}");
 				if (p.get("img") != null)

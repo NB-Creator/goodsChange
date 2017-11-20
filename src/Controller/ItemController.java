@@ -20,6 +20,7 @@ import org.springframework.web.portlet.ModelAndView;
 import po.Item;
 import po.User;
 import service.ItemDao;
+import service.UserDao;
 
 @Controller
 @SessionAttributes(value = { "user", "additem" })
@@ -27,6 +28,8 @@ public class ItemController {
 
 	@Autowired
 	private ItemDao i;
+	@Autowired
+	private UserDao u;
 
 	@RequestMapping("/addItemPage")
 	public String addItemPage() {
@@ -70,18 +73,16 @@ public class ItemController {
 	}
 
 	public ModelAndView change(ModelAndView mv, Item item) {
-		Map<String, Object> p = new HashMap<>();
+		Map<String, String> p = new HashMap<>();
 
 		if (item.getName() != null)
-			;
-		p.put("name", item.getName());
+			p.put("name", item.getName());
 		if (item.getClassification() != null)
 			p.put("classification", item.getClassification());
 		if (item.getPrice() != null)
-			p.put("price", item.getPrice());
+			p.put("price", String.valueOf(item.getPrice()));
 		if (item.getExpect() != null)
-			;
-		p.put("execpt", item.getExpect());
+			p.put("execpt", item.getExpect());
 		if (item.getDetail() != null)
 			p.put("detail", item.getDetail());
 		if (item.getImg() != null)
@@ -94,7 +95,7 @@ public class ItemController {
 	
 	@RequestMapping("/selectItem")
 	public void find(HashMap<String, String> p,Model model){
-		model.asMap().put("ItemList",i.find(p));
+		model.addAttribute("ItemList", i.find(p));
 	}
 	
 	public @ResponseBody List<Item> find(HashMap<String, String> p) {
@@ -109,9 +110,23 @@ public class ItemController {
 	 * @return 商品详情页面
 	 */
 	@RequestMapping("/itemPage/itemid={id}")
-	public @ResponseBody String geturlparam(@PathVariable("id") String id) {
-		
+	public @ResponseBody String geturlparam(@PathVariable("id") String id,Model model) {
+		Map<String,String> p = new HashMap<>();
+		p.put("id", id);
+		Item item = i.find(p).get(0);
+		model.addAttribute("itemdata", item);
+		p.clear();
+		p.put("username", item.getUid());
+		model.addAttribute("user_b" , u.getUser(p));
 		return "itemPage/itemPage";
+	}
+
+	public void setI(ItemDao i) {
+		this.i = i;
+	}
+
+	public void setU(UserDao u) {
+		this.u = u;
 	}
 
 }

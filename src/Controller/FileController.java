@@ -8,6 +8,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import po.User;
+import service.ItemDao;
 
 @Controller
 @SessionAttributes("user")
 public class FileController {
 
+	@Autowired
+	private ItemDao i;
+	
 	@RequestMapping(value = "/uploadImg", method = RequestMethod.POST)
 	public @ResponseBody String uploadImg(HttpServletRequest rq,
 			@RequestParam("img") MultipartFile img, Model model) {
@@ -61,9 +66,12 @@ public class FileController {
 	 * @param imgpath为商品的图片在服务器目录下的相对路径拼接的字符串，每个路径字符串之间由*隔开
 	 */
 	@RequestMapping("/deleteImg")
-	public @ResponseBody void deleteImg(HttpServletRequest rq,@RequestParam("img")String img){
-		
-		
+	public @ResponseBody void deleteImg(@RequestParam("img")String img,int ItemId){
+		i.deleteImg(img, ItemId);
+	}
+
+	public void setI(ItemDao i) {
+		this.i = i;
 	}
 	
 }
