@@ -1,8 +1,5 @@
 package com.test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -11,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import po.Exchange;
-import po.Item;
-import po.User;
 import service.ExchangeDao;
 import service.ItemDaoImpl;
 import service.UserDaoImpl;

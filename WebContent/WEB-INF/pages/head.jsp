@@ -15,7 +15,7 @@
 			<h4>环保生活就上换了呗</h4>
 		</div>
 		<div class="">
-			<div class="col-lg-5"
+			<div class="col-lg-4"
 				style="margin-top: 30px; color: rgb(255, 0, 45);">
 				<div class="input-group">
 					<input type="text" class="form-control" id="inputNumber"
@@ -31,7 +31,7 @@
 		<!-- /.row -->
 
 		<ul>
-			<li onclick="uControl()"><span class="icon-user"></span>
+			<li ><span class="icon-user"></span>
 				<div id="uName">
 					<c:if test="${empty sessionScope.user.nickname}" var="userExits">
 						<a href="./loginPage">请登录</a>

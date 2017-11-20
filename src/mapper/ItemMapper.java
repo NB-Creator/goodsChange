@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 
 import po.Item;
 import provider.ItemPro;
@@ -17,6 +18,7 @@ public interface ItemMapper {
 	 * 				查询价格时输入一个区间,priceLeft为低价,priceRight为高价
 	 * 可通过商品编号(id),创建时间(time),名字(name),期望(except),分类(classfication),
 	 * 价格区间(priceLeft<=用户输入价格<=priceRight),uid查询商品
+	 * 排序方式key=sort,value=(用于排序的列名),默认为时间排序
 	 */
 	@SelectProvider(method="select",type=ItemPro.class)
 	public List<Item> select(Map<String, String> param);
@@ -32,6 +34,6 @@ public interface ItemMapper {
 	 * 				必须传入item的主键,即必须传入id
 	 * 可用于修改商品名字(name),详细信息(detail),图片(img),期望(except),分类(classfication),价格(price)
 	 */
-	@SelectProvider(method="update",type=ItemPro.class)
+	@UpdateProvider(method="update",type=ItemPro.class)
 	public Integer Update(Map<String, Object> param);
 }

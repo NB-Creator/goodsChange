@@ -23,33 +23,47 @@ import po.User;
 @SessionAttributes("user")
 public class FileController {
 
-	@RequestMapping(value="/uploadImg",method = RequestMethod.POST)
-	public @ResponseBody String uploadImg(HttpServletRequest rq, 
-			@RequestParam("img")MultipartFile img,Model model)
-	{
-		File imageFile = null;
+	@RequestMapping(value = "/uploadImg", method = RequestMethod.POST)
+	public @ResponseBody String uploadImg(HttpServletRequest rq,
+			@RequestParam("img") MultipartFile img, Model model) {
+		File imageFile = null;// 用以存储上传文件
+
 		String fileName = null;
-		User user=(User) model.asMap().get("user");
+		User user = (User) model.asMap().get("user");
 		/*
-		 * 创建存储路径文件夹
+		 * 创建存储路径文件夹，该目录为：部署的服务器根目录+相对路径(/file/img/用户账户)
 		 */
-		File savePath = new File(rq.getServletContext().getRealPath("file/img/"+user.getUsername()));
-		if (!savePath.exists()) {
-			System.out.println("该路径不存在");
+		File savePath = new File(rq.getServletContext().getRealPath(
+				"file/img/" + user.getUsername()));
+
+		if (!savePath.exists()) {// 若该路径不存在则创建
 			savePath.mkdirs();
 		}
+		// 保存上传的图片
 		if (null != img) {
 			Date d = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			fileName = sdf.format(d)+new Random().nextInt(1000)+".jpg";//用时间戳和随机数作为文件名
-			imageFile = new File(savePath.getPath(),
-					fileName);
+			fileName = sdf.format(d) + new Random().nextInt(1000) + ".jpg";// 用当前时间戳和一个随机数作为文件名
+
+			imageFile = new File(savePath.getPath(), fileName);// 创建一个savePath文件路径下，名字为filename的文件
 			try {
-				img.transferTo(imageFile);
+				img.transferTo(imageFile);// 将上传的图像文件写入到imageFile中
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		return "file/img/"+user.getUsername()+"/"+fileName;
+		// 将保存的文件的相对路径返回前台
+		return "file/img/" + user.getUsername() + "/" + fileName;
 	}
+	
+	/**
+	 * 
+	 * @param imgpath为商品的图片在服务器目录下的相对路径拼接的字符串，每个路径字符串之间由*隔开
+	 */
+	@RequestMapping("/deleteImg")
+	public @ResponseBody void deleteImg(HttpServletRequest rq,@RequestParam("img")String img){
+		
+		
+	}
+	
 }

@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.portlet.ModelAndView;
 
+import po.Item;
 import po.User;
+import service.ItemDao;
 import service.UserDao;
 
 @Controller
@@ -20,6 +23,9 @@ public class UserController {
 
 	@Autowired
 	private UserDao u;
+	
+	@Autowired
+	private ItemDao itemDao;
 
 	@RequestMapping(value = "/loginPage")
 	public String loginPage(Model model) {
@@ -46,8 +52,10 @@ public class UserController {
 		}
 	}
 	@RequestMapping("/mainPage")
-	public  String loginSuccess(){
-		
+	public  String loginSuccess(Model model){
+		Map<String,String> p=new HashMap<String,String>();
+		List<Item> itemlist=itemDao.find(p);
+		model.addAttribute("itemlist",itemlist);
 		return "main";
 	}
 	

@@ -5,140 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户登录</title>
-<link
-	href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet">
+<!-- bootstrp基础css文件 -->
+<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+<!-- bootstrap表格css文件 -->
+<link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
+<!-- awesome css文件 -->
+<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="css/userLogin.css">
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-<script
-	src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!-- Bootstrap 核心 JavaScript 文件 -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-table.js"></script>
 
 <style type="text/css">
-body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
-	margin: 0px;
-	padding: 0px;
-	border: 0px none;
-	list-style: none outside none;
-	text-decoration: none;
-}
-
-body {
-	background-image: url("images/uLog.jpg");
-}
-
-.div_1 {
-	width: 100%;
-	height: 800px;
-}
-
-.left {
-	float: left;
-	width: 45%;
-	height: 100%;
-	line-height: 100px;
-	background-color: rgba(155, 0, 0, 0.1);
-	color: darkorange;
-	border-bottom: solid 1px darkblue;
-	width: 45%;
-}
-
-img {
-	width: 100%;
-	height: 100%;
-	
-	float: left;
-}
-
-.right {
-	width: 55%;
-	height: 100%;
-	float: right;
-	background-color: rgba(240, 240, 240, 0.5);
-}
-
-.right_top {
-	height: 20%;
-	width: 100%;
-	float: right;
-	width: 100%;
-	text-align: right;
-	margin: 10px;
-}
-
-.login_box {
-	width: 100%;
-	height: 280px;
-	text-align: center;
-}
-
-.login_box input {
-	/*padding: 5px;
-		font-size: 18px;
-		width: 314px;
-		margin-bottom: 5px;*/
-	height: 50px;
-	width: 400px;
-	border: 1px solid #ccc;
-	padding: 0 10px;
-	font: 20px/1.6 tahoma, arial, sans-serif;
-	display: inline-block;
-	text-align: start;
-	-webkit-writing-mode: horizontal-tb;
-	margin-top: 20px;
-	border-radius: 5px;
-}
-
-.login_box_tab {
-	height: 50px;
-	border-bottom: solid 1px #EFEFEF;
-	margin-bottom: 2px;
-}
-
-.login_box  .btn {
-	width: 400px;
-	height: 50px;
-	line-height: 40px;
-	text-align: center;
-	background-color: antiquewhite;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	margin-top: 20px;
-}
-
-a {
-	color: white;
-	padding: 5px;
-	text-decoration:none;
-}
-
-a:link {
-	text-decoration: none;
-	color:white;
-}
-
-a:visited {
-	border: 1px solid white;
-	color:black;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-a:hover {
-	border: 1px solid white;
-	color:black:;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-a:active {
-	text-decoration: none;
-	color:black;
-}
 </style>
 </head>
 <body>
@@ -146,9 +25,9 @@ a:active {
 		<div class="left"></div>
 		<div class="right">
 			<div class="right_top">
-
-				<button type="button" class="btn btn-info" ></button><a href="./registerPage">注册帐号</a>
-				<button type="button" class="btn btn-info"></button><a href="#">找回密码</a>
+				<span class="icon-home" ></span><a href="./mainPage">进入首页</a>
+				<span class=" icon-user"></span><a href="./registerPage">注册帐号</a>
+				<span class="icon-search"></span><a href="#">找回密码</a>
 			</div>
 			<div class="login_box">
 				<h1>HLB</h1>

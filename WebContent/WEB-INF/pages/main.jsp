@@ -13,199 +13,8 @@
 <!-- Bootstrap 核心 JavaScript 文件 -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
-
-
-
 <style type="text/css">
-body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
-	margin: 0px;
-	padding: 0px;
-	border: 0px none;
-	list-style: none outside none;
-	text-decoration: none;
-}
 
-body {
-	background: rgb(245, 245, 245);
-}
-
-.head {
-	
-}
-
-.top {
-	width: 100%;
-	height: 160px;
-	background-color: white;
-	float: left;
-	padding-left: 5%;
-	padding-top: 20px;
-	filter: alpha(Opacity = 80);
-	-moz-opacity: 0.8;
-	opacity: 0.8;
-}
-
-.logo {
-	width: 25%;
-	color: rgb(255, 0, 45);
-	float: left;
-}
-
-.top h1 {
-	padding: 0;
-	width: 100%;
-	float: left;
-	font-size: 60px;
-	width: 100%;
-}
-
-.top h4 {
-	padding: 0;
-	width: 100%;
-	float: left;
-	font-size: 25px;
-	width: 100%;
-}
-
-.top ul {
-	float: right;
-	font-weight: 1000;
-}
-
-ul li {
-	float: left;
-	font-family: "微软雅黑";
-	font-style: inherit;
-	font-weight: 10000;
-	font-size: 1.3em;
-	margin-right: 30px;
-}
-
-.dock {
-	/* 	width: 100%;
-	height: 100px;
-	padding: 1px 0 0 10%;
-	line-height: 100px;
-	float: left;
-	color: white;
-	background-color: rgba(237, 244, 237, 0.5); */
-	background-image: url("images/dock.jpg");
-	width: 100%;
-	height: 450px;
-	padding: 1px 0 0 10%;
-	line-height: 100px;
-	float: left;
-	color: white;
-	background-color: rgba(237, 244, 237, 0.5);
-	padding: 1px 0 0 10%;
-	padding: 1px 0 0 10%
-}
-
-.dock button {
-	opacity: 0.8;
-	border: 1px solid;
-}
-
-.top a {
-	text-decoration: none;
-}
-
-.top a:link {
-	text-decoration: none;
-	color: black;
-}
-
-.top a:visited {
-	border: 1px solid white;
-	color: grey;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.top a:hover {
-	border: 1px solid white;
-	color: black:;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.top a:active {
-	text-decoration: none;
-	color: black;
-}
-
-.dock a {
-	font-size: 25px;
-	color: black;
-	padding: 10px;
-	margin-left: 10px;
-	text-decoration: none;
-}
-
-.dock a:link {
-	text-decoration: none;
-	color: black;
-}
-
-.dock a:visited {
-	border: 1px solid white;
-	color: grey;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.dock a:hover {
-	border: 1px solid white;
-	color: black:;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.dock a:active {
-	text-decoration: none;
-	color: black;
-}
-
-.middle {
-	width: 80%;
-	margin: 10px 3px 0 10%;
-	/* background-color: white; */
-	background-color: rgba(237, 244, 237, 0.8);
-	float: left;
-	border: 1px solid rgb(212, 212, 212);
-	padding: 5px;
-}
-
-.right {
-	width: 25%;
-	height: 900px;
-	margin: 10px 3px 0 0;
-	/* background-color: white; */
-	float: left;
-	border: 1px solid rgb(212, 212, 212);
-	padding: 5px 0 0 20px;
-	background-color: rgba(237, 244, 237, 0.8);
-}
-
-#uName, #eData {
-	float: right;
-	color: #669;
-	margin-left: 10px;
-}
-
-.myinfo button {
-	marigin: 10px;
-}
-
-#rightitem {
-	/*width: 200px;
-	height: 210px;*/
-	margin-right: 7%;
-}
 </style>
 </head>
 <body>
@@ -256,17 +65,17 @@ ul li {
 		</div>
 	</div>
 	<!-- /.dock -->
-
-
-
 	<div class="middle">
 		<div class="row1">
+			<c:forEach items="${itemlist}" var="item" end="9">
 			<div class="col-sm-4 col-md-4">
 				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
+					<c:forEach items="${item.imgpath}" var="imgpath" end="0">
+					<a href="itemPage/itemid=${item.id}"><img src="${imgpath}" alt="...">${item.name}</a>
+					</c:forEach>
 					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
+						<h4>商品描述:</h4>${item.detail}
+						<p style="font-size: 20px;">价格预估:${item.price}</p>
 						<p>
 							<a href="#" class="btn btn-primary" role="button"
 								style="font-size: x-small;">联系卖家</a> <a href="#"
@@ -276,184 +85,16 @@ ul li {
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
-		<div class="row2">
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row3">
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-4">
-				<div class="thumbnail">
-					<img src="img/ad3.jpg" alt="...">
-					<div class="caption">
-						<h4>商品描述</h4>
-						<p style="font-size: 20px;">价格预估</p>
-						<p>
-							<a href="#" class="btn btn-primary" role="button"
-								style="font-size: x-small;">联系卖家</a> <a href="#"
-								class="btn btn-default" role="button"
-								style="font-size: x-small;">确认交换</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<nav aria-label="...">
-			<ul class="pager" style="margin-left: 35%;">
+			<nav aria-label="..." style="width: 100%;float:left;">
+			<ul class="pager" style="margin-left: 0;">
 				<li><a href="#">上一页</a></li>
 				<li><a href="#">下一页</a></li>
 			</ul>
 			</nav>
 
 		</div>
-
-
-	</div>
-
-	<!-- /.middle -->
-
-	<!-- <div class="right">
-		<div class="myinfo">
-			<h3>我的</h3>
-			
-
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: white;">我关注过的</button>
-			<br>
-			<br>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: #C8E5BC;">与我相关的</button>
-			<br>
-			<br>
-			<button class="btn btn-defaul " data-toggle="modal"
-				style="background-color: #9ACFEA">查找个用户</button>
-			<br>
-			<br>
-		</div>
-
-		<div class="public" >
-			<h4>宝贝推荐</h4>
-		    	<div class="thumbnail" id="rightitem">
-		      	<img src="img/ad3.jpg" class="img-responsive">
-		      		<div class="caption">
-		        		<h5>商品描述</h5>
-		        		<p style="font-size: 10px;">价格预估</p>
-		        	</div>
-		    	</div>
-				<div class="thumbnail" id="rightitem">
-			      	<img src="img/ad3.jpg" alt="...">
-			      	<div class="caption">
-			        	<h5>商品描述</h5>
-			        	<p style="font-size: 10px;">价格预估</p>
-			        </div>
-		    	</div>
-		    
-
-		</div>
-	</div> -->
-	<!-- /.right -->
 
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
