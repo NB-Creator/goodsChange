@@ -17,8 +17,8 @@ public class ItemPro {
 					WHERE("time=#{time}");
 				if (p.get("name") != null)
 					WHERE("name=#{name}");
-				if (p.get("classfication") != null)
-					WHERE("classfication=#{classfication}");
+				if (p.get("classification") != null)
+					WHERE("classification=#{classification}");
 				if ((p.get("priceLeft") != null)
 						&& (p.get("prcieRight") != null))
 					WHERE("price between #{priceLeft} and #{priceRight}");

@@ -38,12 +38,13 @@
 					style="padding: 0; color: black;"> 选择商品分类 <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">数码</a></li>
-						<li><a href="#">服装</a></li>
+						<li><a href="#">手机</a></li>
+						<li><a href="#">电脑</a></li>
+						<li><a href="#">衣物</a></li>
 						<li><a href="#">书籍</a></li>
-						<li><a href="#">工具</a></li>
+						<li><a href="#">游戏</a></li>
 						<li><a href="#">运动</a></li>
-						<li><a href="#">其它</a></li>
+						<li><a href="#">原创</a></li>
 					</ul>
 					<div id="s_type" style="margin-left: 50px;"></div></li>
 
