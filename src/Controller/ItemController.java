@@ -38,6 +38,16 @@ public class ItemController {
 	public String addItemPage() {
 		return "itemPage/addItem";
 	}
+	
+	@RequestMapping("/myCollectPage")
+	public String myCollectPage() {
+		return "itemPage/myCollectPage";
+	}
+	
+	@RequestMapping("/mySubmitPage")
+	public String mySubmitPage() {
+		return "itemPage/mySubmitPage";
+	}
 
 	@RequestMapping("/addSuccessPage")
 	public String addSuccess(@ModelAttribute("additem") Item item, Model model) {
