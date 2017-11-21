@@ -7,7 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.portlet.ModelAndView;
@@ -88,10 +90,16 @@ public class UserController {
 
 	}
 
+	/**
+	 * 
+	 * @param uMap 包含用户提交的修改数据键值，除了username的其它属性，以及一个旧密码oldpassword
+	 * 用来在用户修改密码时对原密码的验证，若不匹配，则不更新信息并返回'oldpasserro'，（即当key=passowrd不为空时需判定oldpassword）
+	 * @return 更新成功返回success
+	 */
 	@RequestMapping("/changeInfo")
-	public ModelAndView changeInfo(ModelAndView mv) {
+	public @ResponseBody String changeInfo(Map<String,Object> uMap) {
 		Map<String, Object> m = new HashMap<>();
-		Map<String, Object> p = mv.getModel();
+		Map<String, Object> p = uMap;
 		if (p.get("nickname") != null)
 			m.put("nickname", p.get("nickname"));
 		if (p.get("password") != null)
@@ -101,7 +109,7 @@ public class UserController {
 		if (p.get("name") != null)
 			m.put("name", p.get("name"));
 		u.changeInfo(p);
-		return mv;
+		return "success";
 	}
 
 	public void setU(UserDao u) {
