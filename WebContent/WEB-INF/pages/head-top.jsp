@@ -9,7 +9,6 @@
 <style type="text/css">
 .head-top {
 	width: 100%;
-	float: left;
 	height:25px;
 	line-height:25px;
 	background-color: rgb(242, 242, 242);
