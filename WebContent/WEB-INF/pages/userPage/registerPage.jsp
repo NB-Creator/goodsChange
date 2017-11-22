@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
@@ -46,6 +47,7 @@ body {
 }
 </style>
 </head>
+
 <body>
 
 	<div class="top">用户注册</div>
@@ -80,26 +82,25 @@ body {
 			</tr>
 			<tr>
 				<td><input type="text" id="mail" name="mail"
-					class="form-control" placeholder="邮箱"></td>
+					class="form-control" placeholder="邮箱">
+					<div id="tips_mail"></td>
 			</tr>
 		</table>
 
 		<div>
 			<!-- /.row -->
 			<label id="message"></label> <br>
-			<button class="btn btn-info" type="button" onclick="login()">提交信息</button>
+			<button class="btn btn-info" type="button" onclick="sendData()">提交信息</button>
 		</div>
 
 	</div>
 	<!-- /.col-lg-6 -->
 
-
 </body>
 
 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-	function login() {
-
+	function sendData() {
 		var username = document.getElementById('username').value;
 		var nickname = document.getElementById('nickname').value;
 		var password = document.getElementById('password').value;
@@ -107,12 +108,19 @@ body {
 		var name = document.getElementById('name').value;
 		var address = document.getElementById('address').value;
 		var mail = document.getElementById('mail').value;
+
+		var result = mail
+				.match(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+
 		$("#message").empty();
 		if (nickname == "" || username == "" || password == "" || name == ""
 				|| address == "" || mail == "") {
 			$("#message").append("<br>请将信息填写完整<br><br>")
 		} else if (password != password2) {
 			$("#message").append("<br>两次密码不一样<br><br>")
+		} else if (result == null) {
+			$("#message").append("<br>邮箱格式错误(格式示例：xxxxxx@xx.xx)<br><br>");
+			return;
 		} else {
 			$.ajax({
 				url : './register',
@@ -127,11 +135,11 @@ body {
 					"mail" : mail
 				},
 				success : function(data) {
-					 if (data == "SUCCESS") {
-						 alert("恭喜您注册成功，点击确定跳转到登录页面")
+					if (data == "SUCCESS") {
+						alert("恭喜您注册成功，点击确定跳转到登录页面")
 						self.location = "./loginPage";
-					}else {
-						
+					} else {
+
 						alert(data);
 					}
 				},
@@ -142,4 +150,5 @@ body {
 		}
 	}
 </script>
+
 </html>

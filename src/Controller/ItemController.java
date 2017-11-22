@@ -111,10 +111,11 @@ public class ItemController {
 	 * @param id为商品id
 	 *            将该商品查询出来添加到model中key="itemdata",
 	 *            将该商品的所有者信息查询出来添加到model,key="user_b"
+	 *            添加一个user_b的所有商品列表到model,key="b_itemlist"//11月21日新增
 	 * @return 商品详情页面
 	 */
 	@RequestMapping("/itemPage/itemid={id}")
-	public @ResponseBody String geturlparam(@PathVariable("id") String id,Model model) {
+	public String geturlparam(@PathVariable("id") String id,Model model) {
 		Map<String,String> p = new HashMap<>();
 		p.put("id", id);
 		Item item = i.find(p).get(0);
