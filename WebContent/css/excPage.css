@@ -42,12 +42,15 @@
 	padding:10px;
 	padding-left:30px;
 	float:left;
-	background-color:#D6E9C6;
-	font-size: 18px;
+	background-color:rgb(255,248,225);
+	font-size: 15px;
 	font-weight: 300;
 	font-family: "微软雅黑";
 }
-
+.d_write span{
+	float:left;
+	line-height: 30px;
+}
 .e_param{
 	width:500px;
 	height:40px;
