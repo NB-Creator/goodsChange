@@ -71,7 +71,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 			</div>
 			<div class="u-address">所在地:${user_b.address}</div>
 			<div class="i-exchange">
-				<a href="../excPage/itemid=${itemdata.id}"><button type="button" style="width: 200px;"
+				<a href="../excPage"><button type="button" style="width: 200px;"
 					class="btn btn-info btn-lg">发起交换</button></a>
 			</div>
 			<div class="i-message">
