@@ -1,9 +1,8 @@
 /**
  * 
  */
+
 window.onload=function(){
-		document.getElementById("div1").checked=true;	
-	}
 	$("#div1").click(function(){
 		var div1=document.getElementById("div1");
 		var div2=document.getElementById("div2");
@@ -24,6 +23,9 @@ window.onload=function(){
 		document.getElementById("div4").style.display="block";
 		document.getElementById("div3").style.display="none";
 	});
+	}
+	
+	
 	
 	function sendMessage(itemid){
 		var message;

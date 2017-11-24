@@ -102,7 +102,6 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 			<ul>
 				<li><a href="#1" id="div1"><span>宝贝介绍</span></a></li>
 				<li><a href="#2" id="div2"><span>留言列表</span></a></li>
-				<li><a href="#3"><span>其它</span></a></li>
 			</ul>
 		</div>
 		<div class="detail-box" id="div3">
@@ -111,30 +110,25 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 		<div class="detail-box" id="div4" style="display: none;">
 			<span>留言</span><br>
 		</div>
-
 		<div class="u-item-l">
 			<h3>该用户的其它商品</h3>
-			<div class="u-item">
-				<div class="u-item-img">
-					<a href="../itemPage/itemid=${itemdata.id}"><img alt=""
-						src="../${itemdata.imgpath[0]}"></a>
-				</div>
-				<div class="u-item-name">${itemdata.name}</div>
-				<div class="u-item-price">
-					￥<span>${itemdata.price}.00</span>
-				</div>
-			</div>
-			<c:forEach items="u-item" var="item">
-				<div class="u-item">
+			<%-- <c:if test="${b_itemlist.size()}">
+			该用户暂无其它商品
+			</c:if> --%>
+			
+			<c:forEach items="${b_itemlist}" var="iteml" end="4">
+				<c:if test="${iteml.id!=itemdata.id}">
+					<div class="u-item">
 					<div class="u-item-img">
-						<a href="../itemPage/itemid=${itemdata.id}"><img alt=""
-							src="../${itemdata.imgpath[0]}"></a>
+						<a href="../itemPage/itemid=${iteml.id}"><img alt=""
+							src="../${iteml.imgpath[0]}"></a>
 					</div>
-					<div class="u-item-name">${itemdata.name}</div>
+					<div class="u-item-name">${iteml.name}</div>
 					<div class="u-item-price">
-						￥<span>${itemdata.price}.00</span>
+						参考价：<span>${iteml.price}.00</span>
 					</div>
 				</div>
+				</c:if>
 			</c:forEach>
 		</div>
 	</div>

@@ -34,7 +34,7 @@
 		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="#">个人信息</a></li>
+				<li><a href="./userMainPage">个人信息</a></li>
 			</ul>
 		</div>
 		<!-- menu-param -->
@@ -82,7 +82,6 @@
 		<!-- menu-param -->
 	</div>
 	<!-- left-menu -->
-
 	<div class="right-data">
 		<div class="row">
 		  	<div class="col-sm-3 col-md-4">

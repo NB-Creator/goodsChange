@@ -49,7 +49,19 @@ public class ItemController {
 	public String mySubmitPage() {
 		return "itemPage/mySubmitPage";
 	}
+	
 
+	@RequestMapping("/myItem")
+	public String myItem() {
+		return "itemPage/myItemPage";
+	}
+	
+	@RequestMapping("/businessPage")
+	public String business() {
+		return "itemPage/businessPage";
+	}
+	
+	
 	@RequestMapping("/addSuccessPage")
 	public String addSuccess(@ModelAttribute("additem") Item item, Model model) {
 		model.addAttribute("additem", item);
@@ -137,7 +149,7 @@ public class ItemController {
 		model.addAttribute("user_b" , user);
 		p.clear();
 		p.put("uid", user.getUsername());
-		model.addAttribute("b_itemlist", i.find(p).get(0));
+		model.addAttribute("b_itemlist", i.find(p));
 		return "itemPage/itemPage";
 	}
 

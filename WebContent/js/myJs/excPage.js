@@ -92,20 +92,18 @@ function getPage(pn) {
 	var pageSize = 4;
 	var pageCount = Math.ceil(dataCount / pageSize);
 	var ul = $(".item_l");
-	ul.empty();
-	if (pn == 0 || pn > pageCount) {
-		ul.append("<label style='margin-top:30px;color:red;'>你还没有上传任何商品</label><a href='./addItemPage'><button class='btn btn-danger'>点我上传</button></a>");
-		return;
-	}
 	
-	if(dataCount==0){
-		
-		
+	if (pn == 0 || pn > pageCount) {
+		return;
 	}
 	// console.log(pageCount+"..."+pn)
 	paintPage(pageCount, pn); //
 	var startPage = pageSize * (pn - 1);
-
+	ul.empty();
+	if(length==0){
+		ul.append("<label style='margin-top:30px;color:red;'>你还没有上传任何商品</label><a href='./addItemPage'><button class='btn btn-danger'>点我上传</button></a>");
+		return;
+	}
 	if (pageCount == 1) { // 
 		for (var j = 0; j < dataCount; j++) {
 			var fun = "addTo(" + j + ")";
