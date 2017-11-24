@@ -19,13 +19,14 @@ import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import po.Exchange;
 import po.Item;
 import po.User;
 import service.ItemDao;
 import service.UserDao;
 
 @Controller
-@SessionAttributes(value = { "user", "additem" })
+@SessionAttributes(value = { "user", "additem", "itemdata" })
 public class ItemController {
 
 	@Autowired
@@ -94,13 +95,13 @@ public class ItemController {
 		mv.setViewName("changeSuccess.jsp");
 		return mv;
 	}
-	
-	@RequestMapping("/selectItem")
-	public void find(HashMap<String, String> p,Model model){
-		model.addAttribute("ItemList", i.find(p));
-	}
-	
-	@RequestMapping(value="/getItemList",method= RequestMethod.GET, produces = "text/html;charset=UTF-8")
+
+	/**
+	 * 
+	 * @param 查询条件map
+	 * @return 查询到的商品列表的json字符串
+	 */
+	@RequestMapping(value = "/getItemList", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
 	public @ResponseBody String find(HashMap<String, String> p) {
 		return JSON.toJSONString(i.find(p));
 	}
@@ -114,8 +115,8 @@ public class ItemController {
 	 * @return 商品详情页面
 	 */
 	@RequestMapping("/itemPage/itemid={id}")
-	public String geturlparam(@PathVariable("id") String id,Model model) {
-		Map<String,String> p = new HashMap<>();
+	public String geturlparam(@PathVariable("id") String id, Model model) {
+		Map<String, String> p = new HashMap<>();
 		p.put("id", id);
 		Item item = i.find(p).get(0);
 		model.addAttribute("itemdata", item);
@@ -129,6 +130,35 @@ public class ItemController {
 		return "itemPage/itemPage";
 	}
 
+	
+	/**
+	 *请求商品交换页面 
+	 * @param item
+	 * @param model
+	 * model中还需要添加一个用户的所有发布的，且状态为"空闲"的商品列表
+	 * @return
+	 */
+	@RequestMapping("/excPage")
+	public String exchangePage(@ModelAttribute("itemdata") Item item, Model model) {
+		model.addAttribute("excitem", item);
+		//待完成
+		return "itemPage/excPage";
+	}
+	
+	
+	/**
+	 * 商品交换信息提交
+	 * @param exc po类对象，前台传值为：gid_a,gid_b,info
+	 * date,uid_a,uid_b通过控制器获取并赋值，statu="提交";
+	 * @return 成功插入到数据库中则返回"success",其它则返回相应的错误信息
+	 */
+	@RequestMapping("/itemExc")
+	public @ResponseBody String itemExc(Exchange exc) {
+		//待完成
+		return "";
+	}
+	
+	
 	public void setI(ItemDao i) {
 		this.i = i;
 	}

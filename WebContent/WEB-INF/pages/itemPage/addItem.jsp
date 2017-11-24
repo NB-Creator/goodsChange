@@ -163,61 +163,13 @@
 			});
 		}
 	}
-	/* function uploadPath() {
-		alert(imgpath);
-		$.ajax({
-			type : "post",
-			url : "./getImgpath",
-			data : {
-				"path" : imgpath
-			},
-			traditional : true,
-			success : function(data) {
-				alert(data);
-				
-				imgpath="";
-			},
-			error : function() {
-				alert("服务器异常");
-			},
-			complete : function() {
-
-			}
-		});
-	} */
-
+	
 	$('#classification li').click(function() {
 		classification = ($(this).text());
 		$("#s_type").empty();
 		$("#s_type").append(classification);
 	})
-	/* function uploadImages(file) {
-
-		var form = new FormData();
-		form.append("img", file);
-
-		$.ajax({
-			type : "post",
-			url : "/_MSP_ItemByItem/uploadImg",
-			data : form,
-			async : false,
-			cache : false,
-			contentType : false,
-			processData : false,
-			success : function(data, status) {
-				alert(data);
-				$("#img")[0].src = "http://localhost:8080/_MSP_ItemByItem/"
-						+ data;
-			},
-			error : function() {
-				alert("服务器异常");
-			},
-			complete : function() {
-
-			}
-		});
-	} */
-
+	
 	function addItem() {
 		var name = document.getElementById("name").value;
 		var detail = document.getElementById("detail").value;
