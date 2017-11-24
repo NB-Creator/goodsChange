@@ -70,17 +70,29 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 				参考价:<b>￥</b><span class="span">${itemdata.price}.00</span>
 			</div>
 			<div class="u-address">所在地:${user_b.address}</div>
-			<div class="i-exchange">
-				<a href="../excPage"><button type="button" style="width: 200px;"
-					class="btn btn-info btn-lg">发起交换</button></a>
-			</div>
-			<div class="i-message">
-				<button type="button" style="width: 200px;"
-					class="btn btn-primary btn-lg"
-					onclick="sendMessage(${itemdata.id})">发送留言</button>
-			</div>
-			<textarea id="i-message" rows="5" cols="" style="width: 200px"
-				placeholder="添加留言"></textarea>
+			<div class="u-address">期望商品:${itemdata.expect}</div>
+
+			<c:if test="${sessionScope.user.username==null}">
+				<div class="i-exchange">
+					<a href="../loginPage"><button type="button"
+							style="width: 200px;" class="btn btn-info btn-lg">点我登录</button></a>
+				</div>
+			</c:if>
+			<c:if test="${sessionScope.user.username!=null}">
+				<div class="i-exchange">
+					<a href="../excPage"><button type="button"
+							style="width: 200px;" class="btn btn-info btn-lg">发起交换</button></a>
+				</div>
+				<div class="i-message">
+					<button type="button" style="width: 200px;"
+						class="btn btn-primary btn-lg"
+						onclick="sendMessage(${itemdata.id})">发送留言</button>
+				</div>
+				<textarea id="i-message" rows="5" cols="" style="width: 200px"
+					placeholder="添加留言"></textarea>
+			</c:if>
+
+
 		</div>
 		<!-- /.box-r -->
 	</div>

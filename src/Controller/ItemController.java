@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -102,8 +103,8 @@ public class ItemController {
 	 * @param 查询条件map
 	 * @return 查询到的商品列表的json字符串
 	 */
-	@RequestMapping(value = "/getItemList", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
-	public @ResponseBody String find(HashMap<String, String> p) {
+	@RequestMapping(value = "/getItemList")
+	public @ResponseBody String find(@RequestBody Map<String, String> p) {
 		return JSON.toJSONString(i.find(p));
 	}
 
