@@ -3,7 +3,6 @@ package Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -134,7 +133,11 @@ public class ItemController {
 		model.addAttribute("itemdata", item);
 		p.clear();
 		p.put("username", item.getUid());
-		model.addAttribute("user_b", u.getUser(p));
+		User user=u.getUser(p);
+		model.addAttribute("user_b" , user);
+		p.clear();
+		p.put("uid", user.getUsername());
+		model.addAttribute("b_itemlist", i.find(p).get(0));
 		return "itemPage/itemPage";
 	}
 
