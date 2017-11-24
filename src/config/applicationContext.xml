@@ -6,10 +6,9 @@
 	<!-- 数据库 -->
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql:///msp?useUnicode=true&amp;characterEncoding=UTF-8"/>
-		<property name="username" value="root"/>
-		<property name="password" value="123root"/>
-
+		<property name="url" value="jdbc:mysql://qdm157490420.my3w.com/qdm157490420_db?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="username" value="qdm157490420"/>
+		<property name="password" value="iamalone11"/>
 		<property name="initialSize" value="0"/>
 		<property name="maxActive" value="20"/>
 		<property name="maxIdle" value="20"/>

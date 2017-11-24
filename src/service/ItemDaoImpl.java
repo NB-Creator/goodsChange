@@ -96,8 +96,9 @@ public class ItemDaoImpl implements ItemDao {
 		
 		Iterator<String> i=imgs.iterator();
 		while(i.hasNext()){
-			if(i.next()!=imgPath)
-				img.append(imgPath+"*");
+			String path=i.next();
+			if(path!=imgPath)
+				img.append(path+"*");
 		}
 		img.deleteCharAt(img.length()-1);
 		

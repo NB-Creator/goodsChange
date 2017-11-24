@@ -66,7 +66,9 @@ public class FileController {
 	 * @param imgpath为商品的图片在服务器目录下的相对路径拼接的字符串，每个路径字符串之间由*隔开
 	 */
 	@RequestMapping("/deleteImg")
-	public @ResponseBody void deleteImg(@RequestParam("img")String img,int ItemId){
+	public @ResponseBody void deleteImg(@RequestParam("img")String img,int ItemId,HttpServletRequest rq){
+		File imgFile = new File(rq.getServletContext().getRealPath("file/img/"+img));
+		imgFile.delete();
 		i.deleteImg(img, ItemId);
 	}
 
