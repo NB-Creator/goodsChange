@@ -11,7 +11,7 @@ public interface ExchangeDao {
 	 * @param key为查寻订单条件(按日期查询时需要键入year和month两个键值)
 	 * @return 订单列表
 	 */
-	public List<Exchange> selectExc(Map<String,Object> m);
+	public List<Exchange> selectExc(Map<String,String> m);
 	
 	public String addExc(Exchange exc);
 	
