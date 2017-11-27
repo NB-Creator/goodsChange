@@ -188,7 +188,12 @@ public class ItemController {
 	 */
 	@RequestMapping("/itemExc")
 	public @ResponseBody String itemExc(Exchange exc) {
-		exc.setId(exc.getGid_a()+exc.getGid_b());
+		char[] a=exc.getGid_a().toCharArray();
+		char[] b=exc.getGid_b().toCharArray();
+		char[] c=new char[17];
+		for(int i=0;i<17;i++)
+			c[i]=(char) (a[i]+b[i]);
+		exc.setId(new String(c));
 		exc.setDate(""+System.currentTimeMillis());
 		exc.setStatu("submit");
 		ed.addExc(exc);
