@@ -21,6 +21,7 @@ import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import po.Comment;
 import po.Exchange;
 import po.Item;
 import po.User;
@@ -202,6 +203,37 @@ public class ItemController {
 		exc.setStatu("submit");
 		ed.addExc(exc);
 		return "success";
+	}
+	
+	/**
+	 * 
+	 * @param 商品收藏，前台提供商品id，返回操作结果(success/false)
+	 */
+	@RequestMapping("/collect")
+	public @ResponseBody String collect(String itemid) {
+		
+		return "";
+	}
+	
+	/**
+	 * 
+	 * @param 商品评论，前台提供g_id,info,u_id,后台获取时间
+	 */
+	@RequestMapping("/comment")
+	public @ResponseBody String comment(Comment comment) {
+		
+		return"";
+	}
+	
+	/**
+	 * 
+	 * @param 获取商品评论列表
+	 * @return 该商品的评论列表
+	 */
+	@RequestMapping("/getComment")
+	public @ResponseBody String getComment(String itemid) {
+		
+		return "";
 	}
 	
 	
