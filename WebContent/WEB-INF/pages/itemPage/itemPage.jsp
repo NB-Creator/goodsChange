@@ -47,7 +47,10 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 		</div>
 		<div class="i-date">
 			发布时间<br>${itemdata.time}</div>
-	</div>
+			<div class="i-date">
+			收藏<br><span class="icon-heart-empty" id="collect" onclick="collect(${itemdata.id})"></span></div>
+		</div>
+		
 	<!-- /.i-top -->
 
 	<div class="i-box">
@@ -109,6 +112,9 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 		</div>
 		<div class="detail-box" id="div4" style="display: none;">
 			<span>留言</span><br>
+			<div class="messagebox">
+			</div>
+			<div class="loadbox"></div>
 		</div>
 		<div class="u-item-l">
 			<h3>该用户的其它商品</h3>
@@ -133,7 +139,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 		</div>
 	</div>
 	<!-- detail -->
-
+		<div style="display:none;" id="itemid">${itemdata.id}</div>
 
 </body>
 
