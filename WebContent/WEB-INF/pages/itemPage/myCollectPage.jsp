@@ -15,6 +15,7 @@
 <style type="text/css">
 
 </style>
+
 </head>
 <body>
 <jsp:include page="../head.jsp"></jsp:include>
@@ -34,7 +35,7 @@
 		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="#">个人信息</a></li>
+				<li><a href="./userMainPage">个人信息</a></li>
 			</ul>
 		</div>
 		<!-- menu-param -->
@@ -84,39 +85,7 @@
 	<!-- left-menu -->
 
 	<div class="right-data">
-		<div class="row">
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="" alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		</div>
-		
-		<div class="row">
+        <div class="row">
 		  	<div class="col-sm-3 col-md-4">
 		    	<div class="thumbnail">
 		     		<img src="..." alt="..." style="width:200px;height:195px">
@@ -180,9 +149,38 @@
 		  	</div>
 		</div>
 		
-		
- 			
-	</div>
+		<div class="row">
+		  	<div class="col-sm-3 col-md-4">
+		    	<div class="thumbnail">
+		     		<img src="..." alt="..." style="width:200px;height:195px">
+		      		<div class="caption">
+		        		<h3>商品名称</h3>
+		        		<p>商品价格：10￥</p>
+		      		</div>
+		    	</div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3 col-md-4">
+		    	<div class="thumbnail">
+		     		<img src="..." alt="..." style="width:200px;height:195px">
+		      		<div class="caption">
+		        		<h3>商品名称</h3>
+		        		<p>商品价格：10￥</p>
+		      		</div>
+		    	</div>
+		  	</div>
+		  	
+		  	<div class="col-sm-3 col-md-4">
+		    	<div class="thumbnail">
+		     		<img src="..." alt="..." style="width:200px;height:195px">
+		      		<div class="caption">
+		        		<h3>商品名称</h3>
+		        		<p>商品价格：10￥</p>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+    </div>  
 
 </body>
 <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>

@@ -28,13 +28,13 @@
 	<div class="left-menu">
 		<div class="menu-param" >
 			<ul>
-				<li><a href="#">全部功能</a></li>
+				<li><a href="./userMainPage">全部功能</a></li>
 			</ul>
 		</div>
 		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="#">个人信息</a></li>
+				<li><a href="./userMainPage">个人信息</a></li>
 			</ul>
 		</div>
 		<!-- menu-param -->

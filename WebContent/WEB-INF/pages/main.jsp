@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>换了呗</title>
 <link type="text/css" rel="stylesheet" href="css/main.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
@@ -20,11 +20,11 @@
 	width: 100%;
 	height: 550px;
 	padding: 1px 0 0 10%;
-	line-height: 100px;
+	line-height: 30px;
 	float: left;
 	color: white;
 	background-color: rgba(237, 244, 237, 0.5);
-	padding: 1px 0 0 10%;
+	padding: 1px 0 0 1%;
 }
 
 .bottom {
@@ -32,31 +32,54 @@
 	width: 100%;
 	margin: 0 auto;
 }
+#sortlist {
+	width:150px;
+	height:30px;
+	float:center;
+	text-align:20%;
+}
+#sortlist a{
+	font-size:120%;
+	height:100%;
+	color:black;
+	float:center;
+}
+#sort{
+	width:10%;
+	height:100%;
+	background-color: rgba(0,0,0,0.2);
+}
+#lunbo{
+	width: 50%;
+	height: 550px;
+}
 </style>
 </head>
-<body>
+<body >
 	<jsp:include page="head.jsp"></jsp:include>
-	<div class="dock">
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default dropdown-toggle "
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-				style="opacity: 0.8;">
-				价格选择 <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" style="opacity: 0.5;">
-				<li><a href="#">0~10元</a></li>
-				<li><a href="#">10~20元</a></li>
-				<li><a href="#">20~30元</a></li>
-				<li><a href="#">30元以上</a></li>
-			</ul>
-		</div>
-		<div class="btn-group btn-group-lg ">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				衣物 <span class="caret"></span>
-			</button>
-		</div>
-		<div class="btn-group btn-group-lg">
+	<div class="dock" >
+	<div class="sort" id="sort">
+		<li id="sortlist"><a href="#" id="smallsort">今日热门</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">最新上架</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">洗护用品</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">学习用具</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">生活用品</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">电脑配件</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">手机配件</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">化妆品</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">手机</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">电脑</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">服装</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">鞋靴</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">箱包</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">书本</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">零食</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">电器</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">装饰</a></li>
+		<li id="sortlist"><a href="#" id="smallsort">其他</a></li>
+	</div>
+	
+		<!-- <div class="btn-group btn-group-lg">
 			<button type="button" class="btn btn-default dropdown-toggle"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				学习用品 <span class="caret"></span>
@@ -79,7 +102,7 @@
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				其他 <span class="caret"></span>
 			</button>
-		</div>
+		</div> -->
 	</div>
 	<!-- /.dock -->
 	<div class="bottom">
