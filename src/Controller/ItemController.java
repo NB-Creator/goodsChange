@@ -3,7 +3,6 @@ package Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -12,27 +11,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import po.Exchange;
 import po.Item;
 import po.User;
+import service.ExchangeDao;
 import service.ItemDao;
 import service.UserDao;
 
 @Controller
-@SessionAttributes(value = { "user", "additem" })
+@SessionAttributes(value = { "user", "additem", "itemdata" })
 public class ItemController {
 
 	@Autowired
 	private ItemDao i;
 	@Autowired
 	private UserDao u;
+	@Autowired
+	private ExchangeDao ed;
 
 	@RequestMapping("/addItemPage")
 	public String addItemPage() {
@@ -48,7 +51,19 @@ public class ItemController {
 	public String mySubmitPage() {
 		return "itemPage/mySubmitPage";
 	}
+	
 
+	@RequestMapping("/myItem")
+	public String myItem() {
+		return "itemPage/myItemPage";
+	}
+	
+	@RequestMapping("/businessPage")
+	public String business() {
+		return "itemPage/businessPage";
+	}
+	
+	
 	@RequestMapping("/addSuccessPage")
 	public String addSuccess(@ModelAttribute("additem") Item item, Model model) {
 		model.addAttribute("additem", item);
@@ -105,14 +120,14 @@ public class ItemController {
 		mv.setViewName("changeSuccess.jsp");
 		return mv;
 	}
-	
-	@RequestMapping("/selectItem")
-	public void find(HashMap<String, String> p,Model model){
-		model.addAttribute("ItemList", i.find(p));
-	}
-	
-	@RequestMapping(value="/getItemList",method= RequestMethod.GET, produces = "text/html;charset=UTF-8")
-	public @ResponseBody String find(HashMap<String, String> p) {
+
+	/**
+	 * 
+	 * @param 查询条件map
+	 * @return 查询到的商品列表的json字符串
+	 */
+	@RequestMapping(value = "/getItemList")
+	public @ResponseBody String find(@RequestBody Map<String, String> p) {
 		return JSON.toJSONString(i.find(p));
 	}
 
@@ -125,23 +140,77 @@ public class ItemController {
 	 * @return 商品详情页面
 	 */
 	@RequestMapping("/itemPage/itemid={id}")
-	public String geturlparam(@PathVariable("id") String id,Model model) {
-		Map<String,String> p = new HashMap<>();
+	public String geturlparam(@PathVariable("id") String id, Model model) {
+		Map<String, String> p = new HashMap<>();
 		p.put("id", id);
 		Item item = i.find(p).get(0);
 		model.addAttribute("itemdata", item);
 		p.clear();
 		p.put("username", item.getUid());
-		model.addAttribute("user_b" , u.getUser(p));
+		User user=u.getUser(p);
+		model.addAttribute("user_b" , user);
+		p.clear();
+		p.put("uid", user.getUsername());
+		model.addAttribute("b_itemlist", i.find(p));
 		return "itemPage/itemPage";
 	}
 
+	
+	/**
+	 *请求商品交换页面 
+	 * @param item
+	 * @param model
+	 * model中还需要添加一个用户的所有发布的，且状态为"空闲"的商品列表
+	 * @return
+	 */
+	@RequestMapping("/excPage")
+	public String exchangePage(@ModelAttribute("itemdata") Item item, Model model) {
+		Map<String,String> m=new HashMap<>();
+		m.put("gid_a", item.getId());
+		//当前商品已经用于交换
+		if(ed.selectExc(m).isEmpty()){
+			return "";
+		}else{
+			m.replace("gid_a", "gid_b");
+			if(ed.selectExc(m).isEmpty())
+				return "";
+		}
+		model.addAttribute("excitem", item);
+		return "itemPage/excPage";
+	}
+	
+	
+	/**
+	 * 商品交换信息提交
+	 * @param exc po类对象，前台传值为：gid_a,gid_b,info
+	 * date,uid_a,uid_b通过控制器获取并赋值，statu="submit";
+	 * @return 成功插入到数据库中则返回"success",其它则返回相应的错误信息
+	 */
+	@RequestMapping("/itemExc")
+	public @ResponseBody String itemExc(Exchange exc) {
+		char[] a=exc.getGid_a().toCharArray();
+		char[] b=exc.getGid_b().toCharArray();
+		char[] c=new char[17];
+		for(int i=0;i<17;i++)
+			c[i]=(char) (a[i]+b[i]);
+		exc.setId(new String(c));
+		exc.setDate(""+System.currentTimeMillis());
+		exc.setStatu("submit");
+		ed.addExc(exc);
+		return "success";
+	}
+	
+	
 	public void setI(ItemDao i) {
 		this.i = i;
 	}
 
 	public void setU(UserDao u) {
 		this.u = u;
-
 	}
+
+	public void setEd(ExchangeDao ed) {
+		this.ed = ed;
+	}
+	
 }

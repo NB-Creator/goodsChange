@@ -16,7 +16,7 @@ public class ExchangeDaoImpl implements ExchangeDao {
 	private ExchangeMapper excMapper;
 
 	@Override
-	public List<Exchange> selectExc(Map<String, Object> m) {
+	public List<Exchange> selectExc(Map<String, String> m) {
 		// TODO 自动生成的方法存根
 		List<Exchange> excList = excMapper.selectExc(m);
 		return excList;

@@ -30,7 +30,7 @@ public interface ExchangeMapper {
 	 * @return
 	 */
 	@SelectProvider(method="select",type=ExchangePro.class)
-	public List<Exchange> selectExc(Map<String ,Object> m);
+	public List<Exchange> selectExc(Map<String ,String> m);
 	
 	/**
 	 * 

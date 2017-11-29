@@ -17,21 +17,21 @@
 				<li><span class="icon-user"></span>
 					<div id="uName">
 						<c:if test="${empty sessionScope.user.nickname}" var="userExits">
-							<a href="./loginPage">请登录</a>
+							<a href="/_MSP_ItemByItem/loginPage">请登录</a>
 						</c:if>
-						<a href="./userMainPage">${sessionScope.user.nickname}</a>
+						<a href="/_MSP_ItemByItem/userMainPage">${sessionScope.user.nickname}</a>
 					</div></li>
 				<li><span class="icon-envelope"></span>
 					<div id="eData">消息：${requestScope.nRead}</div></li>
 				<li><span class=" icon-off"> </span> <c:if
 						test="${!empty sessionScope.user.nickname}">
-						<a href="./userQuit">退出</a>
+						<a href="/_MSP_ItemByItem/userQuit">退出</a>
 					</c:if></li>
 			</ul>
 
 		</div>
 		<div class="logo">
-			<a href="./mainPage" style="color: rgb(255, 0, 45);"><h1>HLeB</h1></a>
+			<a href="/_MSP_ItemByItem/mainPage" style="color: rgb(255, 0, 45);"><h1>HLeB</h1></a>
 			<h4>环保生活就上换了呗</h4>
 		</div>
 		<div class="">

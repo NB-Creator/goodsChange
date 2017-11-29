@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.portlet.ModelAndView;
 
 import po.Item;
 import po.User;
@@ -30,13 +28,12 @@ public class UserController {
 
 	@RequestMapping(value = "/loginPage")
 	public String loginPage(Model model) {
-		System.out.println("123");
+		// System.out.println("123");
 		return "userPage/loginPage";
 	}
 
 	@RequestMapping("/login")
-	public @ResponseBody String login(String username, String password,
-			Model model) {
+	public @ResponseBody String login(String username, String password, Model model) {
 
 		User user = new User(username, password);
 		String msg = u.login(user);
@@ -92,26 +89,36 @@ public class UserController {
 
 	/**
 	 * 
-	 * @param uMap 包含用户提交的修改数据键值，除了username的其它属性，以及一个旧密码oldpassword
-	 * 用来在用户修改密码时对原密码的验证，若不匹配，则不更新信息并返回'oldpasserro'，（即当key=passowrd不为空时需判定oldpassword）
+	 * @param uMap
+	 *            包含用户提交的修改数据键值，除了username的其它属性，以及一个旧密码oldpassword
+	 *            用来在用户修改密码时对原密码的验证，若不匹配，则不更新信息并返回'oldpasserro'，（即当key=password不为空时需判定oldpassword）
 	 * @return 更新成功返回success
 	 */
 	@RequestMapping("/changeInfo")
-	public @ResponseBody String changeInfo(Map<String,Object> uMap) {
+	public @ResponseBody String changeInfo(@RequestBody Map<String, Object> uMap,Model model) {
 		Map<String, Object> m = new HashMap<>();
 		Map<String, Object> p = uMap;
-		if (p.get("nickname") != null)
+		m.put("username", p.get("username"));
+		if (p.get("nickname") != "")
 			m.put("nickname", p.get("nickname"));
-		if (p.get("password") != null)
-			m.put("password", p.get("password"));
-		if (p.get("mail") != null)
+		if (p.get("mail") != "")
 			m.put("mail", p.get("mail"));
-		if (p.get("name") != null)
+		if (p.get("name") != "")
 			m.put("name", p.get("name"));
-		u.changeInfo(p);
+		if (p.get("password") != "") {
+			if (p.get("oldpassword") != null) {
+				String msg = u.login(new User((String) p.get("username"), (String) p.get("oldpassword")));
+				if (msg.equals("FALSE"))
+					return "oldpasserro";
+				m.put("password", p.get("password"));
+			}
+		}
+		u.changeInfo(m);
+		Map<String, String> m1 = new HashMap<String, String>();
+		m1.put("username", (String) p.get("username"));
+		model.addAttribute("user", u.getUser(m1));
 		return "success";
 	}
-
 	public void setU(UserDao u) {
 		this.u = u;
 	}

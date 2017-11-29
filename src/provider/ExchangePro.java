@@ -6,7 +6,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 public class ExchangePro {
 
-	public String select(Map<String, Object> m) {
+	public String select(Map<String, String> m) {
 		return new SQL() {
 
 			{
@@ -20,6 +20,10 @@ public class ExchangePro {
 					WHERE("uid_b=#{uid_b}");
 				if(m.get("statu")!=null)
 					WHERE("statu=#{statu}");
+				if(m.get("gid_a")!=null)
+					WHERE("gid_a=#{gid_a}");
+				if(m.get("gid_b")!=null)
+					WHERE("gid_b=#{gid_b}");
 				if(m.get("year")!=null&&m.get("month")!=null)
 					WHERE("year(date)=#{year} and month(date)=#{month}");
 			}

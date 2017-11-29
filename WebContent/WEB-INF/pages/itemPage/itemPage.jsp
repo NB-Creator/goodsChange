@@ -15,9 +15,8 @@
 <link type="text/css" rel="stylesheet" href="../css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="../css/font-awesome.css">
 <link type="text/css" rel="stylesheet" href="../css/itemPage.css">
-<script type="text/javascript" src="../js/bootstrap.js"></script>
-<script type="text/javascript" src="../js/bootstrap-table.js"></script>
-
+<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="../js/myJs/itemPage.js"></script>
 <style type="text/css">
 
 /* 去除一些基础标签的属性值 */
@@ -70,17 +69,29 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 				参考价:<b>￥</b><span class="span">${itemdata.price}.00</span>
 			</div>
 			<div class="u-address">所在地:${user_b.address}</div>
-			<div class="i-exchange">
-				<a href="../excPage/itemid=${itemdata.id}"><button type="button" style="width: 200px;"
-					class="btn btn-info btn-lg">发起交换</button></a>
-			</div>
-			<div class="i-message">
-				<button type="button" style="width: 200px;"
-					class="btn btn-primary btn-lg"
-					onclick="sendMessage(${itemdata.id})">发送留言</button>
-			</div>
-			<textarea id="i-message" rows="5" cols="" style="width: 200px"
-				placeholder="添加留言"></textarea>
+			<div class="u-address">期望商品:${itemdata.expect}</div>
+
+			<c:if test="${sessionScope.user.username==null}">
+				<div class="i-exchange">
+					<a href="../loginPage"><button type="button"
+							style="width: 200px;" class="btn btn-info btn-lg">点我登录</button></a>
+				</div>
+			</c:if>
+			<c:if test="${sessionScope.user.username!=null}">
+				<div class="i-exchange">
+					<a href="../excPage"><button type="button"
+							style="width: 200px;" class="btn btn-info btn-lg">发起交换</button></a>
+				</div>
+				<div class="i-message">
+					<button type="button" style="width: 200px;"
+						class="btn btn-primary btn-lg"
+						onclick="sendMessage(${itemdata.id})">发送留言</button>
+				</div>
+				<textarea id="i-message" rows="5" cols="" style="width: 200px"
+					placeholder="添加留言"></textarea>
+			</c:if>
+
+
 		</div>
 		<!-- /.box-r -->
 	</div>
@@ -91,7 +102,6 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 			<ul>
 				<li><a href="#1" id="div1"><span>宝贝介绍</span></a></li>
 				<li><a href="#2" id="div2"><span>留言列表</span></a></li>
-				<li><a href="#3"><span>其它</span></a></li>
 			</ul>
 		</div>
 		<div class="detail-box" id="div3">
@@ -100,30 +110,25 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 		<div class="detail-box" id="div4" style="display: none;">
 			<span>留言</span><br>
 		</div>
-
 		<div class="u-item-l">
 			<h3>该用户的其它商品</h3>
-			<div class="u-item">
-				<div class="u-item-img">
-					<a href="../itemPage/itemid=${itemdata.id}"><img alt=""
-						src="../${itemdata.imgpath[0]}"></a>
-				</div>
-				<div class="u-item-name">${itemdata.name}</div>
-				<div class="u-item-price">
-					￥<span>${itemdata.price}.00</span>
-				</div>
-			</div>
-			<c:forEach items="u-item" var="item">
-				<div class="u-item">
+			<%-- <c:if test="${b_itemlist.size()}">
+			该用户暂无其它商品
+			</c:if> --%>
+			
+			<c:forEach items="${b_itemlist}" var="iteml" end="4">
+				<c:if test="${iteml.id!=itemdata.id}">
+					<div class="u-item">
 					<div class="u-item-img">
-						<a href="../itemPage/itemid=${itemdata.id}"><img alt=""
-							src="../${itemdata.imgpath[0]}"></a>
+						<a href="../itemPage/itemid=${iteml.id}"><img alt=""
+							src="../${iteml.imgpath[0]}"></a>
 					</div>
-					<div class="u-item-name">${itemdata.name}</div>
+					<div class="u-item-name">${iteml.name}</div>
 					<div class="u-item-price">
-						￥<span>${itemdata.price}.00</span>
+						参考价：<span>${iteml.price}.00</span>
 					</div>
 				</div>
+				</c:if>
 			</c:forEach>
 		</div>
 	</div>
@@ -131,59 +136,6 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 
 
 </body>
-<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
-<script type="text/javascript">
-	window.onload=function(){
-		document.getElementById("div1").checked=true;	
-	}
-	$("#div1").click(function(){
-		var div1=document.getElementById("div1");
-		var div2=document.getElementById("div2");
-		div1.style.background="rgb(225, 218, 68)";
-		div1.style.color="white";
-		div2.style.background="white";
-		div2.style.color="black";
-		document.getElementById("div3").style.display="block";
-		document.getElementById("div4").style.display="none";
-	});
-	$("#div2").click(function(){
-		var div1=document.getElementById("div1");
-		var div2=document.getElementById("div2");
-		div2.style.background="rgb(225, 218, 68)";
-		div2.style.color="white";
-		div1.style.background="white";
-		div1.style.color="black";
-		document.getElementById("div4").style.display="block";
-		document.getElementById("div3").style.display="none";
-	});
-	
-	function sendMessage(itemid){
-		var message;
-		message=$("#i-message").val();
-		if(message==""){
-			message=$("#i-message").val("你什么都没填诶");
-			return;
-		}
-		$.ajax({
-			url:'../',
-			type:post,
-			dataType:text,
-			data:{
-				'id':itemid,
-				'message':message
-			},
-			success:function(data){
-			
-			},
-			erro:function(data){
-				
-			}
-		});
-	}
-	$(function(){
-		$(".img-li img").mouseover(function(e){
-			$(".img-bg img").attr('src',this.src);
-		});
-	});
-</script>
+
+
 </html>

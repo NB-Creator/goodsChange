@@ -83,7 +83,6 @@
 		<!-- menu-param -->
 	</div>
 	<!-- left-menu -->
-
 	<div class="right-data">
         <div class="row">
 		  	<div class="col-sm-3 col-md-4">
