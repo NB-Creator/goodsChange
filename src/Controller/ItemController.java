@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -164,7 +166,7 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping("/excPage")
-	public String exchangePage(@ModelAttribute("itemdata") Item item, int uid, Model model) {
+	public String exchangePage(@ModelAttribute("itemdata") Item item, HttpSession session, Model model) {
 		Map<String,String> m=new HashMap<>();
 		m.put("gid_a", item.getId());
 		//当前商品已经用于交换
@@ -176,7 +178,7 @@ public class ItemController {
 				return "";
 		}
 		m.clear();
-		m.put("uid", ""+uid);
+		m.put("uid", ((User)session.getAttribute("user")).getUsername());
 		model.addAttribute("excitem", i.find(m));
 		return "itemPage/excPage";
 	}
