@@ -164,7 +164,7 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping("/excPage")
-	public String exchangePage(@ModelAttribute("itemdata") Item item, Model model) {
+	public String exchangePage(@ModelAttribute("itemdata") Item item, int uid, Model model) {
 		Map<String,String> m=new HashMap<>();
 		m.put("gid_a", item.getId());
 		//当前商品已经用于交换
@@ -175,7 +175,9 @@ public class ItemController {
 			if(ed.selectExc(m).isEmpty())
 				return "";
 		}
-		model.addAttribute("excitem", item);
+		m.clear();
+		m.put("uid", ""+uid);
+		model.addAttribute("excitem", i.find(m));
 		return "itemPage/excPage";
 	}
 	
