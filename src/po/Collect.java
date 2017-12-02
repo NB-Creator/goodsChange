@@ -8,6 +8,12 @@ package po;
 public class Collect {
 	private String u_id;// 用户id
 	private String g_id;// 商品id
+	
+	public Collect(String u_id, String g_id) {
+		super();
+		this.u_id = u_id;
+		this.g_id = g_id;
+	}
 
 	public String getU_id() {
 		return u_id;

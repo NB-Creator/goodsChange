@@ -1,7 +1,5 @@
 package po;
 
-import java.util.Date;
-
 /**
  * 
  * @author 1850252892@qq.com 留言评论
@@ -11,6 +9,15 @@ public class Comment {
 	private String g_id;// 商品id
 	private String info;// 评论内容
 	private String date;// 评论时间
+
+	public Comment(){
+	}
+	
+	public Comment(String u_id, String g_id) {
+		super();
+		this.u_id = u_id;
+		this.g_id = g_id;
+	}
 
 	public String getU_id() {
 		return u_id;

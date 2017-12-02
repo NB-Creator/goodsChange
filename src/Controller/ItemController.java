@@ -3,6 +3,7 @@ package Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -21,10 +22,13 @@ import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import po.Collect;
 import po.Comment;
 import po.Exchange;
 import po.Item;
 import po.User;
+import service.CollectDao;
+import service.CommentDao;
 import service.ExchangeDao;
 import service.ItemDao;
 import service.UserDao;
@@ -39,6 +43,10 @@ public class ItemController {
 	private UserDao u;
 	@Autowired
 	private ExchangeDao ed;
+	@Autowired
+	private CollectDao collectd;
+	@Autowired
+	private CommentDao commentd;
 
 	@RequestMapping("/addItemPage")
 	public String addItemPage() {
@@ -210,9 +218,11 @@ public class ItemController {
 	 * @param 商品收藏，前台提供商品id，返回操作结果(success/false)
 	 */
 	@RequestMapping("/collect")
-	public @ResponseBody String collect(String itemid) {
-		
-		return "";
+	public @ResponseBody String collect(String itemid,HttpSession session) {
+		Collect c=new Collect(((User)session.getAttribute("user")).getUsername(),itemid);
+		if(collectd.addCollect(c)!=0)
+			return "success";
+		return "false";
 	}
 	
 	/**
@@ -221,8 +231,12 @@ public class ItemController {
 	 */
 	@RequestMapping("/comment")
 	public @ResponseBody String comment(Comment comment) {
-		
-		return"";
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date=new Date(System.currentTimeMillis());
+		comment.setDate(sdf.format(date));
+		if(commentd.addComment(comment)!=0)
+			return"success";
+		return "false";
 	}
 	
 	/**
@@ -231,9 +245,9 @@ public class ItemController {
 	 * @return 该商品的评论列表
 	 */
 	@RequestMapping("/getComment")
-	public @ResponseBody String getComment(String itemid) {
-		
-		return "";
+	public @ResponseBody List<Comment> getComment(String itemid) {
+		List<Comment> commentList = commentd.findComment(Integer.parseInt(itemid));
+		return commentList;
 	}
 	
 	
@@ -247,6 +261,14 @@ public class ItemController {
 
 	public void setEd(ExchangeDao ed) {
 		this.ed = ed;
+	}
+
+	public void setCollectd(CollectDao collectd) {
+		this.collectd = collectd;
+	}
+
+	public void setCommentd(CommentDao commentd) {
+		this.commentd = commentd;
 	}
 	
 }
