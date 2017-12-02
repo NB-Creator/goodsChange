@@ -6,31 +6,65 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>换了呗</title>
-<link type="text/css" rel="stylesheet" href="css/main.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
 <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 <!-- Bootstrap 核心 JavaScript 文件 -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 <style type="text/css">
-.dock {
-	background-image: url("images/dock-a.jpg");
-	width: 100%;
-	height: 550px;
-	padding: 1px 0 0 10%;
-	line-height: 30px;
-	float: left;
-	color: white;
-	background-color: rgba(237, 244, 237, 0.5);
-	padding: 1px 0 0 1%;
-}
 
-.bottom {
-	float: left;
-	width: 100%;
+.bottom{
+	background-color:white;
+}
+.class-box{
+	width:1200px;
+	height:400px;
+	
 	margin: 0 auto;
+	margin-top:20px;
+	margin-bottom:20px;
+	border-bottom: 1px solid rgb(229,229,229);
+}
+.class-box span{
+	float:left;
+	width:100%;
+	height:30px;
+	margin-left:10px;
+	border-left: 5px solid red;
+	font-size: 20px;
+	line-height: 30px;
+		
+	border-bottom: 1px solid rgb(229,229,229);
+}
+.item-box{
+	width:1200px;
+	height:350px;
+	float:left;
+
+}
+.item{
+	float:left;
+	width:250px;
+	height:165px;
+	padding:2px 5px 0 5px;
+	margin:10px 0 0 20px;
+	background-color: white;
+}
+.item img{
+	width:240px;
+	height:120px;
+}
+.item .span{
+	width:100%;
+	height:18px;
+	margin-top:3px;
+	text-align: center;
+	line-height: 18px;
 }
 #sortlist {
 	width:150px;
@@ -57,8 +91,43 @@
 </head>
 <body >
 	<jsp:include page="head.jsp"></jsp:include>
-	<div class="dock" >
-	<div class="sort" id="sort">
+	<div class="container" style="height: 400px">
+    		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			  </ol>
+			
+			  <!-- Wrapper for slides -->
+			  <div class="carousel-inner" role="listbox" style="height: 400px;width:1200px">
+			    <div class="item active" style="height: 400px;width:1200px">
+			      <img src="images/logimg.jpg" alt="..." style="height: 400px;width:1100px">
+			      
+			    </div>
+			    <div class="item" style="height: 400px;width:1200px">
+			      <img src="images/logimg.jpg" alt="..." style="height: 400px;width:1100px">
+			      
+			    </div>
+			    <div class="item" style="height: 400px;width:1200px">
+			      <img src="images/logimg.jpg" alt="..." style="height: 400px;width:1100px">
+			      
+			    </div>
+			  </div>
+			
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="height: 420px">
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="height: 420px">
+			    <span class="sr-only">Next</span>
+			  </a>
+			  
+			</div>
+		</div>
+	<!-- <div class="dock" > -->
+	<!-- <div class="sort" id="sort">
 		<li id="sortlist"><a href="#" id="smallsort">今日热门</a></li>
 		<li id="sortlist"><a href="#" id="smallsort">最新上架</a></li>
 		<li id="sortlist"><a href="#" id="smallsort">洗护用品</a></li>
@@ -77,33 +146,8 @@
 		<li id="sortlist"><a href="#" id="smallsort">电器</a></li>
 		<li id="sortlist"><a href="#" id="smallsort">装饰</a></li>
 		<li id="sortlist"><a href="#" id="smallsort">其他</a></li>
-	</div>
-	
-		<!-- <div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				学习用品 <span class="caret"></span>
-			</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				生活用品 <span class="caret"></span>
-			</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				运动用品 <span class="caret"></span>
-			</button>
-		</div>
-		<div class="btn-group btn-group-lg">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				其他 <span class="caret"></span>
-			</button>
-		</div> -->
-	</div>
+	</div> -->
+	<!-- </div> -->
 	<!-- /.dock -->
 	<div class="bottom">
 		<div class="class-box">
