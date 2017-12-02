@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import po.Comment;
 import po.Exchange;
 import po.Item;
 import po.User;
@@ -164,7 +167,7 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping("/excPage")
-	public String exchangePage(@ModelAttribute("itemdata") Item item, Model model) {
+	public String exchangePage(@ModelAttribute("itemdata") Item item, HttpSession session, Model model) {
 		Map<String,String> m=new HashMap<>();
 		m.put("gid_a", item.getId());
 		//当前商品已经用于交换
@@ -175,7 +178,9 @@ public class ItemController {
 			if(ed.selectExc(m).isEmpty())
 				return "";
 		}
-		model.addAttribute("excitem", item);
+		m.clear();
+		m.put("uid", ((User)session.getAttribute("user")).getUsername());
+		model.addAttribute("excitem", i.find(m));
 		return "itemPage/excPage";
 	}
 	
@@ -198,6 +203,37 @@ public class ItemController {
 		exc.setStatu("submit");
 		ed.addExc(exc);
 		return "success";
+	}
+	
+	/**
+	 * 
+	 * @param 商品收藏，前台提供商品id，返回操作结果(success/false)
+	 */
+	@RequestMapping("/collect")
+	public @ResponseBody String collect(String itemid) {
+		
+		return "";
+	}
+	
+	/**
+	 * 
+	 * @param 商品评论，前台提供g_id,info,u_id,后台获取时间
+	 */
+	@RequestMapping("/comment")
+	public @ResponseBody String comment(Comment comment) {
+		
+		return"";
+	}
+	
+	/**
+	 * 
+	 * @param 获取商品评论列表
+	 * @return 该商品的评论列表
+	 */
+	@RequestMapping("/getComment")
+	public @ResponseBody String getComment(String itemid) {
+		
+		return "";
 	}
 	
 	
