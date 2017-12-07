@@ -45,12 +45,12 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 		<div class="i-browse">
 			浏览次数<br>15
 		</div>
-		<div class="i-date">
+		<div class="i-date" >
 			发布时间<br>${itemdata.time}</div>
-			<div class="i-date">
-			收藏<br><span class="icon-heart-empty" id="collect" onclick="collect(${itemdata.id})"></span></div>
+			<div class="i-date" id="i_collect">
+			
 		</div>
-		
+		</div>
 	<!-- /.i-top -->
 
 	<div class="i-box">
@@ -88,7 +88,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 				<div class="i-message">
 					<button type="button" style="width: 200px;"
 						class="btn btn-primary btn-lg"
-						onclick="sendMessage(${itemdata.id})">发送留言</button>
+						onclick="sendMessage(${sessionScope.user.username});">发送留言</button>
 				</div>
 				<textarea id="i-message" rows="5" cols="" style="width: 200px"
 					placeholder="添加留言"></textarea>
@@ -116,6 +116,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 			</div>
 			<div class="loadbox"></div>
 		</div>
+		
 		<div class="u-item-l">
 			<h3>该用户的其它商品</h3>
 			<%-- <c:if test="${b_itemlist.size()}">

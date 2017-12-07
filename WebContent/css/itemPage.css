@@ -231,9 +231,45 @@
 	margin-bottom: 20px;
 }
 
+.messagebox{
+	width:	700px;
+	height:500px;
+	float:left;
+	
+}
+.m_u_id{
+	width:300px;
+	height:30px;
+	float:left;
+	line-height: 30px;
+	font-size:15px;
+}
+.m_date{
+	width:300px;
+	height:30px;
+	float:left;
+	line-height: 30px;
+	font-size:15px;
+}
+.m_info{
+	width:700px;
+	height:30px;
+	float:left;
+	line-height: 30px;
+	font-size:15px;
+	border-bottom: 1px solid;
+}
+.tips{
+	width:700px;
+	height:30px;
+	background: rgb(242,242,242);
+	
+	float:left;
+}
+
 .u-item-l{
 	width:400px;
-	height:500px;
+	height:600px;
 	float:left;
 	border:1px solid rgb(229,229,229);
 	padding:20px;

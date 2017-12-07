@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.portlet.ModelAndView;
@@ -180,15 +181,17 @@ public class ItemController {
 		m.put("gid_a", item.getId());
 		//当前商品已经用于交换
 		if(ed.selectExc(m).isEmpty()){
-			return "";
+			
 		}else{
 			m.replace("gid_a", "gid_b");
-			if(ed.selectExc(m).isEmpty())
-				return "";
+			if(ed.selectExc(m).isEmpty()) {
+				
+			}
+				
 		}
-		m.clear();
-		m.put("uid", ((User)session.getAttribute("user")).getUsername());
-		model.addAttribute("excitem", i.find(m));
+		/*m.clear();
+		m.put("uid", ((User)session.getAttribute("user")).getUsername());*/
+		model.addAttribute("excitem", item);
 		return "itemPage/excPage";
 	}
 	
@@ -218,9 +221,20 @@ public class ItemController {
 	 * @param 商品收藏，前台提供商品id，返回操作结果(success/false)
 	 */
 	@RequestMapping("/collect")
-	public @ResponseBody String collect(String itemid,HttpSession session) {
+	public @ResponseBody String collect(@RequestParam("itemid")String itemid,HttpSession session) {
 		Collect c=new Collect(((User)session.getAttribute("user")).getUsername(),itemid);
 		if(collectd.addCollect(c)!=0)
+			return "success";
+		return "false";
+	}
+	
+	/**
+	 * 取消收藏
+	 */
+	@RequestMapping("/cancelCollect")
+	public @ResponseBody String cancelCollect(@RequestParam("itemid")String itemid,HttpSession session) {
+		String uid=((User)session.getAttribute("user")).getUsername();
+		if(collectd.deleteCollect(uid, itemid)!=-1)
 			return "success";
 		return "false";
 	}
@@ -245,12 +259,25 @@ public class ItemController {
 	 * @return 该商品的评论列表
 	 */
 	@RequestMapping("/getComment")
-	public @ResponseBody List<Comment> getComment(String itemid) {
-		List<Comment> commentList = commentd.findComment(Integer.parseInt(itemid));
-		return commentList;
+	public @ResponseBody String getComment(@RequestParam("itemid")String itemid) {
+		List<Comment> commentList = commentd.findComment(itemid);
+		return JSON.toJSONString(commentList);
 	}
 	
-	
+	/**
+	 * 判断用户是否收藏该商品
+	 * @param itemid
+	 * @param session
+	 * @return 
+	 */
+	@RequestMapping("/isCollect")
+	public @ResponseBody String isCollect(@RequestParam("itemid")String itemid,HttpSession session) {
+		
+		String uid=((User)session.getAttribute("user")).getUsername();
+		if(collectd.select(uid, itemid).size()>0)
+			return "exist";
+		return "no";
+	}
 	public void setI(ItemDao i) {
 		this.i = i;
 	}

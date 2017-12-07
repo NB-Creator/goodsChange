@@ -13,9 +13,9 @@ public interface CommentMapper {
 	@Insert("insert into comment values(#{u_id},#{g_id},#{info},#{date})")
 	public int insert(Comment comment);
 	
-	@Delete("delete from comment where uid=#{uid}")
-	public int delete(int uid);
+	@Delete("delete from comment where u_id=#{uid}")
+	public int delete(String uid);
 	
-	@Select("select * from comment where gid=#{gid}")
-	public List<Comment> find(int gid);
+	@Select("select * from comment where g_id=#{gid}")
+	public List<Comment> find(String gid);
 }

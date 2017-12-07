@@ -8,7 +8,7 @@ public interface CommentDao {
 
 	public int addComment(Comment c);
 	
-	public int deleteComment(int uid);
+	public int deleteComment(String uid);
 	
-	public List<Comment> findComment(int gid);
+	public List<Comment> findComment(String gid);
 }
