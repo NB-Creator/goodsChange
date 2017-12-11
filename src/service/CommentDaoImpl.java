@@ -20,8 +20,8 @@ public class CommentDaoImpl implements CommentDao {
 	}
 
 	@Override
-	public int deleteComment(String uid) {
-		return cm.delete(uid);
+	public int deleteComment(String uid,String gid) {
+		return cm.delete(uid,gid);
 	}
 
 	@Override

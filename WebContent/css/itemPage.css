@@ -233,31 +233,34 @@
 
 .messagebox{
 	width:	700px;
-	height:500px;
+	
 	float:left;
 	
 }
 .m_u_id{
 	width:300px;
-	height:30px;
+	height:20px;
 	float:left;
-	line-height: 30px;
-	font-size:15px;
+	line-height: 20px;
+	font-size:13px;
+	margin-top: 5px;
 }
 .m_date{
 	width:300px;
-	height:30px;
+	height:20px;
 	float:left;
-	line-height: 30px;
-	font-size:15px;
+	line-height: 20px;
+	margin-top: 5px;
+	font-size:13px;
 }
 .m_info{
 	width:700px;
-	height:30px;
 	float:left;
-	line-height: 30px;
-	font-size:15px;
-	border-bottom: 1px solid;
+	line-height: 13px;
+	font-size:13px;
+	border-bottom: 1px solid rgb(227,227,227);
+	color:#AF874D;
+	padding-bottom: 15px;
 }
 .tips{
 	width:700px;
@@ -266,7 +269,18 @@
 	
 	float:left;
 }
-
+.load{
+	width:700px;
+	height:30px;
+	background: rgb(242,242,242);
+	color:black;
+	line-height: 30px;
+	text-align: center;
+	
+}
+.loadbox a{
+	padding-left:0;
+}
 .u-item-l{
 	width:400px;
 	height:600px;

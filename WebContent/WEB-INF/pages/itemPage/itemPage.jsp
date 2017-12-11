@@ -111,7 +111,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 			<span>宝贝介绍</span><br> ${itemdata.detail}
 		</div>
 		<div class="detail-box" id="div4" style="display: none;">
-			<span>留言</span><br>
+			<span id="comment_num"></span><br>
 			<div class="messagebox">
 			</div>
 			<div class="loadbox"></div>

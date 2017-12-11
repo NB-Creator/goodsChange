@@ -24,8 +24,13 @@ function getMessage() {
 }
 // 显示评论
 function showMessage() {
+	$("#comment_num").empty();
+	$("#comment_num").append("留言("+message.length+")");
+	
 	var box = $(".messagebox");
 	box.empty();
+	var load = $(".loadbox");
+	load.empty();
 	for (var j =0; j < num; j++) {
 		if (message[j] == null) {
 			box.append("<div class='tips'>已无更多评论</div>");
@@ -37,8 +42,6 @@ function showMessage() {
 				+ "</span>";
 		box.append(e);
 	}
-	var load = $(".loadbox");
-	load.empty();
 	if (num < message.length) {
 		load
 				.append("<a href='javascript:onload()'><div class='load'>加载更多...</div></a>");
@@ -60,7 +63,6 @@ function sendMessage(uid) {
 	}
 	
 	else{
-		alert(uid);
 		$.ajax({
 			url : "../comment",
 			type : "post",
@@ -72,7 +74,7 @@ function sendMessage(uid) {
 			},
 			success : function(data) {
 				if (data == "success") {
-					alert("发送次成功");
+					$("#i-message").val("")
 				}
 			},
 			erro : function() {
