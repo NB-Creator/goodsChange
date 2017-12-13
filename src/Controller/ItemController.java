@@ -244,8 +244,9 @@ public class ItemController {
 	 * @return 商品收藏表
 	 */
 	@RequestMapping("/getCollect")
-	public @ResponseBody List<Collect> getCollect(String username){
-		return collectd.findCollect(username);
+	public @ResponseBody String getCollect(@RequestParam("username")String username){
+		List<Collect> collectlist=collectd.findCollect(username);
+		return JSON.toJSONString(collectlist);
 	}
 	
 	/**
