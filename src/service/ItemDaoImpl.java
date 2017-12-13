@@ -10,10 +10,13 @@ import mapper.ItemMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import po.Item;
 
 @Service
+@Transactional(readOnly=false,isolation=Isolation.READ_COMMITTED,rollbackFor=java.lang.Exception.class)
 public class ItemDaoImpl implements ItemDao {
 
 	@Autowired
