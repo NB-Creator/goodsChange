@@ -242,6 +242,15 @@ public class ItemController {
 	}
 	
 	/**
+	 * @param username 用户的用户名
+	 * @return 商品收藏表
+	 */
+	@RequestMapping("/getCollect")
+	public @ResponseBody List<Collect> getCollect(String username){
+		return collectd.findCollect(username);
+	}
+	
+	/**
 	 * 
 	 * @param 商品评论，前台提供g_id,info,u_id,后台获取时间
 	 */
