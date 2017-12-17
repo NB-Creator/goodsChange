@@ -9,17 +9,21 @@
 <style type="text/css">
 .head-top {
 	width: 100%;
-	height:25px;
-	line-height:25px;
+	height:35px;
+	line-height:35px;
 	background-color: rgb(242, 242, 242);
-	border-bottom: 1px solid rgb(229, 229, 229);
+	border-bottom: 1px solid red;
 	padding-left:70px;
 	color: #669;
+	font-weight: 300;
+	font-size: 15px;
+	margin-bottom: 2px;
+	
 }
 
 .head-top ul {
 	float: right;
-	font-weight: 1000;
+	
 }
 
 .head-top ul li {
@@ -27,15 +31,15 @@
 	font-family: "微软雅黑";
 	font-style: inherit;
 	font-weight: 10000;
-	font-size: 15px;
+	
 	margin-right: 30px;
 }
 
 .head-top a {
 	text-decoration: none;
-	font-size: 15px;
 	float:left;
 	color: black;
+	line-height:35px;
 }
 
 .head-top a:link {
@@ -69,7 +73,7 @@
 </head>
 <body>
 	<div class="head-top">
-		</span><a href="/mainPage"><span class="icon-home" style="color:red;">返回首页</a>
+		<a href="/mainPage" style="color:red;font-weight: 500;font-size: 20px;font-style: italic;"><span class="icon-home" ></span>HLB</a>
 		<ul>
 			<li><span class="icon-user"></span>
 				<div id="uName">

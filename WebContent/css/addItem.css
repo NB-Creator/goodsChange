@@ -79,7 +79,7 @@ body {
 	overflow: hidden;
 	font-size: 300px;
 	position: absolute;
-	top: 550px;
+	top: 430px;
 	opacity: 0;
 	filter: alpha(opacity = 0);
 	cursor: pointer;
