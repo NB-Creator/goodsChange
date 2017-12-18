@@ -176,22 +176,10 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping("/excPage")
-	public String exchangePage(@ModelAttribute("itemdata") Item item, HttpSession session, Model model) {
+	public String exchangePage(HttpSession session, Model model) {
 		Map<String,String> m=new HashMap<>();
-		m.put("gid_a", item.getId());
-		//当前商品已经用于交换
-		if(ed.selectExc(m).isEmpty()){
-			
-		}else{
-			m.replace("gid_a", "gid_b");
-			if(ed.selectExc(m).isEmpty()) {
-				
-			}
-				
-		}
-		/*m.clear();
-		m.put("uid", ((User)session.getAttribute("user")).getUsername());*/
-		model.addAttribute("excitem", item);
+		m.put("uid", (String)session.getAttribute("user"));
+		model.addAttribute("freeItems", i.selectFreeItem(m));
 		return "itemPage/excPage";
 	}
 	

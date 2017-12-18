@@ -114,4 +114,9 @@ public class ItemDaoImpl implements ItemDao {
 		return true;
 	}
 
+	@Override
+	public List<Item> selectFreeItem(Map<String, String> m) {
+		return itemMapper.selectFreeItem(m);
+	}
+
 }
