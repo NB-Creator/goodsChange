@@ -27,7 +27,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 </head>
 <body>
 	<!-- 导入顶部导航页面-->
-	<jsp:include page="../head.jsp"></jsp:include>
+	<jsp:include page="../head-top.jsp"></jsp:include>
 
 	<div class="excBox">
 		<p><span class="icon-edit" style="margin-right:5px;"></span>交换信息填写</p>

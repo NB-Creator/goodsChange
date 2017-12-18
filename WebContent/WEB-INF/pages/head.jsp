@@ -14,24 +14,22 @@
 	<div class="head">
 		<div class="head-dock">
 			<ul>
-				<li><span class="icon-user"></span>
-					<div id="uName">
-						<c:if test="${empty sessionScope.user.nickname}" var="userExits">
-							<a href="/_MSP_ItemByItem/loginPage">请登录</a>
-						</c:if>
-						<a href="/_MSP_ItemByItem/userMainPage">${sessionScope.user.nickname}</a>
-					</div></li>
+				<li><c:if test="${empty sessionScope.user.nickname}"
+						var="userExits">
+						<a href="/loginPage"><span class="icon-user"></span>请登录</a>
+					</c:if> <c:if test="${!empty sessionScope.user.nickname}" var="userExits">
+						<a href="/userMainPage"><span class="icon-user"></span>${sessionScope.user.nickname}</a>
+					</c:if></li>
 				<li><span class="icon-envelope"></span>
-					<div id="eData">消息：${requestScope.nRead}</div></li>
-				<li><span class=" icon-off"> </span> <c:if
-						test="${!empty sessionScope.user.nickname}">
-						<a href="/_MSP_ItemByItem/userQuit">退出</a>
+					消息：${requestScope.nRead}</li>
+				<li><c:if test="${!empty sessionScope.user.nickname}">
+						<a href="/userQuit"><span class=" icon-off"> </span>退出</a>
 					</c:if></li>
 			</ul>
 
 		</div>
 		<div class="logo">
-			<a href="/_MSP_ItemByItem/mainPage" style="color: rgb(255, 0, 45);"><h1>HLeB</h1></a>
+			<a href="/mainPage" style="color: rgb(255, 0, 45);">HLeB</a>
 			<h4>环保生活就上换了呗</h4>
 		</div>
 		<div class="">

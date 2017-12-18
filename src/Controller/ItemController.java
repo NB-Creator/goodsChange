@@ -198,7 +198,9 @@ public class ItemController {
 		for(int i=0;i<17;i++)
 			c[i]=(char) (a[i]+b[i]);
 		exc.setId(new String(c));
-		exc.setDate(""+System.currentTimeMillis());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date d = new Date();
+		exc.setDate(sdf.format(d));
 		exc.setStatu("submit");
 		ed.addExc(exc);
 		return "success";

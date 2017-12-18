@@ -12,7 +12,6 @@ function getMessage() {
 		url : "../getComment",
 		type : "post",
 		dataType : "text",
-		
 		data : {
 			"itemid" : itemid
 		},
