@@ -38,6 +38,6 @@ public interface ItemMapper {
 	@UpdateProvider(method="update",type=ItemPro.class)
 	public Integer Update(Map<String, String> param);
 	
-	@Select("select * from tb_item where uid=#{uid} and id not in ((select gid_a from tb_exchange) union (select gid_b from tb_exchange))")
+	@Select("select * from tb_item where uid=#{uid} and id not in (select gid_a from tb_exchange union select gid_b from tb_exchange)")
 	public List<Item> selectFreeItem(Map<String, String> m);
 }

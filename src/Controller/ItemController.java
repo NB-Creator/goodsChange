@@ -1,6 +1,7 @@
 package Controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,8 @@ import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import model.ExcData;
+import model.ItemAllData;
 import po.Collect;
 import po.Comment;
 import po.Exchange;
@@ -53,29 +56,27 @@ public class ItemController {
 	public String addItemPage() {
 		return "itemPage/addItem";
 	}
-	
+
 	@RequestMapping("/myCollectPage")
 	public String myCollectPage() {
 		return "itemPage/myCollectPage";
 	}
-	
+
 	@RequestMapping("/mySubmitPage")
 	public String mySubmitPage() {
 		return "itemPage/mySubmitPage";
 	}
-	
 
 	@RequestMapping("/myItem")
 	public String myItem() {
 		return "itemPage/myItemPage";
 	}
-	
+
 	@RequestMapping("/businessPage")
 	public String business() {
 		return "itemPage/businessPage";
 	}
-	
-	
+
 	@RequestMapping("/addSuccessPage")
 	public String addSuccess(@ModelAttribute("additem") Item item, Model model) {
 		model.addAttribute("additem", item);
@@ -159,124 +160,186 @@ public class ItemController {
 		model.addAttribute("itemdata", item);
 		p.clear();
 		p.put("username", item.getUid());
-		User user=u.getUser(p);
-		model.addAttribute("user_b" , user);
+		User user = u.getUser(p);
+		model.addAttribute("user_b", user);
 		p.clear();
 		p.put("uid", user.getUsername());
 		model.addAttribute("b_itemlist", i.find(p));
 		return "itemPage/itemPage";
 	}
 
-	
 	/**
-	 *请求商品交换页面 
-	 * @param item
-	 * @param model
-	 * model中还需要添加一个用户的所有发布的，且状态为"空闲"的商品列表
+	 * 请求商品交换页面
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/excPage")
-	public String exchangePage(HttpSession session, Model model) {
-		Map<String,String> m=new HashMap<>();
-		m.put("uid", (String)session.getAttribute("user"));
-		model.addAttribute("freeItems", i.selectFreeItem(m));
+	public String exchangePage() {
 		return "itemPage/excPage";
 	}
-	
-	
+
+	/**
+	 * 
+	 * @param uid用户id
+	 * @return 用户拥有的空闲商品
+	 */
+	@RequestMapping(value="/getFreeItem",produces="text/plain;charset=UTF-8")
+	public @ResponseBody String getFreeItem(@RequestParam("uid") String uid) {
+		System.out.println("uid="+uid);
+		Map<String, String> m = new HashMap<>();
+		m.put("uid", uid);
+		return JSON.toJSONString(i.selectFreeItem(m));
+	}
+
 	/**
 	 * 商品交换信息提交
-	 * @param exc po类对象，前台传值为：gid_a,gid_b,info
-	 * date,uid_a,uid_b通过控制器获取并赋值，statu="submit";
-	 * @return 成功插入到数据库中则返回"success",其它则返回相应的错误信息
+	 * 
+	 * @param exc
+	 *            po类对象，前台传值为：gid_a,gid_b,info
+	 *            date,uid_a,uid_b通过控制器获取并赋值，statu="submit";
+	 * @return 成功插入到数据库中则返回交换单id
 	 */
 	@RequestMapping("/itemExc")
-	public @ResponseBody String itemExc(Exchange exc) {
-		char[] a=exc.getGid_a().toCharArray();
-		char[] b=exc.getGid_b().toCharArray();
-		char[] c=new char[17];
-		for(int i=0;i<17;i++)
-			c[i]=(char) (a[i]+b[i]);
-		exc.setId(new String(c));
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	public @ResponseBody String itemExc(Exchange exc,HttpSession session) {
+		/*char[] a = exc.getGid_a().toCharArray();
+		char[] b = exc.getGid_b().toCharArray();
+		char[] c = new char[17];
+		for (int i = 0; i < 17; i++) {
+			c[i] = (char) (a[i] + b[i]);
+			System.out.println("c"+i+":"+c[i]);
+		}
+		exc.setId(new String(c));*/
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date d = new Date();
+		exc.setId(sdf.format(d) + new Random().nextInt(1000));
+		sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		exc.setDate(sdf.format(d));
 		exc.setStatu("submit");
+		exc.setUid_a(((User)session.getAttribute("user")).getUsername());
+		exc.setUid_b(((Item)session.getAttribute("itemdata")).getUid());
 		ed.addExc(exc);
-		return "success";
+		return exc.getId();
 	}
-	
+
 	/**
 	 * 
 	 * @param 商品收藏，前台提供商品id，返回操作结果(success/false)
 	 */
 	@RequestMapping("/collect")
-	public @ResponseBody String collect(@RequestParam("itemid")String itemid,HttpSession session) {
-		Collect c=new Collect(((User)session.getAttribute("user")).getUsername(),itemid);
-		if(collectd.addCollect(c)!=0)
+	public @ResponseBody String collect(@RequestParam("itemid") String itemid, HttpSession session) {
+		Collect c = new Collect(((User) session.getAttribute("user")).getUsername(), itemid);
+		if (collectd.addCollect(c) != 0)
 			return "success";
 		return "false";
 	}
-	
+
 	/**
 	 * 取消收藏
 	 */
 	@RequestMapping("/cancelCollect")
-	public @ResponseBody String cancelCollect(@RequestParam("itemid")String itemid,HttpSession session) {
-		String uid=((User)session.getAttribute("user")).getUsername();
-		if(collectd.deleteCollect(uid, itemid)!=-1)
+	public @ResponseBody String cancelCollect(@RequestParam("itemid") String itemid, HttpSession session) {
+		String uid = ((User) session.getAttribute("user")).getUsername();
+		if (collectd.deleteCollect(uid, itemid) != -1)
 			return "success";
 		return "false";
 	}
-	
+
 	/**
-	 * @param username 用户的用户名
+	 * @param username
+	 *            用户的用户名
 	 * @return 商品收藏表
 	 */
 	@RequestMapping("/getCollect")
-	public @ResponseBody List<Collect> getCollect(String username){
+	public @ResponseBody List<Collect> getCollect(String username) {
 		return collectd.findCollect(username);
 	}
-	
+
 	/**
 	 * 
 	 * @param 商品评论，前台提供g_id,info,u_id,后台获取时间
 	 */
 	@RequestMapping("/comment")
 	public @ResponseBody String comment(Comment comment) {
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date=new Date(System.currentTimeMillis());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date(System.currentTimeMillis());
 		comment.setDate(sdf.format(date));
-		if(commentd.addComment(comment)!=0)
-			return"success";
+		if (commentd.addComment(comment) != 0)
+			return "success";
 		return "false";
 	}
-	
+
 	/**
 	 * 
 	 * @param 获取商品评论列表
 	 * @return 该商品的评论列表
 	 */
-	@RequestMapping("/getComment")
-	public @ResponseBody String getComment(@RequestParam("itemid")String itemid) {
+	@RequestMapping(value="/getComment",produces="text/plain;charset=UTF-8")
+	public @ResponseBody String getComment(@RequestParam("itemid") String itemid) {
 		List<Comment> commentList = commentd.findComment(itemid);
 		return JSON.toJSONString(commentList);
 	}
-	
+
 	/**
 	 * 判断用户是否收藏该商品
+	 * 
 	 * @param itemid
 	 * @param session
-	 * @return 
+	 * @return
 	 */
 	@RequestMapping("/isCollect")
-	public @ResponseBody String isCollect(@RequestParam("itemid")String itemid,HttpSession session) {
-		
-		String uid=((User)session.getAttribute("user")).getUsername();
-		if(collectd.select(uid, itemid).size()>0)
+	public @ResponseBody String isCollect(@RequestParam("itemid") String itemid, HttpSession session) {
+
+		String uid = ((User) session.getAttribute("user")).getUsername();
+		if (collectd.select(uid, itemid).size() > 0)
 			return "exist";
 		return "no";
 	}
+	
+	/**
+	 * 
+	 * @return 商品交换成功页面
+	 */
+	@RequestMapping("/excSuc")
+	public String returnExcSuc() {
+		return "itemPage/excSuc";
+	}
+	
+	/**
+	 * 
+	 * @param excId
+	 *            交换单号
+	 * @return 一个ExcData（model包中）对象构造的JSON字符串
+	 */
+	@RequestMapping("/getExcData")
+	public @ResponseBody String getExcData(@RequestParam("excId") String excId) {
+		List<ExcData> excList = new ArrayList<ExcData>();
+		//需要写的
+
+		return JSON.toJSONString(excList);
+	}
+	
+	/**
+	 * 
+	 * @return 商品管理页面
+	 */
+	@RequestMapping("/itemAdmin")
+	public String returnItemAdmin() {
+		return "itemPage/itemAdmin";
+	}
+	/**
+	 * 
+	 * @param itemId 商品id
+	 * @return 一个ItemAllData对象构造的JSON字符串
+	 */
+	@RequestMapping("/getIAD")
+	public @ResponseBody String getItemAllData(@RequestParam("itemId") String itemId) {
+		List<ItemAllData> iList = new ArrayList<ItemAllData>();
+		//需要写的
+		
+		
+		return JSON.toJSONString(iList);
+	}
+
 	public void setI(ItemDao i) {
 		this.i = i;
 	}
@@ -296,5 +359,5 @@ public class ItemController {
 	public void setCommentd(CommentDao commentd) {
 		this.commentd = commentd;
 	}
-	
+
 }

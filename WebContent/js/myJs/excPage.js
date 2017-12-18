@@ -26,8 +26,7 @@ function sendData(){
 			"info":info
 		},
 		success:function(data){
-			
-				self.location="./excSuccess?"+data;
+				self.location="./excSuc?excId="+data;
 			
 		},
 		erro:function(){
@@ -41,17 +40,15 @@ function getData() {
 	var username=$("#username").text();
 	
 	$.ajax({
-		url : "./getItemList",
+		url : "./getFreeItem",
 		type : 'post',
 		dataType:"text",
-		contentType:"application/json",
-		data:JSON.stringify({
+		data:{
 			"uid":username
-		}),
+		},
 		success : function(data) {
 			jsonData = JSON.parse(data);
 			length = jsonData.length;
-
 			getPage(1);
 		},
 		erro : function() {
