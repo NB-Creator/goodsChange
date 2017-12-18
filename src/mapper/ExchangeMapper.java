@@ -39,4 +39,5 @@ public interface ExchangeMapper {
 	 */
 	@Update("update tb_exchange set statu=#{statu} where id=#{id}")
 	public int changeExc(Map<String,String> m);
+	
 }

@@ -19,4 +19,6 @@ public interface ItemDao {
 	public List<Item> find(Map<String,String> p);
 	
 	public boolean deleteImg(String imgPath,int ItemId);
+	
+	public List<Item> selectFreeItem(Map<String, String> m);
 }

@@ -1,7 +1,7 @@
 CREATE DATABASE msp;
 
 USE msp;
-
+-- 对password属性建立索引
 CREATE TABLE tb_user (
 	username VARCHAR (20) PRIMARY KEY,
 	nickname VARCHAR (20),
@@ -10,7 +10,7 @@ CREATE TABLE tb_user (
 	NAME VARCHAR (20),
 	address VARCHAR (50)
 );
-
+-- 对name,price建立索引
 CREATE TABLE tb_item (
 	id INT PRIMARY KEY,
 	time VARCHAR (20),
@@ -23,7 +23,7 @@ CREATE TABLE tb_item (
 	uid VARCHAR (20),
 	CONSTRAINT FOREIGN KEY (uid) REFERENCES tb_user (username)
 );
-
+-- 对statu建立索引
 CREATE TABLE tb_exchange (
 	id VARCHAR (20) PRIMARY KEY,
 	uid_a VARCHAR (20),
