@@ -13,13 +13,13 @@ function GetUrlParam(name) {
 	return null;
 }
 function getData() {
-	var gid = GetUrlParam("gid");
+	var itemId = GetUrlParam("itemId");
 	$.ajax({
 		url : "",
 		type : "get",
 		dataType : "text",
 		data : {
-			"gid" : gid
+			"itemId" : itemId
 		},
 		success : function(data) {
 			var item ;

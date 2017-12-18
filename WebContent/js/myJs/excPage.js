@@ -26,12 +26,8 @@ function sendData(){
 			"info":info
 		},
 		success:function(data){
-			if(data=="success"){
-				self.location="./excSuccess";
-			}
-			else {
-				alert(data);
-			}
+			
+				self.location="./excSuccess?"+data;
 			
 		},
 		erro:function(){
