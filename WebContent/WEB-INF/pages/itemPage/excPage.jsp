@@ -27,7 +27,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 </head>
 <body>
 	<!-- 导入顶部导航页面-->
-	<jsp:include page="../head.jsp"></jsp:include>
+	<jsp:include page="../head-top.jsp"></jsp:include>
 
 	<div class="excBox">
 		<p><span class="icon-edit" style="margin-right:5px;"></span>交换信息填写</p>
@@ -35,15 +35,15 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 		</div>
 		<div class="exc_middle">
 			<div class="d_write">
-				<div class="e_param"><span class="icon-caret-right">商品ID:</span><div id="gid_b">${excitem.id}</div></div>
-				<div class="e_param"><span class="icon-caret-right"></span>商品名：${excitem.name}</div>
+				<div class="e_param"><span class="icon-caret-right">商品ID:</span><div id="gid_b">${sessionScope.itemdata.id}</div></div>
+				<div class="e_param"><span class="icon-caret-right"></span>商品名：${sessionScope.itemdata.name}</div>
 				<div class="e_img"><span class="icon-caret-right"></span>商品图片：<br />
-				<c:forEach items="${excitem.imgpath}" var="imgp">
+				<c:forEach items="${sessionScope.itemdata.imgpath}" var="imgp">
 					<img alt="" src="${imgp}">
 				</c:forEach>
 					
 				</div>
-				<div class="e_param"><span class="icon-caret-right"></span>商品分类：${excitem.classification}</div>
+				<div class="e_param"><span class="icon-caret-right"></span>商品分类：${sessionScope.itemdata.classification}</div>
 				<div class="e_mItem"><span class="icon-caret-right"></span>交换商品：
 					<br><div class="e_mP"><span>点击右侧我的商品添加到此处</span></div>
 				</div>
@@ -52,7 +52,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 				</div>
 				<div class="button">
 					<button type="button" class="btn btn-default" onclick="sendData()">提交</button>
-					<a href="./itemPage/itemid=${excitem.id}"><button type="button" class="btn btn-default">取消</button></a>
+					<a href="./itemPage/itemid=${sessionScope.itemdata.id}"><button type="button" class="btn btn-default">取消</button></a>
 				</div>
 			</div>
 			<div class="m_item">

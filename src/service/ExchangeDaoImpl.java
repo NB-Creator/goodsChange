@@ -20,14 +20,12 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public List<Exchange> selectExc(Map<String, String> m) {
-		// TODO 自动生成的方法存根
 		List<Exchange> excList = excMapper.selectExc(m);
 		return excList;
 	}
 
 	@Override
 	public String addExc(Exchange exc) {
-		// TODO 自动生成的方法存根
 		if (excMapper.addExc(exc) > 0)
 			return "SUCCESS";
 		else
@@ -36,7 +34,6 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public String deleteExc(String id) {
-		// TODO 自动生成的方法存根
 		if (excMapper.deleteExc(id) > 0)
 			return "SUCCESS";
 		else
@@ -45,7 +42,6 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public String changeExc(Map<String, String> m) {
-		// TODO 自动生成的方法存根
 		if (excMapper.changeExc(m) > 0)
 			return "SUCCESS";
 		else

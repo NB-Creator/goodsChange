@@ -114,4 +114,22 @@ public class ItemDaoImpl implements ItemDao {
 		return true;
 	}
 
+	@Override
+	public List<Item> selectFreeItem(Map<String, String> m) {
+		List<Item> IL = itemMapper.selectFreeItem(m);
+		Iterator<Item> i = IL.iterator();
+		while (i.hasNext()) {
+			Item item = i.next();
+			String img = item.getImg();
+			String imgs[] = img.split("\\*");
+			List<String> ls = new ArrayList<String>();
+			int l = imgs.length;
+			for (int j = 0; j < l; j++) {
+				ls.add(imgs[j]);
+			}
+			item.setImgpath(ls);
+		}
+		return IL;
+	}
+
 }

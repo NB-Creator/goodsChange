@@ -68,7 +68,7 @@
 			</ul>
 		</div>
 		<!-- menu-param -->
-		<div class="menu-param" style="background-color: rgb(245, 245, 245);">
+		<div class="menu-param" style="background-color: rgba(48, 43, 43,0.8);">
 			<ul >
 				<li ><a href="./mySubmitPage">我提交的</a></li>
 			</ul>

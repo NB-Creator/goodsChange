@@ -1,0 +1,30 @@
+#item-data{
+    width:60em;
+    margin: auto;
+}
+#item-data>div{
+    float: left;
+    width:10em;
+    margin: 1.5em;
+    height:20em;
+}
+#item-data>div>img{
+    width:10em;
+    height: 15em;
+}
+.item-name>span,.item-mon>span{
+    display: inline-block;
+    width:5em;
+    height:1.2em;
+    line-height: 1.2em;
+    padding: 0 0 0 1.2em;
+    float: left;
+}
+/* .item-name>span:first-child,.item-mon>span:first-child{
+    width:4em;
+} */
+#test{
+    clear: both;
+    width:40em;
+    margin: auto;
+}
