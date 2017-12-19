@@ -17,13 +17,13 @@
 	color: #669;
 	font-weight: 300;
 	font-size: 15px;
-	margin-bottom: 2px;
+	
 	
 }
 
 .head-top ul {
 	float: right;
-	
+	list-style:none;
 }
 
 .head-top ul li {

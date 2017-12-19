@@ -51,7 +51,17 @@ public class ItemController {
 	private CollectDao collectd;
 	@Autowired
 	private CommentDao commentd;
-
+	
+	@RequestMapping("/selectPage")
+	public String selectPage() {
+		return "itemPage/selectPage";
+	}
+	
+	@RequestMapping("/otherUser")
+	public String otherUser() {
+		return "itemPage/otherUser";
+	}
+	
 	@RequestMapping("/addItemPage")
 	public String addItemPage() {
 		return "itemPage/addItem";

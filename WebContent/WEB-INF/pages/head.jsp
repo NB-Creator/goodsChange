@@ -41,9 +41,9 @@
 						placeholder="输入关键字搜索"
 						style="border-radius: 0px; border: 0; outline: none;"> <span
 						class="input-group-btn">
-						<button class="btn btn-default" type="button"
+						<a href="./selectPage"><button class="btn btn-default" type="button"
 							onclick="submitNumber()"
-							style="background-color: red; color: white;">搜索</button>
+							style="background-color: red; color: white;">搜索</button></a>
 					</span>
 				</div>
 				<!-- /input-group -->

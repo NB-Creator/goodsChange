@@ -31,7 +31,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 </head>
 <body>
 	<!-- 导入顶部导航页面-->
-	<jsp:include page="../head-top.jsp"></jsp:include>
+	<jsp:include page="../head.jsp"></jsp:include>
 
 	<div class="box">
 		<div class="title">交换成功</div>
