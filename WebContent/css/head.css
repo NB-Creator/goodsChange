@@ -13,7 +13,7 @@
 }
 .head {
 	width: 100%;
-	height: 150px;
+	height: 200px;
 	background: url("../images/background/timg.jpg");
 	filter: alpha(Opacity = 80);
 	-moz-opacity: 0.8;

@@ -349,7 +349,7 @@ public class ItemController {
 		
 		return JSON.toJSONString(iList);
 	}
-
+	
 	public void setI(ItemDao i) {
 		this.i = i;
 	}

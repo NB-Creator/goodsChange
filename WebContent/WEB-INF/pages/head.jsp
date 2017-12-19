@@ -20,8 +20,6 @@
 					</c:if> <c:if test="${!empty sessionScope.user.nickname}" var="userExits">
 						<a href="/userMainPage"><span class="icon-user"></span>${sessionScope.user.nickname}</a>
 					</c:if></li>
-				<li><span class="icon-envelope"></span>
-					消息：${requestScope.nRead}</li>
 				<li><c:if test="${!empty sessionScope.user.nickname}">
 						<a href="/userQuit"><span class=" icon-off"> </span>退出</a>
 					</c:if></li>
