@@ -26,63 +26,7 @@
 		
 	</div>
 	<!-- top -->
-	<div class="left-menu">
-		<div class="menu-param" >
-			<ul>
-				<li><a href="./userMainPage">全部功能</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./userMainPage">个人信息</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="#">我的货架</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="#">交易记录</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./addItemPage">发布商品</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param" style="background-color: rgb(245, 245, 245);">
-			<ul>
-				<li><a href="./myCollectPage">我的收藏</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="#">待处理的</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param" >
-			<ul >
-				<li ><a href="./mySubmitPage">我提交的</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param" >
-			<ul>
-				<li><a href="#">消息通知</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-	</div>
-	<!-- left-menu -->
+	
 	<div class="right-data">
         <div class="row">
 		  	<div class="col-sm-3 col-md-4">
