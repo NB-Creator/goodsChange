@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
+import model.ExcDate;
 import po.Exchange;
 import provider.ExchangePro;
 
@@ -40,4 +43,12 @@ public interface ExchangeMapper {
 	@Update("update tb_exchange set statu=#{statu} where id=#{id}")
 	public int changeExc(Map<String,String> m);
 	
+	@Select("SELECT e.id , e.date , e.gid_a , e.gid_b , i1.name gname_a , i1.img gimg_a , i2.name gname_b , i2.img gimg_b e.info "
+			+ "from tb_exchange e,tb_item i1,tb_item i2 "
+			+ "where e.id=#{eid} and (i1.id=e.gid_a and i2.id=e.gid_b)")
+	@ResultMap("ecxDate")
+	public ExcDate selectExcAllDate(String eid);
+	
+	@Select("select count(*) from tb_exchange where gid_b=#{gid_b}")
+	public int getRequestedCount(String gid_b);;
 }

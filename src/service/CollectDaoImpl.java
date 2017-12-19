@@ -1,6 +1,8 @@
 package service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +31,9 @@ public class CollectDaoImpl implements CollectDao {
 
 	@Override
 	public List<Collect> findCollect(String uid) {
-		return cm.find(uid);
+		Map<String, String> map=new HashMap<>();
+		map.put("uid", uid);
+		return cm.select(map);
 	}
 
 	public void setCm(CollectMapper cm) {
@@ -38,7 +42,10 @@ public class CollectDaoImpl implements CollectDao {
 
 	@Override
 	public List<Collect> select(String uid, String gid) {
-		return cm.select(uid, gid);
+		Map<String, String> map=new HashMap<>();
+		map.put("uid", uid);
+		map.put("gid",gid);
+		return cm.select(map);
 	}
 	
 
