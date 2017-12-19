@@ -1,7 +1,6 @@
 package Controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,8 +23,6 @@ import org.springframework.web.portlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
-import model.ExcData;
-import model.ItemAllData;
 import po.Collect;
 import po.Comment;
 import po.Exchange;
@@ -322,10 +319,7 @@ public class ItemController {
 	 */
 	@RequestMapping("/getExcData")
 	public @ResponseBody String getExcData(@RequestParam("excId") String excId) {
-		List<ExcData> excList = new ArrayList<ExcData>();
-		//需要写的
-
-		return JSON.toJSONString(excList);
+		return JSON.toJSONString(ed.getExcAllDate(excId));
 	}
 	
 	/**
@@ -343,11 +337,7 @@ public class ItemController {
 	 */
 	@RequestMapping("/getIAD")
 	public @ResponseBody String getItemAllData(@RequestParam("itemId") String itemId) {
-		List<ItemAllData> iList = new ArrayList<ItemAllData>();
-		//需要写的
-		
-		
-		return JSON.toJSONString(iList);
+		return JSON.toJSONString(i.getAllDate(itemId));
 	}
 	
 	public void setI(ItemDao i) {

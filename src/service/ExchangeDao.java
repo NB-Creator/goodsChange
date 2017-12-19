@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import java.util.Map;
 
+import model.ExcDate;
 import po.Exchange;
 
 public interface ExchangeDao {
@@ -28,4 +29,6 @@ public interface ExchangeDao {
 	 * @return
 	 */
 	public String changeExc(Map<String,String> m);
+	
+	public ExcDate getExcAllDate(String eid);
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import mapper.ExchangeMapper;
+import model.ExcDate;
 import po.Exchange;
 
 @Service
@@ -48,4 +49,8 @@ public class ExchangeDaoImpl implements ExchangeDao {
 			return "FALSE";
 	}
 
+	@Override
+	public ExcDate getExcAllDate(String eid) {
+		return excMapper.selectExcAllDate(eid);
+	}
 }
