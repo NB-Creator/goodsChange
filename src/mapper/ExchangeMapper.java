@@ -43,7 +43,7 @@ public interface ExchangeMapper {
 	@Update("update tb_exchange set statu=#{statu} where id=#{id}")
 	public int changeExc(Map<String,String> m);
 	
-	@Select("SELECT e.id , e.date , e.gid_a , e.gid_b , i1.name gname_a , i1.img gimg_a , i2.name gname_b , i2.img gimg_b e.info "
+	@Select("SELECT e.id , e.date , e.gid_a , e.gid_b , i1.name gname_a , i1.img img_a , i2.name gname_b , i2.img img_b ,e.info "
 			+ "from tb_exchange e,tb_item i1,tb_item i2 "
 			+ "where e.id=#{eid} and (i1.id=e.gid_a and i2.id=e.gid_b)")
 	@ResultMap("ecxDate")

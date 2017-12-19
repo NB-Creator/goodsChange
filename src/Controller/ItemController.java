@@ -317,7 +317,7 @@ public class ItemController {
 	 *            交换单号
 	 * @return 一个ExcData（model包中）对象构造的JSON字符串
 	 */
-	@RequestMapping("/getExcData")
+	@RequestMapping(value="/getExcData",produces="text/plain;charset=UTF-8")
 	public @ResponseBody String getExcData(@RequestParam("excId") String excId) {
 		return JSON.toJSONString(ed.getExcAllDate(excId));
 	}
@@ -335,8 +335,9 @@ public class ItemController {
 	 * @param itemId 商品id
 	 * @return 一个ItemAllData对象构造的JSON字符串
 	 */
-	@RequestMapping("/getIAD")
+	@RequestMapping(value="/getIAD",produces="text/plain;charset=UTF-8")
 	public @ResponseBody String getItemAllData(@RequestParam("itemId") String itemId) {
+		System.out.println("itemid="+itemId);
 		return JSON.toJSONString(i.getAllDate(itemId));
 	}
 	

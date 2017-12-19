@@ -33,7 +33,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 </head>
 <body>
 	<!-- 导入顶部导航页面-->
-	<jsp:include page="./WEB-INF/pages/head-top.jsp"></jsp:include>
+	<jsp:include page="../head-top.jsp"></jsp:include>
 	<div class="container">
 		<div class="title">
 			<label>信息总览</label>

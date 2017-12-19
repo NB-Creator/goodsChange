@@ -51,6 +51,14 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public ExcDate getExcAllDate(String eid) {
-		return excMapper.selectExcAllDate(eid);
+		ExcDate item=excMapper.selectExcAllDate(eid);
+		String img_a = item.getImg_a();
+		String imgs[] = img_a.split("\\*");
+		item.setImg_a(imgs[0]);
+		String img_b = item.getImg_b();
+		String imgs_[] = img_b.split("\\*");
+		item.setImg_b(imgs_[0]);
+		return item;
+		
 	}
 }
