@@ -48,14 +48,12 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 			<div class="itemB">
 				<label>交换商品:</label><br>
 				<div class="item-img" id="glogo_B"></div>
-				<div class="item-id" id="gid_B">商品ID:12345678912345678</div>
+				<div class="item-id" id="gid_B">商品ID:</div>
 				<div class="item-name" id="gname_B">商品名：</div>
 			</div>
 			<div class="excInfo">
 				<label>备注信息:</label><br>
-				<p>
-					sfhsfhsjsjjsl
-				</p>
+				
 			</div>
 			
 			<div class="bottom">
