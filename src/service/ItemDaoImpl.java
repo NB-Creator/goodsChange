@@ -6,7 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import mapper.CollectMapper;
+import mapper.CommentMapper;
+import mapper.ExchangeMapper;
 import mapper.ItemMapper;
+import model.ItemAllData;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +25,12 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Autowired
 	private ItemMapper itemMapper;
+	@Autowired
+	private ExchangeMapper eMapper;
+	@Autowired
+	private CollectMapper colMapper;
+	@Autowired
+	private CommentMapper comMapper;
 
 	/*
 	 * 上传商品，并检测商品各属性是否为空，并返回一个布尔值
@@ -112,6 +122,53 @@ public class ItemDaoImpl implements ItemDao {
 		if(itemMapper.Update(param)==0)
 			return false;
 		return true;
+	}
+
+	@Override
+	public List<Item> selectFreeItem(Map<String, String> m) {
+		List<Item> IL = itemMapper.selectFreeItem(m);
+		Iterator<Item> i = IL.iterator();
+		while (i.hasNext()) {
+			Item item = i.next();
+			String img = item.getImg();
+			String imgs[] = img.split("\\*");
+			List<String> ls = new ArrayList<String>();
+			int l = imgs.length;
+			for (int j = 0; j < l; j++) {
+				ls.add(imgs[j]);
+			}
+			item.setImgpath(ls);
+		}
+		return IL;
+	}
+
+	@Override
+	public ItemAllData getAllDate(String id) {
+		ItemAllData itemDate=new ItemAllData();
+		Map<String, String> param=new HashMap<>();
+		param.put("id", id);
+		itemDate.setItem(itemMapper.select(param).get(0));
+		itemDate.setCollect(colMapper.getCollectedCount(id));
+		itemDate.setRq(eMapper.getRequestedCount(id));
+		itemDate.setComment(comMapper.getCount(id));
+		itemDate.setCommentList(comMapper.find(id));
+		return itemDate;
+	}
+
+	public void setItemMapper(ItemMapper itemMapper) {
+		this.itemMapper = itemMapper;
+	}
+
+	public void seteMapper(ExchangeMapper eMapper) {
+		this.eMapper = eMapper;
+	}
+
+	public void setColMapper(CollectMapper colMapper) {
+		this.colMapper = colMapper;
+	}
+
+	public void setComMapper(CommentMapper comMapper) {
+		this.comMapper = comMapper;
 	}
 
 }

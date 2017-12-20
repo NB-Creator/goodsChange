@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 import java.util.Map;
 
+import model.ItemAllData;
 import po.Item;
 
 public interface ItemDao {
@@ -19,4 +20,8 @@ public interface ItemDao {
 	public List<Item> find(Map<String,String> p);
 	
 	public boolean deleteImg(String imgPath,int ItemId);
+	
+	public List<Item> selectFreeItem(Map<String, String> m);
+	
+	public ItemAllData getAllDate(String id);
 }

@@ -40,7 +40,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 			<!-- 用户头像 -->
 		</div>
 		<div class="u-nickname">
-			来自<br> <a href="../sellerPage/sellerid=${user_b.username}">${user_b.nickname}</a>
+			来自<br> <a href="../otherUser?sellerid=${user_b.username}">${user_b.nickname}</a>
 		</div>
 		<div class="i-browse">
 			浏览次数<br>15

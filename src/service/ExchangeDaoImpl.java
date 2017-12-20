@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import mapper.ExchangeMapper;
+import model.ExcDate;
 import po.Exchange;
 
 @Service
@@ -20,14 +21,12 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public List<Exchange> selectExc(Map<String, String> m) {
-		// TODO 自动生成的方法存根
 		List<Exchange> excList = excMapper.selectExc(m);
 		return excList;
 	}
 
 	@Override
 	public String addExc(Exchange exc) {
-		// TODO 自动生成的方法存根
 		if (excMapper.addExc(exc) > 0)
 			return "SUCCESS";
 		else
@@ -36,7 +35,6 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public String deleteExc(String id) {
-		// TODO 自动生成的方法存根
 		if (excMapper.deleteExc(id) > 0)
 			return "SUCCESS";
 		else
@@ -45,11 +43,22 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public String changeExc(Map<String, String> m) {
-		// TODO 自动生成的方法存根
 		if (excMapper.changeExc(m) > 0)
 			return "SUCCESS";
 		else
 			return "FALSE";
 	}
 
+	@Override
+	public ExcDate getExcAllDate(String eid) {
+		ExcDate item=excMapper.selectExcAllDate(eid);
+		String img_a = item.getImg_a();
+		String imgs[] = img_a.split("\\*");
+		item.setImg_a(imgs[0]);
+		String img_b = item.getImg_b();
+		String imgs_[] = img_b.split("\\*");
+		item.setImg_b(imgs_[0]);
+		return item;
+		
+	}
 }

@@ -40,24 +40,14 @@ a:active {
 </head>
 <body>
 	<jsp:include page="../head-top.jsp"></jsp:include>
-	<div class="top">
-		<div>
-			<h1 style="color: white;">${sessionScope.user.nickname}</h1>
-		</div>
-
-	</div>
+	
 	<!-- top -->
+	
 	<div class="left-menu">
-		<div class="menu-param" style="background-color: rgb(245, 245, 245);">
-			<ul>
-				<li><a href="#">全部功能</a></li>
-			</ul>
-		</div>
+	<H1>用户后台</H1><br>
 		<!-- menu-param -->
 		<div class="menu-param">
-			<ul>
-				<li><a href="./userMainPage">个人信息</a></li>
-			</ul>
+				<a href="./userMainPage">个人信息</a>
 		</div>
 		<!-- menu-param -->
 		<div class="menu-param">
@@ -104,7 +94,7 @@ a:active {
 		<!-- menu-param -->
 	</div>
 	<!-- left-menu -->
-
+	
 	<div class="right-data">
 		<div class="u-data">
 			<div class="u-logo"></div>
@@ -130,13 +120,13 @@ a:active {
 				<div class="a-param">
 					<span>姓名：${sessionScope.user.name}</span>
 				</div>
-				<div class="a-param" style="background-color: rgb(224, 234, 238);">
+				<div class="a-param" >
 					<span>所在地:</span>${sessionScope.user.address}
 				</div>
 				<div class="a-param">
 					<span>邮箱：${sessionScope.user.mail}</span>
 				</div>
-				<div class="a-param" style="background-color: rgb(224, 234, 238);">
+				<div class="a-param">
 					<span>历史成交量：</span>
 				</div>
 				<div class="a-param">
@@ -145,7 +135,7 @@ a:active {
 			</div>
 			<!-- showdata -->
 
-			<div id="change-data" style="padding: 10px; display: none;">
+			<div id="change-data" style="padding: 10px; display: none;color:white;">
 				<div class="col-lg-6">
 					<div class="form-group">
 						<label>昵称：</label> <input type="email" class="form-control"

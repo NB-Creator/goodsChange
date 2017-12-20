@@ -9,19 +9,20 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 }
 
 body {
-	background-color: white;
+	background: url("../images/background/timg.jpg");
+	height:900px;
+	
 }
-
 .top {
 	width: 100%;
 	height: 60px;
 	float: left;
-	background-color: rgb(255,68,1);
+	background-color: rgba(53, 53, 53,0.9);
 	text-align: left;
 	float: left;
+	border-bottom:1px solid rgba(83, 34, 34, 0.8);
 	padding: 10px 10px 10px 50px;
 	font-weight: 800;
-	margin-bottom: 30px;
 }
 
 .tl {
@@ -40,97 +41,63 @@ body {
 	border: 1px solid white;
 }
 
-.top a:link {
-	text-decoration: none;
-	color: black;
-}
 
-.top a:visited {
-	border: 1px solid white;
-	color: white;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
 
-.top a:hover {
-	border: 1px solid white;
-	color: black:;
-	border-radius: 5px;
-	margin: 5px;
-	text-decoration: none;
-}
-
-.top a:active {
-	text-decoration: none;
-	color: black;
-}
-
-.left-menu a {
-	font-size: 20px;
-	color: black;
-	text-decoration: none;
+.left-menu {
+	width: 15%;
+	height:100%;
+	background-color: rgba(53, 53, 53,0.9);
+	padding-top: 20px;
+	float: left;
+	text-align: center;
+	float: left;
+	
 	font-size: 18px;
-	font-weight: 100;
+	font-weight: 200;
+	color:white;
 }
+.left-menu a {
+	height:60px;
+	line-height:20px;
+	padding:5px;
+	text-decoration: none;
+	color:white;
+}
+
 .left-menu a:link {
 	text-decoration: none;
-	color: black;
+	color:white;
 }
 
 .left-menu a:visited {
-	border: 1px solid black;
-	color: black:;
-	border-radius: 5px;
-	margin: 15px;
-	text-decoration: none;
+	color:white;
 }
 
 .left-menu a:hover {
 	background-color: black;
 	color: white;
-	margin: 15px;
 	text-decoration: none;
 }
 .left-menu a:active {
 	text-decoration: none;
-	color: black;
+	background-color: black;
+	color:white;
 }
-
-.left-menu {
-	width: 15%;
-	height:1000px;
-	background-color: white;
-	padding-top: 20px;
-	float: left;
-	text-align: center;
-	float: left;
-	margin-right: 10px;
-	border-right:1px solid rgb(242,242,242);
-}
-
 .menu-param {
 	float: left;
-	width: 51%;
-	margin: 10px 0 0 32%;
+	width: 100%;
+
+	height: 40px;
 	overflow: hidden;
 	text-decoration: none;
-	line-height: 28px;
-	color: #000;
-	height: 28px;
-	overflow: hidden;
-	text-decoration: none;
-	line-height: 28px;
-	color: #000;
-	border-bottom: 1px solid rgb(245, 245, 245);
+	text-align: center;
 }
 
 .right-data {
-	width: 80%;
-	height:1000px;
+	width: 85%;
+	height:100%;
 	float: left;
-	background-color: white;
-	margin: 0 10px 0 10px;
+	background-color: rgba(85, 81, 81, 0.8);
 	padding: 10px;
 }
 
@@ -140,7 +107,8 @@ body {
 	height: 120px;
 	padding:10px 0 10px 0;
 	border: 1px solid rgb(224, 234, 238);
-	background-color: rgb(245, 248, 250);
+	background-color: rgba(48, 43, 43,0.8);
+	color:white;
 }
 
 .u-logo {
@@ -187,8 +155,9 @@ body {
 	width:100%;
 	height:60px;
 	float:left;
-	background-color: rgb(224, 234, 238);
+	background-color: rgba(48, 43, 43,0.8);
 	line-height: 60px;
+	color:white;
 	padding-left:20px;
 	font-size: 25px;
 }
@@ -201,7 +170,7 @@ body {
 .a-param{
 	width:100%;
 	height:60px;
-	
+	color:white;
 	line-height: 60px;
 	padding-left:20px;
 	float:left;	
