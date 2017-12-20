@@ -94,11 +94,12 @@ body {
 }
 
 .right-data {
-	width: 85%;
+	width: 76%;
 	height:100%;
 	float: left;
 	background-color: rgba(85, 81, 81, 0.8);
 	padding: 10px;
+	margin-left:12%;
 }
 
 .u-data {
