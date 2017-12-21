@@ -229,10 +229,8 @@ public class ItemController {
 	}
 
 	@RequestMapping("/getExchange")
-	public List<Exchange> getExchange(HttpSession session){
-		Map<String, String> map = new HashMap<>();
-		map.put("uid_a", ((User)session.getAttribute("user")).getUsername());
-		return ed.selectExc(map);
+	public @ResponseBody String getExchange(HttpSession session){
+		return JSON.toJSONString(ed.getMysubmit(((User)session.getAttribute("user")).getUsername()));
 	}
 	
 	/**
@@ -347,7 +345,7 @@ public class ItemController {
 		System.out.println("itemid="+itemId);
 		return JSON.toJSONString(i.getAllDate(itemId));
 	}
-
+	
 	/**
 	 * @return 获取收藏最多的五个商品(可能不足五个)
 	 */

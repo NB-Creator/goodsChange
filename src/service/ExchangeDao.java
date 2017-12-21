@@ -31,4 +31,6 @@ public interface ExchangeDao {
 	public String changeExc(Map<String,String> m);
 	
 	public ExcDate getExcAllDate(String eid);
+	
+	public List<ExcDate> getMysubmit(String uid);
 }
