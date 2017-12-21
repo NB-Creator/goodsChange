@@ -8,22 +8,38 @@
 <link type="text/css" rel="stylesheet" href="css/head.css">
 <title>Insert title here</title>
 <style type="text/css">
+
+#ul li,#ul a{
+	float: none;
+}
 </style>
 </head>
 <body>
 	<div class="head">
 		<div class="head-dock">
 			<ul>
-				<li><c:if test="${empty sessionScope.user.nickname}"
-						var="userExits">
+			<li class="dropdown">
+				<div id="uName" class="dropdown">
+					<c:if test="${empty sessionScope.user.nickname}" var="userExits">
 						<a href="/loginPage"><span class="icon-user"></span>请登录</a>
-					</c:if> <c:if test="${!empty sessionScope.user.nickname}" var="userExits">
-						<a href="/userMainPage"><span class="icon-user"></span>${sessionScope.user.nickname}</a>
-					</c:if></li>
-				<li><c:if test="${!empty sessionScope.user.nickname}">
-						<a href="/userQuit"><span class=" icon-off"> </span>退出</a>
-					</c:if></li>
-			</ul>
+					</c:if>
+					<c:if test="${!empty sessionScope.user.nickname}" var="userExits">
+						
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span>${sessionScope.user.nickname}</a><b
+								class="caret"></b>
+								<br>
+							<ul class="dropdown-menu" id="ul" style="z-index: 999;">
+								<li><a href="/userMainPage"><span class="icon-user"></span>用户中心</a></li>
+								<li><a href="#"><span class="icon-folder-open"></span>我的收藏</a></li>
+								<li><a href="/userQuit"><span class=" icon-off"> </span>注销</a></li>
+								<!-- <li class="divider"></li>
+								<li><a href="#">分离的链接</a></li>
+								<li class="divider"></li>
+								<li><a href="#">另一个分离的链接</a></li> -->
+							</ul>
+					</c:if>
+				</div></li>
+		</ul>
 
 		</div>
 		<div class="logo">
@@ -38,10 +54,9 @@
 					<input type="text" class="form-control" id="inputNumber"
 						placeholder="输入关键字搜索"
 						style="border-radius: 0px; border: 0; outline: none;"> <span
-						class="input-group-btn">
-						<a href="./selectPage"><button class="btn btn-default" type="button"
-							onclick="submitNumber()"
-							style="background-color: red; color: white;">搜索</button></a>
+						class="input-group-btn"> <a href="./selectPage"><button
+								class="btn btn-default" type="button" onclick="submitNumber()"
+								style="background-color: red; color: white;">搜索</button></a>
 					</span>
 				</div>
 				<!-- /input-group -->

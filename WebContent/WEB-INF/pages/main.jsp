@@ -9,11 +9,8 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-
-<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 <!-- Bootstrap 核心 JavaScript 文件 -->
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 <style type="text/css">
@@ -130,7 +127,7 @@
 	float: left;
 	color: white;
 	margin-top: -55px;
-	z-index: 999;
+	z-index: 99;
 	position: absolute;
 }
 
@@ -214,8 +211,6 @@
 			<div class="cTitle">全部分类</div>
 			<div class="geduan"></div>
 			<ul>
-				<li id="sortlist"><a href="#" id="smallsort">今日热门</a></li>
-				<li id="sortlist"><a href="#" id="smallsort">最新上架</a></li>
 				<li id="sortlist"><a href="#" id="smallsort">洗护用品</a></li>
 				<li id="sortlist"><a href="#" id="smallsort">学习用具</a></li>
 				<li id="sortlist"><a href="#" id="smallsort">生活用品</a></li>
@@ -387,7 +382,6 @@
 	</div>
 
 </body>
-<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	var classification;
 	var imgpath;
