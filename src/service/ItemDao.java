@@ -24,4 +24,6 @@ public interface ItemDao {
 	public List<Item> selectFreeItem(Map<String, String> m);
 	
 	public ItemAllData getAllDate(String id);
+	
+	public List<Item> getPopular();
 }

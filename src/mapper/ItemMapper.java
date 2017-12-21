@@ -12,6 +12,10 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import po.Item;
 import provider.ItemPro;
 
+/**
+ * @author Administrator
+ *
+ */
 public interface ItemMapper {
 
 	/**
@@ -38,6 +42,17 @@ public interface ItemMapper {
 	@UpdateProvider(method="update",type=ItemPro.class)
 	public Integer Update(Map<String, String> param);
 	
+	
 	@Select("select * from tb_item where uid=#{uid} and id not in (select gid_a from tb_exchange union select gid_b from tb_exchange)")
 	public List<Item> selectFreeItem(Map<String, String> m);
+	
+	/**
+	 * @return 收藏最多的五个商品
+	 */
+	@Select("select * from tb_item where id in ("
+			+ "select id from ("
+			+ "select i.id from tb_item i left join collect c on i.id=c.g_id where i.id=c.g_id GROUP BY i.id ORDER BY count(g_id) DESC limit 5"
+			+ ") m"
+			+ ")")
+	public List<Item> selectPoplarItems();
 }

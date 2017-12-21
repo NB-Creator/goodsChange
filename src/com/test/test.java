@@ -15,6 +15,7 @@ import service.UserDaoImpl;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/config/applicationContext.xml",
 		"classpath:/config/springConfig.xml" })
+@SuppressWarnings("unused")
 public class test {
 	private static final Log logger = LogFactory
 			.getLog(test.class);

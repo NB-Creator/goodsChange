@@ -154,6 +154,11 @@ public class ItemDaoImpl implements ItemDao {
 		itemDate.setCommentList(comMapper.find(id));
 		return itemDate;
 	}
+	
+	@Override
+	public List<Item> getPopular() {
+		return itemMapper.selectPoplarItems();
+	}
 
 	public void setItemMapper(ItemMapper itemMapper) {
 		this.itemMapper = itemMapper;
@@ -170,5 +175,6 @@ public class ItemDaoImpl implements ItemDao {
 	public void setComMapper(CommentMapper comMapper) {
 		this.comMapper = comMapper;
 	}
+
 
 }

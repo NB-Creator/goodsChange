@@ -228,6 +228,13 @@ public class ItemController {
 		return exc.getId();
 	}
 
+	@RequestMapping("/getExchange")
+	public List<Exchange> getExchange(HttpSession session){
+		Map<String, String> map = new HashMap<>();
+		map.put("uid_a", ((User)session.getAttribute("user")).getUsername());
+		return ed.selectExc(map);
+	}
+	
 	/**
 	 * 
 	 * @param 商品收藏，前台提供商品id，返回操作结果(success/false)
@@ -339,6 +346,14 @@ public class ItemController {
 	public @ResponseBody String getItemAllData(@RequestParam("itemId") String itemId) {
 		System.out.println("itemid="+itemId);
 		return JSON.toJSONString(i.getAllDate(itemId));
+	}
+
+	/**
+	 * @return 获取收藏最多的五个商品(可能不足五个)
+	 */
+	@RequestMapping("/getRecommend")
+	public @ResponseBody List<Item> getRecommend(){
+		return i.getPopular();
 	}
 	
 	public void setI(ItemDao i) {

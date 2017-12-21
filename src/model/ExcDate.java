@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class ExcDate {
 	private String excId;// 交换单号
 	private String excDate;// 交换时间
