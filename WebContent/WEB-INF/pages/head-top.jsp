@@ -75,14 +75,14 @@
 </head>
 <body>
 	<div class="head-top">
-		<a href="/mainPage"
+		<a href="./mainPage"
 			style="color: red; font-weight: 500; font-size: 20px; font-style: italic;"><span
 			class="icon-home"></span>HLB</a>
 		<ul>
 			<li class="dropdown"><span class="icon-user"></span>
 				<div id="uName" class="dropdown">
 					<c:if test="${empty sessionScope.user.nickname}" var="userExits">
-						<a href="/loginPage">请登录</a>
+						<a href="./loginPage">请登录</a>
 					</c:if>
 					<c:if test="${!empty sessionScope.user.nickname}" var="userExits">
 						
@@ -90,9 +90,9 @@
 								class="caret"></b>
 								<br>
 							<ul class="dropdown-menu" id="ul" style="z-index: 999;">
-								<li><a href="/userMainPage"><span class="icon-user"></span>用户中心</a></li>
-								<li><a href="#"><span class="icon-folder-open"></span>我的收藏</a></li>
-								<li><a href="/userQuit"><span class=" icon-off"> </span>注销</a></li>
+								<li><a href="./userMainPage"><span class="icon-user"></span>用户中心</a></li>
+								<li><a href="./myCollectPage"><span class="icon-folder-open"></span>我的收藏</a></li>
+								<li><a href="./userQuit"><span class=" icon-off"> </span>注销</a></li>
 								<!-- <li class="divider"></li>
 								<li><a href="#">分离的链接</a></li>
 								<li class="divider"></li>

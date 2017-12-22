@@ -97,7 +97,7 @@
 	z-index: 999;
 	position: absolute;
 	background: rgba(26, 25, 25, 0.5);
-	left: 30px;
+	left: 2px;
 	color: white;
 }
 

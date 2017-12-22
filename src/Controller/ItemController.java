@@ -262,8 +262,9 @@ public class ItemController {
 	 * @return 商品收藏表
 	 */
 	@RequestMapping("/getCollect")
-	public @ResponseBody List<Collect> getCollect(String username) {
-		return collectd.findCollect(username);
+	public @ResponseBody String getCollect(HttpSession session) {
+		return JSON.toJSONString(collectd.findCollect(((User)session.getAttribute("user")).getUsername()));
+		
 	}
 
 	/**

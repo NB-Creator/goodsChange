@@ -12,10 +12,10 @@
 <link type="text/css" rel="stylesheet" href="css/mySubmitPage.css">
 
 
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-table.js"></script>
-<script type="text/javascript" src="js/myJs/mySubmit.js"></script>
+<script type="text/javascript" src="./js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap-table.js"></script>
+<script type="text/javascript" src="./js/myJs/mySubmit.js"></script>
 <style type="text/css">
 
 </style>
@@ -41,8 +41,12 @@
 			<div class="dt-param">未处理的</div>
 			<div class="dt-param" style="border-right: 0;">已接受的</div>
 		</div>
-		<div class="itemTable"></div>
-		<div class="loadbox"></div>
+		<div class="all-data">
+			
+		</div>
+		<div class="loadbox">
+		
+		</div>
 	</div>
 
 </body>
