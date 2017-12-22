@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 
 import po.Collect;
+import po.Item;
 import provider.CollectProvider;
 
 public interface CollectMapper {
@@ -31,4 +32,8 @@ public interface CollectMapper {
 	
 	@Select("select count(*) from collect where g_id=#{gid}")
 	public int getCollectedCount(String gid);
+	
+	@Select("select DISTINCT i.id,i.time,i.name,i.detail,i.img,i.expect,i.classification,i.price,i.uid "+
+				"from tb_item i,collect c where c.u_id=#{uid}  AND i.id=c.g_id")
+	public List<Item> getMyCollect(String uid);
 }

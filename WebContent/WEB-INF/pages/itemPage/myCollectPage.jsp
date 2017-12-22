@@ -10,9 +10,10 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
 <link type="text/css" rel="stylesheet" href="css/myCollectPage.css">
+
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/myJs/myCollectPage.js"></script>
 <style type="text/css">
 

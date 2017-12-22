@@ -35,9 +35,12 @@ function showItem(){
 			box.append("<div class='col-sm-12' style='color:white;text-align: center;'>已经没有啦》_《~</div>");
 			return;
 		}
-		var e = "<div class='col-sm-3 col-md-4'>" + "<div class='thumbnail'>" 
-				+"<div class='gname' style='width:200px;height:195px'><a href='./itemPage/itemid="+itemlist[j].id+"'>"+itemlist[j].name+"</a></div>"
-				
+		var e = "<div class='col-sm-3 col-md-4' style='color:white;'>" + "<div class='thumbnail'>" 
+				+"<div class='gname' style='width:200px;height:35px'>"
+					+"<a style='color:black;' href='./itemPage/itemid="+itemlist[j].id+"'>"+itemlist[j].name+"</a></div>"
+					+"<a href='./itemPage/itemid="+itemlist[j].id+"'>"
+						+"<img style='width:400px;height:200px' src='"+itemlist[j].imgpath[0]+"'>"
+					+"</a></div>"
 				+ "<div class='caption'>" +"<h3>"+ itemlist[j].name + "</h3>"+"<p>商品价格："+itemlist[j].price+"</p>"
 				+ "</div>" +"</div>"+ "</div>";
 		box.append(e);

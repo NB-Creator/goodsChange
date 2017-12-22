@@ -261,9 +261,9 @@ public class ItemController {
 	 *            用户的用户名
 	 * @return 商品收藏表
 	 */
-	@RequestMapping("/getCollect")
+	@RequestMapping(value="/getCollect",produces="text/plain;charset=UTF-8")
 	public @ResponseBody String getCollect(HttpSession session) {
-		return JSON.toJSONString(collectd.findCollect(((User)session.getAttribute("user")).getUsername()));
+		return JSON.toJSONString(collectd.getMyCollectItem(((User)session.getAttribute("user")).getUsername()));
 		
 	}
 
