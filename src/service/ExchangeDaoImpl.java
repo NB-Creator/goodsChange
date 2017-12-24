@@ -1,8 +1,10 @@
 package service;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.aopalliance.intercept.Interceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -60,5 +62,25 @@ public class ExchangeDaoImpl implements ExchangeDao {
 		item.setImg_b(imgs_[0]);
 		return item;
 		
+	}
+
+	@Override
+	public List<ExcDate> getMysubmit(String uid) {
+		// TODO 自动生成的方法存根
+		List<ExcDate> excList = excMapper.selectMySubmit(uid);
+		Iterator<ExcDate> i=excList.iterator();
+		while(i.hasNext()) {
+			ExcDate item=i.next();
+			String img_a = item.getImg_a();
+			String imgs[] = img_a.split("\\*");
+			item.setImg_a(imgs[0]);
+			String img_b = item.getImg_b();
+			String imgs_[] = img_b.split("\\*");
+			item.setImg_b(imgs_[0]);
+		}
+		
+		
+		
+		return excList;
 	}
 }

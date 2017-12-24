@@ -3,6 +3,7 @@ package controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -34,6 +35,12 @@ public class ItemController {
 	@Autowired
 	private UserDao u;
 
+	@RequestMapping("/addSuccessPage")
+	public String addSuccess(@ModelAttribute("additem") Item item, Model model) {
+		model.addAttribute("additem", item);
+		return "itemPage/addSuccessPage";
+	}
+
 	@RequestMapping("/uploadItem")
 	public @ResponseBody String upload(Model model, Item item) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -55,12 +62,6 @@ public class ItemController {
 		}
 	}
 
-	@RequestMapping("/addSuccessPage")
-	public String addSuccess(@ModelAttribute("additem") Item item, Model model) {
-		model.addAttribute("additem", item);
-		return "itemPage/addSuccessPage";
-	}
-	
 	public ModelAndView down(ModelAndView mv, Item item) {
 		boolean flag = i.down(item);
 		if (flag == false)
@@ -126,6 +127,16 @@ public class ItemController {
 	}
 
 	/**
+	 * 请求商品交换页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/excPage")
+	public String exchangePage() {
+		return "itemPage/excPage";
+	}
+
+	/**
 	 * 
 	 * @param uid用户id
 	 * @return 用户拥有的空闲商品
@@ -137,7 +148,7 @@ public class ItemController {
 		m.put("uid", uid);
 		return JSON.toJSONString(i.selectFreeItem(m));
 	}
-
+	
 	/**
 	 * 
 	 * @param itemId 商品id
@@ -148,8 +159,15 @@ public class ItemController {
 		System.out.println("itemid="+itemId);
 		return JSON.toJSONString(i.getAllDate(itemId));
 	}
-
-
+	
+	/**
+	 * @return 获取收藏最多的五个商品(可能不足五个)
+	 */
+	@RequestMapping("/getRecommend")
+	public @ResponseBody List<Item> getRecommend(){
+		return i.getPopular();
+	}
+	
 	public void setI(ItemDao i) {
 		this.i = i;
 	}

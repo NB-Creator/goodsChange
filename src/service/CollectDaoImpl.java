@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import mapper.CollectMapper;
 import po.Collect;
+import po.Item;
+import tool.ItemParse;
 
 @Service
 @Transactional(readOnly=false,isolation=Isolation.READ_COMMITTED,rollbackFor=java.lang.Exception.class)
@@ -46,6 +48,11 @@ public class CollectDaoImpl implements CollectDao {
 		map.put("uid", uid);
 		map.put("gid",gid);
 		return cm.select(map);
+	}
+
+	@Override
+	public List<Item> getMyCollectItem(String uid) {
+		return ItemParse.parseItemImg(cm.getMyCollect(uid));
 	}
 	
 

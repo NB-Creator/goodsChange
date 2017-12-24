@@ -51,4 +51,10 @@ public interface ExchangeMapper {
 	
 	@Select("select count(*) from tb_exchange where gid_b=#{gid_b}")
 	public int getRequestedCount(String gid_b);;
+	
+	@Select("SELECT e.id , e.date , e.gid_a , e.gid_b , i1.name gname_a , i1.img img_a , i2.name gname_b , i2.img img_b ,e.info "
+			+ "from tb_exchange e,tb_item i1,tb_item i2 "
+			+ "where e.uid_a=#{uid}")
+	@ResultMap("ecxDate")
+	public List<ExcDate> selectMySubmit(String uid);
 }

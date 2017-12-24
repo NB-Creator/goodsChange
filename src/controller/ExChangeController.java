@@ -75,7 +75,6 @@ public class ExChangeController {
 		return JSON.toJSONString(ed.getExcAllDate(excId));
 	}
 
-
 	public void setEd(ExchangeDao ed) {
 		this.ed = ed;
 	}

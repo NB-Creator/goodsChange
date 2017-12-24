@@ -10,9 +10,12 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
 <link type="text/css" rel="stylesheet" href="css/mySubmitPage.css">
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-table.js"></script>
-<script type="text/javascript" src="js/myJs/mySubmit.js"></script>
+
+
+<script type="text/javascript" src="./js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap-table.js"></script>
+<script type="text/javascript" src="./js/myJs/mySubmit.js"></script>
 <style type="text/css">
 
 </style>
@@ -38,151 +41,13 @@
 			<div class="dt-param">未处理的</div>
 			<div class="dt-param" style="border-right: 0;">已接受的</div>
 		</div>
-		<div class="all-request">
-			<div class="item-data" >
-				<div class="col-sm-3 col-md-3" style="background-color: #d8f3f5;">
-		    		<a href="#">
-		      			<img class="data-object" src="..." alt="..." style="width:100px;height:100px">
-		    		</a>
-	  			</div>
-		  		<div class="col-sm-9 col-md-9" style="background-color: #d8f3f5;height:100px">
-		    	<h4 class="data-heading">商品名称</h4>
-		    	<font style="font-size:small;color:gray">待处理</font>
-		  		</div>
-			</div>
+		<div class="all-data">
 			
-			<div class="item-data" >
-				<div class="col-sm-3 col-md-3" style="background-color: #fdfde8;">
-		    		<a href="#">
-		      			<img class="data-object" src="..." alt="..." style="width:100px;height:100px">
-		    		</a>
-	  			</div>
-		  		<div class="col-sm-9 col-md-9" style="background-color: #fdfde8;height:100px">
-		    	<h4 class="data-heading">商品名称</h4>
-		    	<font style="font-size:small;color:gray">待处理</font>
-		  		</div>
-			</div>
-			
-			<div class="item-data" >
-				<div class="col-sm-3 col-md-3" style="background-color: #d8f3f5;">
-		    		<a href="#">
-		      			<img class="data-object" src="..." alt="..." style="width:100px;height:100px">
-		    		</a>
-	  			</div>
-		  		<div class="col-sm-9 col-md-9" style="background-color: #d8f3f5;height:100px">
-		    	<h4 class="data-heading">商品名称</h4>
-		    	<font style="font-size:small;color:gray">待处理</font>
-		  		</div>
-			</div>
-			
-			<div class="item-data" >
-				<div class="col-sm-3 col-md-3" style="background-color: #fdfde8;">
-		    		<a href="#">
-		      			<img class="data-object" src="..." alt="..." style="width:100px;height:100px">
-		    		</a>
-	  			</div>
-		  		<div class="col-sm-9 col-md-9" style="background-color: #fdfde8;height:100px">
-		    	<h4 class="data-heading">商品名称</h4>
-		    	<font style="font-size:small;color:gray">待处理</font>
-		  		</div>
-			</div>
-			
-			<div class="item-data" >
-				<div class="col-sm-3 col-md-3" style="background-color: #d8f3f5;">
-		    		<a href="#">
-		      			<img class="data-object" src="..." alt="..." style="width:100px;height:100px">
-		    		</a>
-	  			</div>
-		  		<div class="col-sm-9 col-md-9" style="background-color: #d8f3f5;height:100px">
-		    	<h4 class="data-heading">商品名称</h4>
-		    	<font style="font-size:small;color:gray">待处理</font>
-		  		</div>
-			</div>
- 			
+		</div>
+		<div class="loadbox">
+		
 		</div>
 	</div>
 
 </body>
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-<script type="text/javascript">
-	function show(id) {
-
-		var m = document.getElementById(id);
-		m.style.display = "block";
-	}
-
-	function remove(id) {
-		var m = document.getElementById(id);
-		m.style.display = "none";
-	}
-
-	function color(b) {
-
-		for (var a = 1; a < 6; a++) {
-			if (a == b) {
-				var m = document.getElementById(a);
-				m.style.background = "white";
-			} else {
-				m = document.getElementById(a);
-				m.style.background = "rgb(238,238,238)";
-			}
-
-		}
-
-	}
-	function uploadLogo(file) {
-		var fileReader = new FileReader();
-		var path = "";
-		uploadImages(file.files[0])
-
-	}
-
-	function uploadImages(file) {
-		var form = new FormData();
-		form.append("logo", file);
-
-		$.ajax({
-			type : "post",
-			url : "/PrySecret/userPage/uploadLogo.do",
-			data : form,
-			async : false,
-			cache : false,
-			contentType : false,
-			processData : false,
-			success : function(data, status) {
-				$("#logo")[0].src = "http://localhost:8080/PrySecret/data/"
-						+ data;
-			},
-			error : function() {
-				alert("服务器异常");
-			},
-			complete : function() {
-
-			}
-		});
-	}
-
-	function change(v) {
-
-		var vv = document.getElementById(v).value;
-
-		$.ajax({
-			url : '/PrySecret/userPage/update.do',
-			type : 'post',
-			dataType : 'text',
-			data : {
-				"key" : v,
-				"value" : vv
-			},
-			success : function(data) {
-				parent.location.reload();
-			},
-			erro : function() {
-
-			}
-
-		});
-
-	}
-</script>
 </html>

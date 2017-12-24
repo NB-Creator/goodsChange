@@ -10,8 +10,11 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
 <link type="text/css" rel="stylesheet" href="css/myCollectPage.css">
+
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/myJs/myCollectPage.js"></script>
 <style type="text/css">
 
 </style>
@@ -28,105 +31,13 @@
 	<!-- top -->
 	
 	<div class="right-data">
-        <div class="row">
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
+		<div class="itembox">
 		</div>
-		
-		<div class="row">
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		</div>
-		
-		<div class="row">
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		  	
-		  	<div class="col-sm-3 col-md-4">
-		    	<div class="thumbnail">
-		     		<img src="..." alt="..." style="width:200px;height:195px">
-		      		<div class="caption">
-		        		<h3>商品名称</h3>
-		        		<p>商品价格：10￥</p>
-		      		</div>
-		    	</div>
-		  	</div>
-		</div>
+        <div class="loadbox"></div>
     </div>  
 
 </body>
-<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+
 <script type="text/javascript">
 	
 </script>
