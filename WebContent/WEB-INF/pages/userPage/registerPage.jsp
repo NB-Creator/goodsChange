@@ -45,7 +45,7 @@ body {
 </head>
 
 <body>
-	<jsp:include page="../head-top.jsp"></jsp:include>
+	
 	<div class="r_top">用户注册</div>
 	<div class="dataInput">
 		<h3>请输入下列信息</h3>
