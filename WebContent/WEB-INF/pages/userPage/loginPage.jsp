@@ -75,16 +75,11 @@ body {
 				'password' : password
 			},
 			success : function(msg) {
-				alert(msg);
 					var data=JSON.parse(msg);
-					alert(data.url);
-					alert(data.success);
 					if(data.success=="false"){
-						alert("123");
 						alert(data.msg);
 					}else if(data.success=="true"){
-						alert("url="+data.url);
-						self.location="/"+data.url;
+						self.location=data.url;
 					}
 			},
 			erro : function() {

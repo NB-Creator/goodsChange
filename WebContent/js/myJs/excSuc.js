@@ -15,7 +15,7 @@ function GetUrlParam(name) {
 function getData() {
 	var excId=GetUrlParam("excId");
 	$.ajax({
-		url : "./getExcData",
+		url : "/item/getExcData",
 		type : "post",
 		dataType : "text",
 		data:{

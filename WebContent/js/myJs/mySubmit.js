@@ -6,7 +6,7 @@ var subMit;
 //获取以提交的商品数据列表
 function getData() {
     $.ajax({
-        url:"./getExchange",
+        url:"/item/getExchange",
         type:"get",
         dataType:"text",
         success:function(data){//data为后台返回的json字符串内容为已提交订单(类ExcData.java)的列表，通过JSON.parse解析

@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import mapper.UserRoleMapper;
-import po.MyUser;
+import po.UserRole;
 
 @Service
 public class MyUserDetailService implements UserDetailsService  {
@@ -20,11 +20,11 @@ public class MyUserDetailService implements UserDetailsService  {
 	UserRoleMapper userdao;
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		MyUser user =userdao.getUserByName(username);
-		/*if(user==null)
+		UserRole user =userdao.getUserByName(username);
+		if(user==null)
 		{
 			throw new  UsernameNotFoundException("找不到该用户");
-		}*/
+		}
 //		Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 //		SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role);
 //		grantedAuthorities.add(grantedAuthority);

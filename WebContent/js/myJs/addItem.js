@@ -54,7 +54,7 @@ function uploadImgs() {
 		form.append("img", img.file);
 		$.ajax({
 			type : "post",
-			url : "./uploadImg",
+			url : "/file/uploadImg",
 			data : form,
 			async : false,
 			cache : false,
@@ -114,7 +114,7 @@ function addItem() {
 	uploadImgs();
 
 	$.ajax({
-		url : './uploadItem',
+		url : '/item/uploadItem',
 		type : 'post',
 		dataType : 'text',
 		traditional : true,

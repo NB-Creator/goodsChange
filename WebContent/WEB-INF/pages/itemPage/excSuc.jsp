@@ -11,11 +11,11 @@
 <title>Insert title here</title>
 
 <!-- bootstrap相关文件的导入 -->
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-<link type="text/css" rel="stylesheet" href="css/excSuc.css">
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="js/myJs/excSuc.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/excSuc.css">
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/myJs/excSuc.js"></script>
 
 <style type="text/css">
 

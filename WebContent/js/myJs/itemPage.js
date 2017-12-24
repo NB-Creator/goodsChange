@@ -9,7 +9,7 @@ function getMessage() {
 	var itemid = $("#itemid").text();
 	
 	$.ajax({
-		url : "../getComment",
+		url : "/getComment",
 		type : "post",
 		dataType : "text",
 		data : {
@@ -63,7 +63,7 @@ function sendMessage(uid) {
 	
 	else{
 		$.ajax({
-			url : "../comment",
+			url : "/comment",
 			type : "post",
 			dataType : "text",
 			data : {
@@ -88,7 +88,7 @@ function isCollect() {
 	var collect = $("#i_collect");
 	$
 			.ajax({
-				url : "../isCollect",
+				url : "/isCollect",
 				type : "get",
 				dataType : "text",
 				data : {
@@ -115,7 +115,7 @@ function collect() {
 	var collect = $("#i_collect");
 	$
 			.ajax({
-				url : "../collect",
+				url : "/item/collect",
 				type : "post",
 				dataType : "text",
 				data : {
@@ -143,7 +143,7 @@ function cancelCollect() {
 	var collect = $("#i_collect");
 	$
 			.ajax({
-				url : "../cancelCollect",
+				url : "/item/cancelCollect",
 				type : "post",
 				dataType : "text",
 				data : {

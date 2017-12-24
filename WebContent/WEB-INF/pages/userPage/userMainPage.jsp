@@ -8,16 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>个人主页</title>
 
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-table.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/userMainPagev1.css">
 
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-table.js"></script>
-
-<link type="text/css" rel="stylesheet" href="css/userMainPagev1.css">
-<script type="text/javascript" src="js/myJs/userMainPage.js"></script>
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/js/myJs/userMainPage.js"></script>
 <style type="text/css">
 a {
 	text-decoration: none;
@@ -52,53 +51,44 @@ a:active {
 	
 	<div class="left-menu">
 	<H1>用户后台</H1><br>
-		<!-- menu-param -->
 		<div class="menu-param">
-				<a href="./userMainPage">个人信息</a>
+				<a href="/admin/userMainPage">个人信息</a>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="./myItem">我的货架</a></li>
+				<li><a href="/admin/myItem">我的货架</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="./businessPage">交易记录</a></li>
+				<li><a href="/admin/businessPage">交易记录</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="./addItemPage">发布商品</a></li>
+				<li><a href="/item/addItemPage">发布商品</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="./myCollectPage">我的收藏</a></li>
+				<li><a href="/admin/myCollectPage">我的收藏</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
 				<li><a href="#">待处理的</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
-				<li><a href="./mySubmitPage">我提交的</a></li>
+				<li><a href="/admin/mySubmitPage">我提交的</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 		<div class="menu-param">
 			<ul>
 				<li><a href="#">消息通知</a></li>
 			</ul>
 		</div>
-		<!-- menu-param -->
 	</div>
 	<!-- left-menu -->
 	

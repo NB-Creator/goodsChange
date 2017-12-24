@@ -35,13 +35,13 @@ body {
 			<div class="login_box">
 				<h1>HLB</h1>
 				<p>welcome to huanlebe</p>
-				<form name="form1">
+				<form name="form1" action="/login" method="post">
 					<div class="login_box_tab"></div>
-					<input type="text" id="loginNumber" name="loginNumber"
+					<input type="text" id="loginNumber" name="username"
 						placeholder="plese enter id" />
 					<div id="loginstate1"></div>
 					<input type="text" onfocus="this.type='password'" id="userPwd"
-						name="userPwd" placeholder="password" />
+						name="password" placeholder="password" />
 					<div id="loginstate2"></div>
 					<A></A>
 					<div class="btn" onclick="login()" >登录</div>
@@ -75,13 +75,15 @@ body {
 				'password' : password
 			},
 			success : function(msg) {
-				if(msg=="FALSE")
-					alert(msg);
-				else if(msg=="SUCCESS")
-					self.location="./mainPage";
+					var data=JSON.parse(msg);
+					if(data.success=="false"){
+						alert(data.msg);
+					}else if(data.success=="true"){
+						self.location=data.url;
+					}
 			},
 			erro : function() {
-
+				alert("访问错误");
 			}
 
 		});

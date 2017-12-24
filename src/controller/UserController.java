@@ -4,18 +4,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.alibaba.fastjson.JSON;
+
 import po.Item;
+import po.UserRole;
 import po.User;
+import security.MyUserDetail;
 import service.ItemDao;
 import service.UserDao;
+import service.UserRoleDao;
 
 @Controller
 @SessionAttributes("user")
@@ -25,6 +34,8 @@ public class UserController {
 	private UserDao u;
 	@Autowired
 	private ItemDao itemDao;
+	@Autowired
+	private UserRoleDao uRDao;
 
 	@RequestMapping(value = "/loginPage")
 	public String loginPage(Model model) {
@@ -32,7 +43,8 @@ public class UserController {
 		return "userPage/loginPage";
 	}
 
-	@RequestMapping("/login")
+	
+	/*@RequestMapping("/login")
 	public @ResponseBody String login(String username, String password, Model model) {
 
 		User user = new User(username, password);
@@ -49,8 +61,38 @@ public class UserController {
 		} else {
 			return msg;
 		}
-	}
+	}*/
 
+	//用户验证成功操作
+		@RequestMapping("/loginSuccess")
+		public @ResponseBody String login(@RequestParam("url") String url, Model model, HttpServletRequest request) {
+			//获取用户权限信息实例
+			MyUserDetail userDetails = (MyUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			UserRole myUser = userDetails.getMyUser();
+			
+			//添加当前用户实例到session
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("username", myUser.getUsername());
+			User user = u.getUser(m);
+			model.addAttribute("user", user);
+			
+			//返回ajax请求信息
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("success", "true");
+			map.put("url", url);
+			return JSON.toJSONString(map);
+			
+		}
+
+		//用户验证失败操作
+		@RequestMapping(value = "/login/failure", produces = "text/plain;charset=UTF-8")
+		public @ResponseBody String failure() {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("success", "false");
+			map.put("msg", "账户名或密码错误");
+			return JSON.toJSONString(map);
+		}
+	
 	@RequestMapping("/mainPage")
 	public String loginSuccess(Model model) {
 		Map<String, String> p = new HashMap<String, String>();
@@ -82,9 +124,13 @@ public class UserController {
 
 	@RequestMapping("/register")
 	public @ResponseBody String resgiter(User user) {
+		UserRole ur=new UserRole();
+		ur.setUsername(user.getUsername());
+		ur.setPassword(user.getPassword());
+		ur.setRole("ROLE_USER");
+		uRDao.insertUserRole(ur);
 		String msg = u.register(user);
 		return msg;
-
 	}
 
 	/**
@@ -94,7 +140,7 @@ public class UserController {
 	 *            用来在用户修改密码时对原密码的验证，若不匹配，则不更新信息并返回'oldpasserro'，（即当key=password不为空时需判定oldpassword）
 	 * @return 更新成功返回success
 	 */
-	@RequestMapping("/changeInfo")
+	@RequestMapping("/admin/changeInfo")
 	public @ResponseBody String changeInfo(@RequestBody Map<String, Object> uMap,Model model) {
 		Map<String, Object> m = new HashMap<>();
 		Map<String, Object> p = uMap;
@@ -111,6 +157,11 @@ public class UserController {
 				if (msg.equals("FALSE"))
 					return "oldpasserro";
 				m.put("password", p.get("password"));
+				
+				Map<String,String> map=new HashMap<String,String>();
+				map.put("username", (String) p.get("username"));
+				map.put("password", (String) p.get("password"));
+				uRDao.updateUserRole(map);
 			}
 		}
 		u.changeInfo(m);
@@ -129,7 +180,7 @@ public class UserController {
 		return "userPage/loginPage";
 	}
 
-	@RequestMapping("userMainPage")
+	@RequestMapping("/admin/userMainPage")
 	public String userMainPage() {
 		return "userPage/userMainPage";
 	}

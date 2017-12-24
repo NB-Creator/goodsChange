@@ -8,11 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-<link type="text/css" rel="stylesheet" href="css/excPage.css">
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="js/myJs/excPage.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/excPage.css">
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/myJs/excPage.js"></script>
 <style type="text/css">
 
 /* 去除一些基础标签的属性值 */

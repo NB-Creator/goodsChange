@@ -23,6 +23,7 @@ import service.ItemDao;
 
 @Controller
 @SessionAttributes("user")
+@RequestMapping("/file")
 public class FileController {
 
 	@Autowired

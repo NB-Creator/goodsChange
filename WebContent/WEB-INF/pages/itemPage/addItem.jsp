@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-<link type="text/css" rel="stylesheet" href="css/addItem.css">
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="js/myJs/addItem.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-table.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-table.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/addItem.css">
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/myJs/addItem.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table.js"></script>
 
 <title>发布商品</title>
 <style type="text/css">

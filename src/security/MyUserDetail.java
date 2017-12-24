@@ -5,17 +5,17 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import po.MyUser;
+import po.UserRole;
 
 public class MyUserDetail implements UserDetails {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5619502406659516775L;
-	private MyUser myUser;
+	private UserRole myUser;
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public MyUserDetail(MyUser user,Collection<? extends GrantedAuthority> authorities) {
+	public MyUserDetail(UserRole user,Collection<? extends GrantedAuthority> authorities) {
 		this.myUser = user;
 		this.authorities = authorities;
 	}
@@ -24,7 +24,7 @@ public class MyUserDetail implements UserDetails {
 		// TODO Auto-generated method stub
 		return authorities;
 	}
-	public MyUser getMyUser() {
+	public UserRole getMyUser() {
 		return myUser;
 	}
 	public String getPassword() {

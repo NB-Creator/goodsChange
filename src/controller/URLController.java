@@ -1,7 +1,9 @@
 package controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 //Ìø×ª¿ØÖÆÆ÷
 public class URLController {
 
@@ -15,38 +17,38 @@ public class URLController {
 		return "itemPage/otherUser";
 	}
 	
-	@RequestMapping("/addItemPage")
+	@RequestMapping("/item/addItemPage")
 	public String addItemPage() {
 		return "itemPage/addItem";
 	}
 
-	@RequestMapping("/myCollectPage")
+	@RequestMapping("/admin/myCollectPage")
 	public String myCollectPage() {
 		return "itemPage/myCollectPage";
 	}
 
-	@RequestMapping("/mySubmitPage")
+	@RequestMapping("/admin/mySubmitPage")
 	public String mySubmitPage() {
 		return "itemPage/mySubmitPage";
 	}
 
-	@RequestMapping("/myItem")
+	@RequestMapping("/admin/myItem")
 	public String myItem() {
 		return "itemPage/myItemPage";
 	}
 
-	@RequestMapping("/businessPage")
+	@RequestMapping("/admin/businessPage")
 	public String business() {
 		return "itemPage/businessPage";
 	}
 
 
-	@RequestMapping("/excPage")
+	@RequestMapping("/item/excPage")
 	public String exchangePage() {
 		return "itemPage/excPage";
 	}
 	
-	@RequestMapping("/excSuc")
+	@RequestMapping("/item/excSuc")
 	public String returnExcSuc() {
 		return "itemPage/excSuc";
 	}

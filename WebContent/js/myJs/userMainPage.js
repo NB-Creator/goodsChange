@@ -43,7 +43,7 @@
 		//ajax
 		$.ajax({
 			type : "post",
-			url : "./changeInfo",
+			url : "/admin/changeInfo",
 			dataType : "text",
 			contentType:"application/json",
 			data : JSON.stringify({

@@ -15,7 +15,7 @@ function GetUrlParam(name) {
 function getData() {
 	var itemId = GetUrlParam("itemid");
 	$.ajax({
-		url : "./getIAD",
+		url : "/item/getIAD",
 		type : "post",
 		dataType : "text",
 		data : {

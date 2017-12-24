@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" rel="stylesheet" href="css/head.css">
+<link type="text/css" rel="stylesheet" href="/css/head.css">
 <title>Insert title here</title>
 <style type="text/css">
 #ul li, #ul a {
@@ -23,7 +23,7 @@
 				<li class="dropdown">
 					<div id="uName" class="dropdown">
 						<c:if test="${empty sessionScope.user.nickname}" var="userExits">
-							<a href="./loginPage"><span class="icon-user"></span>请登录</a>
+							<a href="/loginPage"><span class="icon-user"></span>请登录</a>
 						</c:if>
 						<c:if test="${!empty sessionScope.user.nickname}" var="userExits">
 
@@ -33,10 +33,10 @@
 							<br>
 							<ul class="dropdown-menu" id="ul"
 								style="z-index: 999; background: rgba(245, 245, 245, 0.5);">
-								<li><a href="./userMainPage"><span class="icon-user"></span>用户中心</a></li>
-								<li><a href="./myCollectPage"><span
+								<li><a href="/admin/userMainPage"><span class="icon-user"></span>用户中心</a></li>
+								<li><a href="/admin/myCollectPage"><span
 										class="icon-folder-open"></span>我的收藏</a></li>
-								<li><a href="./logout"><span class=" icon-off">
+								<li><a href="/logout"><span class=" icon-off">
 									</span>注销</a></li>
 								<!-- <li class="divider"></li>
 								<li><a href="#">分离的链接</a></li>
@@ -50,7 +50,7 @@
 
 		</div>
 		<div class="logo">
-			<a href="./mainPage" style="color: rgb(255, 0, 45);">HLeB</a>
+			<a href="/mainPage" style="color: rgb(255, 0, 45);">HLeB</a>
 			<h4>环保生活就上换了呗</h4>
 		</div>
 		<div class="">

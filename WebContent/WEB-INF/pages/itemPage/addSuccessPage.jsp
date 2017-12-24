@@ -6,15 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>发布成功</title>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="css/bootstrap-table.css">
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
-<link type="text/css" rel="stylesheet" href="css/addSuccessPage.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-table.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/addSuccessPage.css">
 
-<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-<!-- Bootstrap 核心 JavaScript 文件 -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table.js"></script>
 <style type="text/css">
 
 </style>
@@ -43,7 +42,7 @@
 		<!-- item -->
 
 		<div class="bottom">
-			<a href="./addItemPage">继续添加</a>/<a href="./mainPage">返回主页</a>
+			<a href="/item/addItemPage">继续添加</a>/<a href="/mainPage">返回主页</a>
 		</div>
 		<!-- botton -->
 	</div>

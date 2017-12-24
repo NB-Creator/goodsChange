@@ -9,7 +9,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, a {
 }
 
 body {
-	background: url("../images/background/timg.jpg");
+	background: black;
 	height:900px;
 	
 }

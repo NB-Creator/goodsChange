@@ -28,6 +28,7 @@ import service.UserDao;
 
 @Controller
 @SessionAttributes(value = { "user", "additem", "itemdata" })
+@RequestMapping("/item")
 public class ItemController {
 
 	@Autowired
@@ -110,7 +111,7 @@ public class ItemController {
 	 *            添加一个user_b的所有商品列表到model,key="b_itemlist"//11月21日新增
 	 * @return 商品详情页面
 	 */
-	@RequestMapping("/itemPage/itemid={id}")
+	@RequestMapping("/itemid={id}")
 	public String geturlparam(@PathVariable("id") String id, Model model) {
 		Map<String, String> p = new HashMap<>();
 		p.put("id", id);
@@ -126,15 +127,6 @@ public class ItemController {
 		return "itemPage/itemPage";
 	}
 
-	/**
-	 * 请求商品交换页面
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/excPage")
-	public String exchangePage() {
-		return "itemPage/excPage";
-	}
 
 	/**
 	 * 

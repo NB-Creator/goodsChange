@@ -17,7 +17,7 @@ function sendData(){
 		
 	}
 	$.ajax({
-		url:'./itemExc',
+		url:'/item/itemExc',
 		type:'post',
 		dataType:'text',
 		data:{
@@ -26,7 +26,7 @@ function sendData(){
 			"info":info
 		},
 		success:function(data){
-				self.location="./excSuc?excId="+data;
+				self.location="/item/excSuc?excId="+data;
 			
 		},
 		erro:function(){

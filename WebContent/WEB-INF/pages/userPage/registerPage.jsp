@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
 <style type="text/css">
 body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 	margin: 0px;
@@ -154,10 +154,9 @@ body {
 			},
 			success : function(data) {
 				if (data == "SUCCESS") {
-					alert("恭喜您注册成功，点击确定跳转到登录页面")
+					alert("恭喜您注册成功，点击确定返回到登录页面")
 					self.location = "./loginPage";
 				} else {
-
 					alert(data);
 				}
 			},

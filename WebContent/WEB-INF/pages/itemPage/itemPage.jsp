@@ -11,12 +11,12 @@
 <title>商品详情</title>
 
 <!-- bootstrap相关文件的导入 -->
-<link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="../css/bootstrap-table.css">
-<link type="text/css" rel="stylesheet" href="../css/font-awesome.css">
-<link type="text/css" rel="stylesheet" href="../css/itemPage.css">
-<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="../js/myJs/itemPage.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-table.css">
+<link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="/css/itemPage.css">
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/myJs/itemPage.js"></script>
 <style type="text/css">
 
 /* 去除一些基础标签的属性值 */
@@ -33,14 +33,14 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 	<!-- 导入顶部导航页面-->
 	<jsp:include page="../head-top.jsp"></jsp:include>
 	<div class="h-top">
-		<a href="../mainPage">HLeB</a> <span>换出新感觉</span>
+		<a href="/mainPage">HLeB</a> <span>换出新感觉</span>
 	</div>
 	<div class="i-top">
 		<div class="u-logo">
 			<!-- 用户头像 -->
 		</div>
 		<div class="u-nickname">
-			来自<br> <a href="../otherUser?sellerid=${user_b.username}">${user_b.nickname}</a>
+			来自<br> <a href="/otherUser?sellerid=${user_b.username}">${user_b.nickname}</a>
 		</div>
 		<div class="i-browse">
 			浏览次数<br>15
@@ -56,11 +56,11 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 	<div class="i-box">
 		<div class="i-img">
 			<div class="img-bg">
-				<img src="../${itemdata.imgpath[0]}">
+				<img src="/${itemdata.imgpath[0]}">
 			</div>
 			<div class="img-li">
 				<c:forEach items="${itemdata.imgpath}" var="imgpath">
-					<img src="../${imgpath}">
+					<img src="/${imgpath}">
 				</c:forEach>
 			</div>
 		</div>
@@ -76,13 +76,13 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 
 			<c:if test="${sessionScope.user.username==null}">
 				<div class="i-exchange">
-					<a href="../loginPage"><button type="button"
+					<a href="/loginPage"><button type="button"
 							style="width: 200px;" class="btn btn-info btn-lg">点我登录</button></a>
 				</div>
 			</c:if>
 			<c:if test="${sessionScope.user.username!=null}">
 				<div class="i-exchange">
-					<a href="../excPage"><button type="button"
+					<a href="/item/excPage"><button type="button"
 							style="width: 200px;" class="btn btn-info btn-lg">发起交换</button></a>
 				</div>
 				<div class="i-message">
@@ -127,8 +127,8 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1, h3 {
 				<c:if test="${iteml.id!=itemdata.id}">
 					<div class="u-item">
 					<div class="u-item-img">
-						<a href="../itemPage/itemid=${iteml.id}"><img alt=""
-							src="../${iteml.imgpath[0]}"></a>
+						<a href="/item/itemid=${iteml.id}"><img alt=""
+							src="/${iteml.imgpath[0]}"></a>
 					</div>
 					<div class="u-item-name">${iteml.name}</div>
 					<div class="u-item-price">

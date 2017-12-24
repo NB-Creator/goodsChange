@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap-table.min.css">
 <link rel="stylesheet" href="css/mytem.css">
-<script src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
 <script src="js/Soft1.js"></script>
@@ -35,63 +35,6 @@
 
 	</div>
 	<!-- top -->
-	<div class="left-menu">
-		<div class="menu-param">
-			<ul>
-				<li><a href="#">全部功能</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./userMainPage">个人信息</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./myItem">我的货架</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./businessPage">交易记录</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./addItemPage">发布商品</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./myCollectPage">我的收藏</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="#">待处理的</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="./mySubmitPage">我提交的</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-		<div class="menu-param">
-			<ul>
-				<li><a href="#">消息通知</a></li>
-			</ul>
-		</div>
-		<!-- menu-param -->
-	</div>
-	<!-- left-menu -->
 
 	<div class="right-data">
 		<div>
@@ -119,7 +62,7 @@
 	</div>
 
 </body>
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+
 <script type="text/javascript">
 	
 </script>

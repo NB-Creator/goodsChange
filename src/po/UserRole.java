@@ -1,6 +1,6 @@
 package po;
 
-public class MyUser {
+public class UserRole {
 	private String username;
 	private String password;
 	private String role;
