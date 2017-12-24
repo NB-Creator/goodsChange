@@ -1,39 +1,26 @@
-package Controller;
+package controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.alibaba.fastjson.JSON;
-
 import po.Item;
-import po.MyUser;
 import po.User;
-import security.MyUserDetail;
 import service.ItemDao;
 import service.UserDao;
 
 @Controller
 @SessionAttributes("user")
 public class UserController {
-	private RequestCache requestCache = new HttpSessionRequestCache();
+
 	@Autowired
 	private UserDao u;
 	@Autowired
@@ -45,44 +32,23 @@ public class UserController {
 		return "userPage/loginPage";
 	}
 
-	//用户验证成功操作
-	@RequestMapping("/loginSuccess")
-	public @ResponseBody String login(@RequestParam("url") String url, Model model, HttpServletRequest request) {
-		//获取用户权限信息实例
-		MyUserDetail userDetails = (MyUserDetail) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MyUser myUser = userDetails.getMyUser();
-		
-		//添加当前用户实例到session
-		Map<String, String> m = new HashMap<String, String>();
-		m.put("username", myUser.getUsername());
-		User user = u.getUser(m);
-		model.addAttribute("user", user);
-		
-		//返回ajax请求信息
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("success", "true");
-		int length=url.length();
-		url=url.substring(1, length);
-		map.put("url", url);
-		return JSON.toJSONString(map);
+	@RequestMapping("/login")
+	public @ResponseBody String login(String username, String password, Model model) {
 
-		/*
-		 * User user = new User(username, password); String msg = u.login(user); if
-		 * ("SUCCESS".equals(msg)) { // 将查询到的user信息保存并传给主页面 Map<String, String> m = new
-		 * HashMap<String, String>(); m.put("username", username); user = u.getUser(m);
-		 * model.addAttribute("user", user); // 设置登录成功路径
-		 * 
-		 * return msg; } else { return msg; }
-		 */
-	}
+		User user = new User(username, password);
+		String msg = u.login(user);
+		if ("SUCCESS".equals(msg)) {
+			// 将查询到的user信息保存并传给主页面
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("username", username);
+			user = u.getUser(m);
+			model.addAttribute("user", user);
+			// 设置登录成功路径
 
-	//用户验证失败操作
-	@RequestMapping(value = "/login/failure", produces = "text/plain;charset=UTF-8")
-	public @ResponseBody String failure() {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("success", "false");
-		map.put("msg", "账户名或密码错误");
-		return JSON.toJSONString(map);
+			return msg;
+		} else {
+			return msg;
+		}
 	}
 
 	@RequestMapping("/mainPage")
@@ -129,7 +95,7 @@ public class UserController {
 	 * @return 更新成功返回success
 	 */
 	@RequestMapping("/changeInfo")
-	public @ResponseBody String changeInfo(@RequestBody Map<String, Object> uMap, Model model) {
+	public @ResponseBody String changeInfo(@RequestBody Map<String, Object> uMap,Model model) {
 		Map<String, Object> m = new HashMap<>();
 		Map<String, Object> p = uMap;
 		m.put("username", p.get("username"));
@@ -153,7 +119,6 @@ public class UserController {
 		model.addAttribute("user", u.getUser(m1));
 		return "success";
 	}
-
 	public void setU(UserDao u) {
 		this.u = u;
 	}
