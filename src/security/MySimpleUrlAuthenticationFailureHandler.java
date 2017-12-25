@@ -19,7 +19,6 @@ public class MySimpleUrlAuthenticationFailureHandler implements AuthenticationFa
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest arg0, HttpServletResponse arg1, AuthenticationException arg2)
 			throws IOException, ServletException {
-		// TODO 自动生成的方法存根
 		
 	}
 

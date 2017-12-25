@@ -35,8 +35,6 @@ public class LoginSuccessHandle implements AuthenticationSuccessHandler, Initial
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		// TODO 自动生成的方法存根
-
 	}
 
 }

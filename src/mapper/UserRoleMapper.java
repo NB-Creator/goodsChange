@@ -1,7 +1,5 @@
 package mapper;
 
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -16,5 +14,5 @@ public interface UserRoleMapper {
 	public void insertUserRole(UserRole u);
 	
 	@Update("update to userRole set password=#{password} where username=#{username}")
-	public void updataPassword(Map<String,String> m);
+	public void updataPassword(String password,String username);
 }

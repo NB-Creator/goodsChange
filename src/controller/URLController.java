@@ -57,4 +57,9 @@ public class URLController {
 	public String returnItemAdmin() {
 		return "itemPage/itemAdmin";
 	}
+	
+	@RequestMapping("/admin/userMainPage")
+	public String userMainPage() {
+		return "userPage/userMainPage";
+	}
 }
