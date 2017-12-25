@@ -60,11 +60,11 @@ public class ExChangeController {
 	}
 
 
-	@RequestMapping("/getExchange")
-	public List<Exchange> getExchange(HttpSession session){
-		Map<String, String> map = new HashMap<>();
-		map.put("uid_a", ((User)session.getAttribute("user")).getUsername());
-		return ed.selectExc(map);
+	@RequestMapping(value="/getExchange",produces="text/plain;charset=UTF-8")
+	public @ResponseBody String getExchange(HttpSession session){
+		/*Map<String, String> map = new HashMap<>();
+		map.put("uid_a", ((User)session.getAttribute("user")).getUsername());*/
+		return JSON.toJSONString(ed.getMysubmit(((User)session.getAttribute("user")).getUsername()));
 	}
 	
 	/**

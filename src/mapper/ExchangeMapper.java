@@ -54,7 +54,7 @@ public interface ExchangeMapper {
 	
 	@Select("SELECT e.id , e.date , e.gid_a , e.gid_b , i1.name gname_a , i1.img img_a , i2.name gname_b , i2.img img_b ,e.info "
 			+ "from tb_exchange e,tb_item i1,tb_item i2 "
-			+ "where e.uid_a=#{uid}")
+			+ "where e.uid_a=#{uid} and e.gid_a=i1.id and e.gid_b=i2.id")
 	@ResultMap("ecxDate")
 	public List<ExcDate> selectMySubmit(String uid);
 }

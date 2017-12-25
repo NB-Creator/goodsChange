@@ -14,7 +14,7 @@
 	height: 35px;
 	line-height: 35px;
 	background-color: rgb(242, 242, 242);
-	border-bottom: 1px solid red;
+	border-bottom: 1px solid black;
 	padding-left: 70px;
 	color: #669;
 	font-weight: 300;

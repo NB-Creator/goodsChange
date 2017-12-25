@@ -62,7 +62,7 @@ function addTo(j) {
 	var ul = $(".e_mP");
 	ul.empty();
 	var e = "<li>"
-			+ "<div class='item_logo' onclick='remove()'><img width='100px' height='100px' src="
+			+ "<div class='item_logo' onclick='remove()'><img width='100px' height='100px' src=/"
 			+ jsonData[j].imgpath[0]
 			+ "></div>"
 			+ "<div class='item_id'><span style='margin-top:5px;'>商品ID:</span><div id='gid_a'>"

@@ -19,12 +19,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.alibaba.fastjson.JSON;
 
 import po.Item;
-import po.UserRole;
 import po.User;
+import po.UserRole;
 import security.MyUserDetail;
 import service.ItemDao;
 import service.UserDao;
-import service.UserRoleDao;
 
 @Controller
 @SessionAttributes("user")
@@ -34,8 +33,6 @@ public class UserController {
 	private UserDao u;
 	@Autowired
 	private ItemDao itemDao;
-	@Autowired
-	private UserRoleDao uRDao;
 
 	@RequestMapping(value = "/loginPage")
 	public String loginPage(Model model) {
@@ -124,13 +121,7 @@ public class UserController {
 
 	@RequestMapping("/register")
 	public @ResponseBody String resgiter(User user) {
-		UserRole ur=new UserRole();
-		ur.setUsername(user.getUsername());
-		ur.setPassword(user.getPassword());
-		ur.setRole("ROLE_USER");
-		uRDao.insertUserRole(ur);
-		String msg = u.register(user);
-		return msg;
+		return u.register(user);
 	}
 
 	/**
@@ -157,11 +148,6 @@ public class UserController {
 				if (msg.equals("FALSE"))
 					return "oldpasserro";
 				m.put("password", p.get("password"));
-				
-				Map<String,String> map=new HashMap<String,String>();
-				map.put("username", (String) p.get("username"));
-				map.put("password", (String) p.get("password"));
-				uRDao.updateUserRole(map);
 			}
 		}
 		u.changeInfo(m);
@@ -180,9 +166,5 @@ public class UserController {
 		return "userPage/loginPage";
 	}
 
-	@RequestMapping("/admin/userMainPage")
-	public String userMainPage() {
-		return "userPage/userMainPage";
-	}
 
 }

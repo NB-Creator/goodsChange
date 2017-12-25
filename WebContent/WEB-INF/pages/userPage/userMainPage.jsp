@@ -76,7 +76,7 @@ a:active {
 		</div>
 		<div class="menu-param">
 			<ul>
-				<li><a href="#">待处理的</a></li>
+				<li><a href="/admin/pending">待处理的</a></li>
 			</ul>
 		</div>
 		<div class="menu-param">
@@ -86,7 +86,7 @@ a:active {
 		</div>
 		<div class="menu-param">
 			<ul>
-				<li><a href="#">消息通知</a></li>
+				<li><a href="/admin/message">消息通知</a></li>
 			</ul>
 		</div>
 	</div>

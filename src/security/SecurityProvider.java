@@ -27,7 +27,6 @@ public class SecurityProvider implements AuthenticationProvider {
 	}
 
 	public boolean supports(Class<?> authentication) {
-		// TODO Auto-generated method stub
 		return UsernamePasswordAuthenticationToken.class.equals(authentication);
 	}
 
