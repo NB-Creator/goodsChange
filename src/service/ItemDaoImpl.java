@@ -147,11 +147,14 @@ public class ItemDaoImpl implements ItemDao {
 		ItemAllData itemDate=new ItemAllData();
 		Map<String, String> param=new HashMap<>();
 		param.put("id", id);
+		Integer temp=null;
+		
 		itemDate.setItem(itemMapper.select(param).get(0));
-		itemDate.setCollect(colMapper.getCollectedCount(id));
-		itemDate.setRq(eMapper.getRequestedCount(id));
-		itemDate.setComment(comMapper.getCount(id));
+		itemDate.setCollect((temp=colMapper.getCollectedCount(id))==null?0:temp.intValue());
+		itemDate.setRq((temp=eMapper.getRequestedCount(id))==null?0:temp.intValue());
+		itemDate.setComment((temp=comMapper.getCount(id))==null?0:temp.intValue());
 		itemDate.setCommentList(comMapper.find(id));
+		
 		return itemDate;
 	}
 	

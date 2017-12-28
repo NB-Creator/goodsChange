@@ -8,7 +8,7 @@ public class Exchange {
 	private String gid_b;// 期待交换商品
 	private String date;// 申请时间
 	private String info;// 备注信息
-	private String statu;// 订单状态
+	private String statu;// 订单状态(submit:提交,success:交换成功,fail:交换失败)
 	
 	public Exchange(){
 		

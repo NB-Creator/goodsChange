@@ -31,7 +31,7 @@ public interface CollectMapper {
 	public List<Collect> select(Map<String, String> m);
 	
 	@Select("select count(*) from collect where g_id=#{gid}")
-	public int getCollectedCount(String gid);
+	public Integer getCollectedCount(String gid);
 	
 	@Select("select DISTINCT i.id,i.time,i.name,i.detail,i.img,i.expect,i.classification,i.price,i.uid "+
 				"from tb_item i,collect c where c.u_id=#{uid}  AND i.id=c.g_id")

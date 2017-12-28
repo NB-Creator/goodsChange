@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap-table.min.css">
 <link rel="stylesheet" href="css/mytem.css">
+
 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-table.js"></script>
@@ -27,7 +28,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../head.jsp"></jsp:include>
+	<jsp:include page="../head-top.jsp"></jsp:include>
 	<div class="top">
 		<div class="tl">
 			<h1 style="color: white;">我的货架</h1>

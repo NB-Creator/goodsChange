@@ -16,7 +16,10 @@
 <link type="text/css" rel="stylesheet" href="/css/itemAdmin.css">
 
 
-<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+
+<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-table.js"></script>
 <script type="text/javascript" src="js/myJs/itemAdmin.js"></script>
 
 <style type="text/css">

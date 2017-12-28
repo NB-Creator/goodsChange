@@ -3,7 +3,6 @@ package controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -22,6 +21,10 @@ import po.Item;
 import po.User;
 import service.ExchangeDao;
 
+/**
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("/item")
 public class ExChangeController {
@@ -59,12 +62,39 @@ public class ExChangeController {
 		return exc.getId();
 	}
 
-
-	@RequestMapping("/getExchange")
-	public List<Exchange> getExchange(HttpSession session){
-		Map<String, String> map = new HashMap<>();
-		map.put("uid_a", ((User)session.getAttribute("user")).getUsername());
-		return ed.selectExc(map);
+	/**
+	 * 获取交换请求列表
+	 */
+	@RequestMapping("/getRequested")
+	public String getRequestedExchange(HttpSession session){
+		return JSON.toJSONString(ed.getMyExc("uid_b",((User)session.getAttribute("user")).getUsername()));
+	}
+	
+	/**
+	 * 用户处理请求
+	 * @param id 交换单id
+	 * @param info success:同意交换 fail:不同意交换
+	 * @return
+	 */
+	@RequestMapping("/isExchange")
+	public String exchangeSuccess(String id, String info , HttpSession session){
+		Map<String,String> m=new HashMap<>();
+		m.put("id", id);
+		m.put("statu", info);
+		if(ed.changeExc(m).equals("FALSE"))
+			return "fail";
+		return "success";
+	}
+	
+	
+	/**
+	 *获取用户提交的交换请求信息
+	 */
+	@RequestMapping(value="/getExchange",produces="text/plain;charset=UTF-8")
+	public @ResponseBody String getSubmitExchange(HttpSession session){
+		/*Map<String, String> map = new HashMap<>();
+		map.put("uid_a", ((User)session.getAttribute("user")).getUsername());*/
+		return JSON.toJSONString(ed.getMyExc("uid_a",((User)session.getAttribute("user")).getUsername()));
 	}
 	
 	/**

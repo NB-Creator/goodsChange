@@ -62,4 +62,15 @@ public class URLController {
 	public String userMainPage() {
 		return "userPage/userMainPage";
 	}
+	
+	@RequestMapping("/admin/pending")
+	public String pending() {
+		return "itemPage/pending";
+	}
+	
+	@RequestMapping("/admin/message")
+	public String message() {
+		return "userPage/message";
+	}
 }
+

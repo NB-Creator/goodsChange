@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import mapper.ExchangeMapper;
+import mapper.MessageMapper;
 import model.ExcDate;
 import po.Exchange;
+import po.Message;
 
 @Service
 @Transactional(readOnly=false,isolation=Isolation.READ_COMMITTED,rollbackFor=java.lang.Exception.class)
@@ -19,6 +21,8 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Autowired
 	private ExchangeMapper excMapper;
+	@Autowired
+	private MessageMapper msgMapper;
 
 	@Override
 	public List<Exchange> selectExc(Map<String, String> m) {
@@ -28,10 +32,12 @@ public class ExchangeDaoImpl implements ExchangeDao {
 
 	@Override
 	public String addExc(Exchange exc) {
-		if (excMapper.addExc(exc) > 0)
-			return "SUCCESS";
-		else
-			return "FALSE";
+		if (excMapper.addExc(exc) > 0){
+			Message m=new Message(exc.getUid_a(), exc.getUid_b(), exc.getGid_a(), "来,我给你看个宝贝!", 0);
+			if(msgMapper.insert(m) > 0)
+				return "SUCCESS";
+		}
+		return "FALSE";
 	}
 
 	@Override
@@ -64,9 +70,9 @@ public class ExchangeDaoImpl implements ExchangeDao {
 	}
 
 	@Override
-	public List<ExcDate> getMysubmit(String uid) {
+	public List<ExcDate> getMyExc(String uid_x, String uid) {
 		// TODO 自动生成的方法存根
-		List<ExcDate> excList = excMapper.selectMySubmit(uid);
+		List<ExcDate> excList = excMapper.selectMyExc(uid_x,uid);
 		Iterator<ExcDate> i=excList.iterator();
 		while(i.hasNext()) {
 			ExcDate item=i.next();
@@ -78,8 +84,14 @@ public class ExchangeDaoImpl implements ExchangeDao {
 			item.setImg_b(imgs_[0]);
 		}
 		
-		
-		
 		return excList;
+	}
+
+	public void setMsgMapper(MessageMapper msgMapper) {
+		this.msgMapper = msgMapper;
+	}
+
+	public void setExcMapper(ExchangeMapper excMapper) {
+		this.excMapper = excMapper;
 	}
 }

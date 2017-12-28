@@ -21,5 +21,5 @@ public interface CommentMapper {
 	public List<Comment> find(String gid);
 	
 	@Select("select * from comment where g_id=#{gid}")
-	public int getCount(String gid);
+	public Integer getCount(String gid);
 }
