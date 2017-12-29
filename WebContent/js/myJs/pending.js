@@ -10,7 +10,7 @@ function getData() {
 		type : "get",
 		dataType : "text",
 		data:{
-			"type":"submit"
+			"type":"request"
 		},
 		success : function(data) {// data为后台返回的json字符串内容为已提交订单(类ExcData.java)的列表，通过JSON.parse解析
 			subMit = JSON.parse(data);
@@ -43,7 +43,7 @@ function showData() {
 					+ "<div class='col-sm-6 col-md-4'><img style='width:100px;height:90px;' src=/"
 					+ subMit[j].img_a
 					+ ">"
-					+ "<div class='gname'>我的<a href='/item/itemid="
+					+ "<div class='gname'>别人的<a href='/item/itemid="
 					+ subMit[j].gid_a
 					+ "'>"
 					+ subMit[j].gname_a
@@ -52,7 +52,7 @@ function showData() {
 					+ "<div class='col-sm-6 col-md-4'><img style='width:100px;height:90px;' src=/"
 					+ subMit[j].img_b
 					+ ">"
-					+ "<div class='gname'>别人的<a href='/item/itemid="
+					+ "<div class='gname'>我的<a href='/item/itemid="
 					+ subMit[j].gid_b
 					+ "'>"
 					+ subMit[j].gname_b
@@ -66,23 +66,24 @@ function showData() {
 					+ "</div>"
 					+ "<div class='eInfo'>备注信息："
 					+ subMit[j].info + "</div>"
-					+"<button onclick=cancel('"+subMit[j].excId+"') >取消</button>"
+					+"<button onclick=accede('"+subMit[j].excId+"')>同意</button>"
+					+"<button onclick=refuse('"+subMit[j].excId+"')>拒绝</button>"
 			" </div>"
 		} else {
 			var e = "<div class='order' style='background-color: #fdfde8;height:120px;float:left;width:100%;margin-bottom:20px;'>"
 					+ "<div class='col-sm-6 col-md-4'><img style='width:100px;height:90px;' src=/"
 					+ subMit[j].img_a
 					+ ">"
-					+ "<div class='gname'>我的<a href='/item/itemid="
+					+ "<div class='gname'>别人的<a href='/item/itemid="
 					+ subMit[j].gid_a
 					+ "'>"
-					+ subMit[j].gname_a
+					+subMit[j].gname_a
 					+ "</a></div>"
 					+ "</div>"
 					+ "<div class='col-sm-6 col-md-4'><img style='width:100px;height:90px;' src=/"
 					+ subMit[j].img_b
 					+ ">"
-					+ "<div class='gname'>别人的<a href='/item/itemid="
+					+ "<div class='gname'>我的<a href='/item/itemid="
 					+ subMit[j].gid_b
 					+ "'>"
 					+ subMit[j].gname_b
@@ -96,7 +97,8 @@ function showData() {
 					+ "</div>"
 					+ "<div class='eInfo'>备注信息："
 					+ subMit[j].info + "</div>"
-					+"<button onclick=cancel('"+subMit[j].excId+"') >取消</button>"
+					+"<button onclick=accede('"+subMit[j].excId+"')>同意</button>"
+					+"<button onclick=refuse('"+subMit[j].excId+"')>拒绝</button>"
 			" </div>"
 		}
 
@@ -108,29 +110,48 @@ function showData() {
 	}
 }
 
-function cancel(excId){
-	aaa("2017122710253371134");
-	alert(excId);
+function refuse(excId){
 	$.ajax({
-		url:"/item/removeExc",
+		url:"/item/isExchange",
 		type:"get",
 		dataType:"text",
 		data:{
-			"excId":excId
+			"id":excId,
+			"info":"fail"
 		},
 		success:function(data){
-			if(data=="SUCCESS"){
+			if(data=="success")
 				getData();
-			}else alert(data);
+			else alert(data);
 		},
 		erro:function(){
-			alert("服务器异常");
+			alert("请求服务器失败");
 		}
+		
 	});
-}
-function aaa(a){
-	alert("a="+a);
-}
+	}
+
+function accede(excId){
+	$.ajax({
+		url:"/item/isExchange",
+		type:"get",
+		dataType:"text",
+		data:{
+			"id":excId,
+			"info":"success"
+		},
+		success:function(data){
+			if(data=="success")
+				getData();
+			else alert(data);
+		},
+		erro:function(){
+			alert("请求服务器失败");
+		}
+		
+	});
+	}
+
 // 加载更多数据
 function onload() {
 	num += 5;

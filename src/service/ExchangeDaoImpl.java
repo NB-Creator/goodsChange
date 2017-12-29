@@ -33,7 +33,7 @@ public class ExchangeDaoImpl implements ExchangeDao {
 	@Override
 	public String addExc(Exchange exc) {
 		if (excMapper.addExc(exc) > 0){
-			Message m=new Message(exc.getUid_a(), exc.getUid_b(), exc.getGid_a(), "来,我给你看个宝贝!", 0);
+			Message m=new Message(exc.getUid_a(), exc.getUid_b(), exc.getId(), "来,我给你看个宝贝!", 0);
 			if(msgMapper.insert(m) > 0)
 				return "SUCCESS";
 		}
@@ -70,9 +70,9 @@ public class ExchangeDaoImpl implements ExchangeDao {
 	}
 
 	@Override
-	public List<ExcDate> getMyExc(String uid_x, String uid) {
+	public List<ExcDate> getMyExc(String uid_a, String uid_b) {
 		// TODO 自动生成的方法存根
-		List<ExcDate> excList = excMapper.selectMyExc(uid_x,uid);
+		List<ExcDate> excList = excMapper.selectMyExc(uid_a,uid_b);
 		Iterator<ExcDate> i=excList.iterator();
 		while(i.hasNext()) {
 			ExcDate item=i.next();

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>我提交的请求</title>
+<title>我的收藏</title>
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
 <link type="text/css" rel="stylesheet" href="/css/myCollectPage.css">

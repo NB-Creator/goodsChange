@@ -4,17 +4,18 @@ public class Message {
 
 	private String usernameA;//消息发送方
 	private String usernameB;//消息接收方
-	private String itemId;//商品id
+	private String  excId;//交换单id
 	private String message;//信息
-	private int status;//状态(0:未读 1:已读)
+	private Integer statu;//状态(0:未读 1:已读)
 
-	public Message(String usernameA, String usernameB, String itemId, String message, int status) {
+	public Message() {}
+	public Message(String usernameA, String usernameB, String excId, String message, Integer statu) {
 		super();
 		this.usernameA = usernameA;
 		this.usernameB = usernameB;
-		this.itemId = itemId;
+		this.excId = excId;
 		this.message = message;
-		this.setStatus(status);
+		this.setStatu(statu);
 	}
 
 	public String getUsernameA() {
@@ -33,12 +34,12 @@ public class Message {
 		this.usernameB = usernameB;
 	}
 
-	public String getItemId() {
-		return itemId;
+	public String getExcId() {
+		return excId;
 	}
 
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+	public void setExcId(String excId) {
+		this.excId = excId;
 	}
 
 	public String getMessage() {
@@ -49,12 +50,12 @@ public class Message {
 		this.message = message;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getStatu() {
+		return statu;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStatu(Integer statu) {
+		this.statu = statu;
 	}
 
 }

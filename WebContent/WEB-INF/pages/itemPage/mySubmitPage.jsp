@@ -24,7 +24,7 @@
 <jsp:include page="../head.jsp"></jsp:include>
 	<div class="top">
 		<div class="tl">
-			<h1 style="color: white;">${sessionScope.user.nickname}的提交</h1>
+			<h1 style="color: white;">我提交的交换请求</h1>
 		</div>
 		
 	</div>
@@ -36,10 +36,10 @@
 			<div class="u-nick">${sessionScope.user.username}(${sessionScope.user.nickname})</div>
 		</div>
 		<div class="d-table">
-			<div class="dt-param" style="color:red">已提交的</div>
-			<div class="dt-param">待处理的</div>
-			<div class="dt-param">未处理的</div>
-			<div class="dt-param" style="border-right: 0;">已接受的</div>
+			<div class="dt-param" ><a href="/admin/mySubmitPage" style="color:red;">已提交的</a></div>
+			<div class="dt-param"><a href="/admin/pending">待处理的</a></div>
+			<div class="dt-param">失败的交换</div>
+			<div class="dt-param" style="border-right: 0;">成功的交换</div>
 		</div>
 		<div class="all-data">
 			

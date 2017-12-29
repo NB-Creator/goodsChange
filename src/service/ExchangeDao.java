@@ -33,9 +33,9 @@ public interface ExchangeDao {
 	public ExcDate getExcAllDate(String eid);
 	
 	/**
-	 * @param uid_x 如果查询自己提交的交换单信息就设置为uid_a,如果查询自己是被请求方的交换单信息就设置为uid_b
-	 * @param uid 用户id
+	 * @param uid_a 如果查询自己提交的交换单信息就设置为uid,uid_b设置为%
+	 * @param uid_b 如果查询自己是被请求方的交换单信息就设置为uid,uid_a设置为%
 	 * @return
 	 */
-	public List<ExcDate> getMyExc(String uid_x,String uid);
+	public List<ExcDate> getMyExc(String uid_a,String uid_b);
 }

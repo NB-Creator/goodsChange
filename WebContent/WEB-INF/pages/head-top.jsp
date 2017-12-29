@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-
 .head-top {
 	width: 100%;
 	height: 35px;
@@ -40,19 +39,30 @@
 	color: black;
 	line-height: 35px;
 }
+
 .head-top #uName, #eData {
 	float: right;
 	color: #669;
 	margin-left: 10px;
 }
-#ul li,#ul a{
+
+#ul li, #ul a {
 	float: none;
-	color:white;
+	color: white;
 }
-#ul li,#ul  a:link {}      /* 未访问链接*/
-#ul li,#ul  a:visited {}  /* 已访问链接 */
-#ul li,#ul  a:hover {color:black;}  /* 鼠标移动到链接上 */
-#ul li,#ul  a:active {color:#0000FF;}  /* 鼠标点击时 */
+
+#ul li, #ul  a:link {
+	
+} /* 未访问链接*/
+#ul li, #ul  a:visited {
+	
+} /* 已访问链接 */
+#ul li, #ul  a:hover {
+	color: black;
+} /* 鼠标移动到链接上 */
+#ul li, #ul  a:active {
+	color: #0000FF;
+} /* 鼠标点击时 */
 </style>
 </head>
 <body>
@@ -61,29 +71,53 @@
 			style="color: red; font-weight: 500; font-size: 20px; font-style: italic;"><span
 			class="icon-home"></span>HLB</a>
 		<ul>
-			<li class="dropdown"><span class="icon-user"></span>
+			<li class="dropdown" style="margin-right:100px;"><span class="icon-user"></span>
 				<div id="uName" class="dropdown">
 					<c:if test="${empty sessionScope.user.nickname}" var="userExits">
 						<a href="/loginPage">请登录</a>
 					</c:if>
 					<c:if test="${!empty sessionScope.user.nickname}" var="userExits">
-						
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.user.nickname}</a><b
-								class="caret"></b>
-								<br>
-							<ul class="dropdown-menu" id="ul" style="z-index: 999; background: rgba(245, 245, 245, 0.5);">
-								<li><a href="/admin/userMainPage"><span class="icon-user"></span>用户中心</a></li>
-								<li><a href="/admin/myCollectPage"><span class="icon-folder-open"></span>我的收藏</a></li>
-								<li><a href="/logout"><span class=" icon-off"> </span>注销</a></li>
-								<!-- <li class="divider"></li>
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.user.nickname}</a>
+						<b class="caret"></b>
+						<br>
+						<ul class="dropdown-menu" id="ul"
+							style="z-index: 999; background: rgba(0, 0, 0, 0.8);">
+							<li><a href="/admin/userMainPage"><span
+									class="icon-user"></span>用户中心</a></li>
+							<li><a href="/admin/myCollectPage"><span
+									class="icon-folder-open"></span>我的收藏</a></li>
+
+							<li><a href="/admin/message" id="msg"><span
+									class="icon-comment-alt"></span></a></li>
+							<li><a href="/logout"><span class=" icon-off"> </span>注销</a></li>
+							<!-- <li class="divider"></li>
 								<li><a href="#">分离的链接</a></li>
 								<li class="divider"></li>
 								<li><a href="#">另一个分离的链接</a></li> -->
-							</ul>
+						</ul>
 					</c:if>
 				</div></li>
 		</ul>
 
 	</div>
 </body>
+
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : "/unread",
+			type : "get",
+			dataType : "text",
+			success : function(data) {
+				$("#msg").append("消息：" + data);
+			},
+			erro : function() {
+
+			}
+
+		});
+
+	});
+</script>
 </html>

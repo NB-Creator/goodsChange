@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
@@ -54,7 +55,7 @@ public interface ExchangeMapper {
 	
 	@Select("SELECT e.id , e.date , e.gid_a , e.gid_b , i1.name gname_a , i1.img img_a , i2.name gname_b , i2.img img_b ,e.info "
 			+ "from tb_exchange e,tb_item i1,tb_item i2 "
-			+ "where e.#{uid_x}=#{uid} and e.gid_a=i1.id and e.gid_b=i2.id and e.statu=submit")
+			+ "where e.uid_b like #{uid_b} and e.uid_a like #{uid_a} and e.gid_a=i1.id and e.gid_b=i2.id and e.statu='submit'")
 	@ResultMap("ecxDate")
-	public List<ExcDate> selectMyExc(String uid_x,String uid);
+	public List<ExcDate> selectMyExc(@Param("uid_a")String uid_a,@Param("uid_b")String uid_b);
 }

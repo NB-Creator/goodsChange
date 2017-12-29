@@ -16,7 +16,7 @@ public class MessageProvider {
 					WHERE((String)obj);
 				if((obj=p.get("usernameB"))!=null)
 					WHERE((String)obj);
-				if((obj=p.get("itemId"))!=null)
+				if((obj=p.get("excId"))!=null)
 					WHERE((String)obj);
 				if((obj=p.get("status"))!=null)
 					WHERE((String)obj);

@@ -13,7 +13,7 @@ function GetUrlParam(name) {
 	return null;
 }
 function getData() {
-	var excId=GetUrlParam("excId");
+	var excId=GetUrlParam("excid");
 	$.ajax({
 		url : "/item/getExcData",
 		type : "post",
@@ -30,6 +30,47 @@ function getData() {
 		}
 	});
 }
+
+function refuse(){
+	var excId=GetUrlParam("excid");
+	$.ajax({
+		url:"/item/isExchange",
+		type:"get",
+		dataType:"text",
+		data:{
+			"id":excId,
+			"info":"fail"
+		},
+		success:function(data){
+			alert(data);
+		},
+		erro:function(){
+			alert("请求服务器失败");
+		}
+		
+	});
+	}
+
+function accede(){
+	var excId=GetUrlParam("excid");
+	$.ajax({
+		url:"/item/isExchange",
+		type:"get",
+		dataType:"text",
+		data:{
+			"id":excId,
+			"info":"success"
+		},
+		success:function(data){
+			alert(data);
+		},
+		erro:function(){
+			alert("请求服务器失败");
+		}
+		
+	});
+	}
+
 function loadData(excData) {
 	$(".excId").append(excData.excId);
 	$(".excDate").append(excData.excDate);

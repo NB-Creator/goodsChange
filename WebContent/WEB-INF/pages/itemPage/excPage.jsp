@@ -39,7 +39,7 @@ body, div, form, img, ul, ol, li, dl, dt, dd, form, p, h1 {
 				<div class="e_param"><span class="icon-caret-right"></span>商品名：${sessionScope.itemdata.name}</div>
 				<div class="e_img"><span class="icon-caret-right"></span>商品图片：<br />
 				<c:forEach items="${sessionScope.itemdata.imgpath}" var="imgp">
-					<img alt="" src="${imgp}">
+					<img alt="" src="/${imgp}">
 				</c:forEach>
 					
 				</div>

@@ -9,19 +9,34 @@
 <link type="text/css" rel="stylesheet" href="/css/head.css">
 <title>Insert title here</title>
 <style type="text/css">
+.dropdown-menu{
+	margin-right:100px;
+}
 #ul li, #ul a {
 	float: none;
 }
 #inputNumber::-webkit-input-placeholder{
-        color: white;
+        color: black;
 }
+#ul li, #ul  a:link {
+	
+} /* 未访问链接*/
+#ul li, #ul  a:visited {
+	
+} /* 已访问链接 */
+#ul li, #ul  a:hover {
+	color: black;
+} /* 鼠标移动到链接上 */
+#ul li, #ul  a:active {
+	color: #0000FF;
+} /* 鼠标点击时 */
 </style>
 </head>
 <body>
 	<div class="head">
 		<div class="head-dock">
 			<ul>
-				<li class="dropdown">
+				<li class="dropdown" style="margin-right:100px;">
 					<div id="uName" class="dropdown">
 						<c:if test="${empty sessionScope.user.nickname}" var="userExits">
 							<a href="/loginPage"><span class="icon-user"></span>请登录</a>
@@ -33,10 +48,12 @@
 							<b class="caret"></b>
 							<br>
 							<ul class="dropdown-menu" id="ul"
-								style="z-index: 999; background: rgba(245, 245, 245, 0.5);">
+								style="z-index: 999; background: rgba(0, 0, 0, 0.8);">
 								<li><a href="/admin/userMainPage"><span class="icon-user"></span>用户中心</a></li>
 								<li><a href="/admin/myCollectPage"><span
 										class="icon-folder-open"></span>我的收藏</a></li>
+								<li ><a href="/admin/message" id="msg"><span 
+										class="icon-comment-alt"></span></a></li>
 								<li><a href="/logout"><span class=" icon-off">
 									</span>注销</a></li>
 								<!-- <li class="divider"></li>
@@ -77,4 +94,21 @@
 	</div>
 	<!-- /.head -->
 </body>
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		url:"/unread",
+		type:"get",
+		dataType:"text",
+		success:function(data){
+			$("#msg").append("消息："+data);
+		},
+		erro:function(){
+			
+		}
+		
+	});
+	
+});
+</script>
 </html>

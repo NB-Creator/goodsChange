@@ -165,6 +165,10 @@ public class UserController {
 		model.addAttribute("user", new User());
 		return "userPage/loginPage";
 	}
-
+	
+	@RequestMapping("/admin/excData")
+	public String excData() {
+		return "itemPage/excData";
+	}
 
 }

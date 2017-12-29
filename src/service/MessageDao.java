@@ -10,4 +10,8 @@ public interface MessageDao {
 	public List<Message> getMessage(Map<String, String> m);
 	
 	public int changeMessage(Message m);
+	
+	public int deletMessage(String excId);
+	
+	public int unread(String uid);
 }

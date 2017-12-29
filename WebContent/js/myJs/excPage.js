@@ -101,7 +101,7 @@ function getPage(pn) {
 		for (var j = 0; j < dataCount; j++) {
 			var fun = "addTo(" + j + ")";
 			var e = "<li>" + "<div class='item_logo' onclick='" + fun
-					+ "'><img width='100px' height='100px' src="
+					+ "'><img width='100px' height='100px' src=/"
 					+ jsonData[j].imgpath[0] + "></div>"
 					+ "<div class='item_id'>ID:" + jsonData[j].id
 					+ "</div></br>" + "<div class='item_name'>"
@@ -114,7 +114,7 @@ function getPage(pn) {
 		for (var j = startPage; j < endPage; j++) {
 			var fun = "addTo(" + j + ")";
 			var e = "<li>" + "<div class='item_logo' onclick='" + fun
-					+ "'><img width='100px' height='100px' src="
+					+ "'><img width='100px' height='100px' src=/"
 					+ jsonData[j].imgpath[0] + "></div>"
 					+ "<div class='item_id'>ID:" + jsonData[j].id
 					+ "</div></br>" + "<div class='item_name'>"
